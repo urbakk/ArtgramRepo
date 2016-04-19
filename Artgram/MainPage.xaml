@@ -60,8 +60,12 @@
         <TextBlock x:Name="textBlock_Copy7" HorizontalAlignment="Left" Height="29" Margin="146,580,0,0" TextWrapping="Wrap" Text="Rzeźbiarstwo" VerticalAlignment="Top" Width="115" FontSize="18.667"/>
         <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="50" Margin="380,90,0,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" Width="463" FontSize="18.667"/>
         <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="843,90,0,0" VerticalAlignment="Top" Height="50" Width="56" Background="#330033" Foreground="Black"/>
-        <Button x:Name="Login" Content="Zaloguj" HorizontalAlignment="Left" Margin="1030,90,0,0" VerticalAlignment="Top" Height="50" Width="157" FontSize="18.667" Click="Login_Click" Background="#330033" Foreground="White"/>
-        <TextBlock Name="UserName" TextWrapping="Wrap" Margin="1036,145,87,521" Text="Nie zalogowano"/>
-        <Button x:Name="button2" Content="Wyloguj" HorizontalAlignment="Left" Margin="937,101,0,0" VerticalAlignment="Top" Click="button2_Click" Background="#330033" Foreground="White"/>
+        <Button x:Name="Login" Content="Zaloguj z FB" HorizontalAlignment="Left" Margin="941,90,0,0" VerticalAlignment="Top" Height="50" Width="157" FontSize="18.667" Click="Login_Click" Background="#330033" Foreground="White"/>
+        <Button x:Name="Logout" Content="Wyloguj z FB" HorizontalAlignment="Left" Margin="941,90,0,0" VerticalAlignment="Top" Height="50" Width="157" FontSize="18.667" Click="Logout_Click" Background="#330033" Foreground="White" Visibility="Collapsed"/>
+        <!-- <fbsdk:FBLoginButton x:Name="Login" HorizontalAlignment="Left" Margin="1030,90,0,0" VerticalAlignment="Top" Height="50" Width="157" Click="Login_Click"/> -->
+        <fbsdk:ProfilePictureControl x:Name="ProfilePic" Width="80" Height="80" Margin="1130,70,70,550"/>
+        <Image x:Name="ProfilePicNone" Width="80" Height="80" Margin="1130,70,70,550" Source="Assets/User-head.png"/>
+        <Border BorderBrush="Black" BorderThickness="1" Width="80" Height="80" Margin="1130,70,70,550"/>
+        <TextBlock x:Name="UserName" Margin="941,145,182,550" Text="Nie zalogowano"/>
     </Grid>
 </Page>
