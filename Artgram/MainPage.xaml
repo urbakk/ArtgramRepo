@@ -59,9 +59,9 @@
         <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Height="29" Margin="474,580,0,0" TextWrapping="Wrap" Text="Malarstwo" VerticalAlignment="Top" Width="93" FontSize="18.667"/>
         <TextBlock x:Name="textBlock_Copy7" HorizontalAlignment="Left" Height="29" Margin="146,580,0,0" TextWrapping="Wrap" Text="Rzeźbiarstwo" VerticalAlignment="Top" Width="115" FontSize="18.667"/>
         <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="50" Margin="380,90,0,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" Width="463" FontSize="18.667"/>
-        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="843,90,0,0" VerticalAlignment="Top" Height="50" Width="56" Background="#7F640052" Foreground="Black"/>
-        <Button x:Name="Login" Content="Zaloguj" HorizontalAlignment="Left" Margin="1030,90,0,0" VerticalAlignment="Top" Height="50" Width="157" FontSize="18.667" Click="Login_Click" Background="#7F640052" Foreground="White"/>
-        <TextBlock Name="UserName" TextWrapping="Wrap" Margin="1030,145,93,521" Text="Nie zalogowano"/>
-        <Button x:Name="button2" Content="Wyloguj" HorizontalAlignment="Left" Margin="937,101,0,0" VerticalAlignment="Top" Click="button2_Click" Background="#7F640052" Foreground="White"/>
+        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="843,90,0,0" VerticalAlignment="Top" Height="50" Width="56" Background="#330033" Foreground="Black"/>
+        <Button x:Name="Login" Content="Zaloguj" HorizontalAlignment="Left" Margin="1030,90,0,0" VerticalAlignment="Top" Height="50" Width="157" FontSize="18.667" Click="Login_Click" Background="#330033" Foreground="White"/>
+        <TextBlock Name="UserName" TextWrapping="Wrap" Margin="1036,145,87,521" Text="Nie zalogowano"/>
+        <Button x:Name="button2" Content="Wyloguj" HorizontalAlignment="Left" Margin="937,101,0,0" VerticalAlignment="Top" Click="button2_Click" Background="#330033" Foreground="White"/>
     </Grid>
 </Page>
