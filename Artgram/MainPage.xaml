@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
 
-    <Grid Background="#FFE4DBE8">
+    <Grid Background="#FFEBE1F0">
         <Button x:Name="button" HorizontalAlignment="Left" Margin="77,204,0,0" VerticalAlignment="Top" Height="179" Width="240" FontSize="18.667">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/Square150x150Logo.png"/>
@@ -58,9 +58,13 @@
         <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Height="29" Margin="760,580,0,0" TextWrapping="Wrap" Text="Rysunek" VerticalAlignment="Top" Width="83" FontSize="18.667"/>
         <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Height="29" Margin="474,580,0,0" TextWrapping="Wrap" Text="Malarstwo" VerticalAlignment="Top" Width="93" FontSize="18.667"/>
         <TextBlock x:Name="textBlock_Copy7" HorizontalAlignment="Left" Height="29" Margin="146,580,0,0" TextWrapping="Wrap" Text="Rzeźbiarstwo" VerticalAlignment="Top" Width="115" FontSize="18.667"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="50" Margin="380,90,0,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" Width="463" FontSize="18.667"/>
-        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="843,90,0,0" VerticalAlignment="Top" Height="50" Width="56" Background="#330033" Foreground="Black"/>
-        <Button x:Name="Login" Content="Zaloguj z FB" HorizontalAlignment="Left" Margin="941,90,0,0" VerticalAlignment="Top" Height="50" Width="157" FontSize="18.667" Click="Login_Click" Background="#330033" Foreground="White"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="50" Margin="380,90,0,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" Width="463" FontSize="18.667" Foreground="#FF706C6C"/>
+        <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="843,90,0,0" VerticalAlignment="Top" Height="50" Width="56" Background="#330033" Click="button1_Click">
+            <Button.Foreground>
+                <ImageBrush ImageSource="ms-appx:///Assets/LockScreenLogo.png" Stretch="None"/>
+            </Button.Foreground>
+        </Button>
+        <Button x:Name="Login" Content="Zaloguj z FB" HorizontalAlignment="Left" Margin="941,90,0,0" VerticalAlignment="Top" Height="50" Width="157" FontSize="20" Click="Login_Click" Background="#330033" Foreground="White"/>
         <Button x:Name="Logout" Content="Wyloguj z FB" HorizontalAlignment="Left" Margin="941,90,0,0" VerticalAlignment="Top" Height="50" Width="157" FontSize="18.667" Click="Logout_Click" Background="#330033" Foreground="White" Visibility="Collapsed"/>
         <!-- <fbsdk:FBLoginButton x:Name="Login" HorizontalAlignment="Left" Margin="1030,90,0,0" VerticalAlignment="Top" Height="50" Width="157" Click="Login_Click"/> -->
         <fbsdk:ProfilePictureControl x:Name="ProfilePic" Width="80" Height="80" Margin="1130,70,70,550"/>
