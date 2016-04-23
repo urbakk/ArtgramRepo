@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>f7247a0a-87c1-4b12-9d3e-586fb15d50c4</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>69B2B6DFC9354838722D284E9D242186D36A0750C7240A273BA7544B62FF17D0</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>F7F31D61EAAFCB49771EF978B7A8BDEB0D438E684D9FF076744D4C6ADBD93374</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>f7247a0a-87c1-4b12-9d3e-586fb15d50c4_1.0.0.0_x64__90qa9702jqn9a</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>f7247a0a-87c1-4b12-9d3e-586fb15d50c4_90qa9702jqn9a!App</RegisteredUserModeAppID>
     <RegisteredPackageID>f7247a0a-87c1-4b12-9d3e-586fb15d50c4</RegisteredPackageID>
@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-04-16T01:31:19.482</Modified>
+      <Modified>2016-04-20T12:04:08.657</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.exe">
       <PackagePath>entrypoint\Artgram.exe</PackagePath>
-      <Modified>2016-04-16T01:31:16.792</Modified>
+      <Modified>2016-04-20T12:04:07.704</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -456,19 +456,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.dll">
       <PackagePath>winsdkfb.dll</PackagePath>
-      <Modified>2016-04-16T00:40:01.281</Modified>
+      <Modified>2016-04-20T08:42:30.726</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.winmd">
       <PackagePath>winsdkfb.winmd</PackagePath>
-      <Modified>2016-04-16T00:39:01.707</Modified>
+      <Modified>2016-04-19T20:35:10.933</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
       <Modified>2016-04-06T13:14:40.687</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2016-04-06T13:14:41.156</Modified>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\User-head.png">
+      <PackagePath>Assets\User-head.png</PackagePath>
+      <Modified>2016-04-19T20:35:08.742</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -508,9 +508,13 @@
       <PackagePath>winsdkfb\Images\fb_blank_profile_portrait.png</PackagePath>
       <Modified>2016-03-15T12:18:56.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+      <Modified>2016-04-06T13:14:41.156</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.xr.xml">
       <PackagePath>Artgram.xr.xml</PackagePath>
-      <Modified>2016-04-14T12:10:56.518</Modified>
+      <Modified>2016-04-20T10:07:43.651</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10586.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -522,11 +526,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-04-16T01:31:17.752</Modified>
+      <Modified>2016-04-20T12:04:08.435</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Core\Artgram.exe">
       <PackagePath>Artgram.exe</PackagePath>
-      <Modified>2016-04-16T01:31:19.470</Modified>
+      <Modified>2016-04-20T12:04:08.649</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

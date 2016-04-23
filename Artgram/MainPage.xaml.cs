@@ -29,14 +29,18 @@ namespace Artgram
 
     public sealed partial class MainPage : Page
     {
+        int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) :O
+
         public MainPage()
         {
             this.InitializeComponent();
+            
         }
 
         private async void Login_Click(object sender, RoutedEventArgs e)    //Przycisk "Zaloguj"
         {
             //string SID = WebAuthenticationBroker.GetCurrentApplicationCallbackUri().ToString(); //SID aplikacji na Sklepie MS
+            Login.Content = "Logowanie...";
 
             FBSession sess = FBSession.ActiveSession;
             sess.FBAppId = "230142530675566";
@@ -67,24 +71,32 @@ namespace Artgram
             if (result.Succeeded)
             {
                 FBUser user = sess.User;
-                UserName.Text = "Witaj " + user.Name;
+                UserName.Text = user.Name;
 
                 string userId = user.Id;
                 string username = user.Name;
                 string locale = user.Locale;
 
-                //ProfilePic.UserId = sess.User.Id;
+                ProfilePic.UserId = sess.User.Id;
                 //Debug.WriteLine(sess.User.Id);
                 //Debug.WriteLine(sess.User.Name);
+
+                LoginStatus = 1;
+                Logout.Visibility = Visibility.Visible;     //Ukrywanie, pokazywanie przycisku zaloguj i wyloguj
+                Login.Visibility = Visibility.Collapsed;
+                ProfilePic.Visibility = Visibility.Visible;
+                ProfilePicNone.Visibility = Visibility.Collapsed;
+                Login.Content = "Zaloguj z FB";
             }
             else
             {
                 //Login failed
+                Login.Content = "Zaloguj z FB";
             }
 
         }
 
-        private async void button2_Click(object sender, RoutedEventArgs e)
+        private async void Logout_Click(object sender, RoutedEventArgs e)
         {
             FBSession sess = FBSession.ActiveSession;
 
@@ -101,7 +113,18 @@ namespace Artgram
                 cookieManager.DeleteCookie(cookie);
             }
 
-            UserName.Text = "Wylogowano. Zapraszamy ponownie!";
+            LoginStatus = 0;
+            Logout.Visibility = Visibility.Collapsed;     //Ukrywanie, pokazywanie przycisku zaloguj i wyloguj
+            Login.Visibility = Visibility.Visible;
+            ProfilePic.Visibility = Visibility.Collapsed;
+            ProfilePicNone.Visibility = Visibility.Visible;
+
+            UserName.Text = "Nie zalogowano";
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

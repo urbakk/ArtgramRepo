@@ -348,8 +348,8 @@
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\User-head.png">
+      <PackagePath>Assets\User-head.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -380,6 +380,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\winsdkfb\winsdkfb\winsdkfb.Shared\Images\fb_blank_profile_portrait.png">
       <PackagePath>winsdkfb\Images\fb_blank_profile_portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.xr.xml">
       <PackagePath>Artgram.xr.xml</PackagePath>
