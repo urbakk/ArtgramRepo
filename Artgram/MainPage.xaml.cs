@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Security.Authentication.Web;
 using winsdkfb;
 using winsdkfb.Graph;
+using Newtonsoft.Json;
+using System.Net; 
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -34,7 +36,7 @@ namespace Artgram
         public MainPage()
         {
             this.InitializeComponent();
-            
+            Wyslanie();
         }
 
         private async void Login_Click(object sender, RoutedEventArgs e)    //Przycisk "Zaloguj"
@@ -125,6 +127,43 @@ namespace Artgram
         private void button1_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        public async void Wyslanie()
+        {
+            try
+            {
+                string plik = "{\"tabela\":\"Obrazy\"}";
+                string responseServer;
+
+                var request = (HttpWebRequest)WebRequest.Create("http://artgram.hostingpo.pl/login.php");
+                request.ContentType = "application/json";
+                request.Method = "POST";
+
+                using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
+                {
+                    streamWriter.Write(plik);
+                    streamWriter.Flush();
+                    streamWriter.Dispose();
+                }
+
+                var response = await request.GetResponseAsync();
+
+                using (var streamreader = new StreamReader(response.GetResponseStream()))
+                {
+                    responseServer = streamreader.ReadToEnd();
+                }
+
+                textBox2.Text = responseServer;
+            }
+            catch
+            {
+                textBox2.Text = "Cos nie tak...";
+            }
+        }
+        public class Obraz
+        {
+            string NazwaObrazu, Sciezka;
+            int LiczbaWOW;
         }
     }
 }
