@@ -16,8 +16,9 @@ using Windows.Security.Authentication.Web;
 using winsdkfb;
 using winsdkfb.Graph;
 using Newtonsoft.Json;
-using System.Net; 
-
+using System.Net;
+using System.Threading.Tasks;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -27,16 +28,31 @@ namespace Artgram
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
 
-    
 
     public sealed partial class MainPage : Page
     {
         int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) :O
+        public string responseServer = "", url = ""; //odpowiedz z serwera
+        //string costam = "ms-appx:///Assets/Square150x150Logo.png";
 
         public MainPage()
         {
             this.InitializeComponent();
-            Wyslanie();
+            responseServer = Task.Run(() => Wyslanie().Result).Result; 
+            //funkcja, która wysyła i odbiera dane z serwera
+
+            //List<Obraz> Obrazy = new List<Obraz>();
+            List<Obraz> Obrazy = JsonConvert.DeserializeObject<List<Obraz>>(responseServer);
+            url = Obrazy[0].Sciezka_dostepu;
+            textBox2.Text = url;
+
+            var zmienna = new Uri(url, UriKind.Absolute);
+            var img = new ImageBrush();
+            //BitmapImage img1 = ;
+            img.ImageSource = new BitmapImage(zmienna);
+            button.Background = img;
+            
+
         }
 
         private async void Login_Click(object sender, RoutedEventArgs e)    //Przycisk "Zaloguj"
@@ -128,12 +144,13 @@ namespace Artgram
         {
 
         }
-        public async void Wyslanie()
+
+        public async Task<string> Wyslanie()
         {
             try
             {
                 string plik = "{\"tabela\":\"Obrazy\"}";
-                string responseServer;
+                string responseServ;
 
                 var request = (HttpWebRequest)WebRequest.Create("http://artgram.hostingpo.pl/login.php");
                 request.ContentType = "application/json";
@@ -145,25 +162,31 @@ namespace Artgram
                     streamWriter.Flush();
                     streamWriter.Dispose();
                 }
-
                 var response = await request.GetResponseAsync();
 
                 using (var streamreader = new StreamReader(response.GetResponseStream()))
                 {
-                    responseServer = streamreader.ReadToEnd();
+                    responseServ = streamreader.ReadToEnd();
                 }
-
-                textBox2.Text = responseServer;
+                return responseServ;
             }
             catch
             {
-                textBox2.Text = "Cos nie tak...";
+                string responseServ = "Cos nie tak...";
+                return responseServ;
             }
         }
-        public class Obraz
+
+        class Obraz
         {
-            string NazwaObrazu, Sciezka;
-            int LiczbaWOW;
+            public string Nazwa_Obrazu, Sciezka_dostepu, Liczba_WOW;
+
+            public Obraz(string Nazwa_Obrazu, string Sciezka_dostepu, string Liczba_WOW)
+            {
+                this.Nazwa_Obrazu = Nazwa_Obrazu;
+                this.Sciezka_dostepu = Sciezka_dostepu;
+                this.Liczba_WOW = Liczba_WOW;
+            }
         }
     }
 }
