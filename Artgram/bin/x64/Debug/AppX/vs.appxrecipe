@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-04-23T16:59:39.405</Modified>
+      <Modified>2016-04-24T05:52:03.133</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.exe">
       <PackagePath>entrypoint\Artgram.exe</PackagePath>
-      <Modified>2016-04-23T16:58:53.517</Modified>
+      <Modified>2016-04-24T05:51:45.269</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -530,11 +530,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-04-23T16:59:17.251</Modified>
+      <Modified>2016-04-24T05:52:00.616</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\bin\x64\Debug\Core\Artgram.exe">
       <PackagePath>Artgram.exe</PackagePath>
-      <Modified>2016-04-23T16:59:39.387</Modified>
+      <Modified>2016-04-24T05:52:03.060</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
