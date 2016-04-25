@@ -12,7 +12,7 @@
     <Grid Background="#FFEBE1F0">
         <Button x:ConnectionId='1' x:Name="button" HorizontalAlignment="Left" Margin="77,204,0,0" VerticalAlignment="Top" Height="179" Width="240" FontSize="18.667">
             <Button.Background>
-                <ImageBrush ImageSource="Assets/Square150x150Logo.png"/>
+                <ImageBrush ImageSource="ms-appx:///Assets/Square150x150Logo.png"/>
             </Button.Background>
             <TextBlock x:ConnectionId='23' x:Name="textBlock_Copy" HorizontalAlignment="Left" Height="29" Margin="-30,63,-44,-67" TextWrapping="Wrap" Text="Najpopularniejsze" VerticalAlignment="Top" Width="151"/>
         </Button>
