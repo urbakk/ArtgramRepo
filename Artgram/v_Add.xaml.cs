@@ -25,6 +25,7 @@ namespace Artgram
         public Add()
         {
             this.InitializeComponent();
+            
         }
 
 

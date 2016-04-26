@@ -1045,3 +1045,8 @@ C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_MainPage.xam
 C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_Add.xbf
 C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_View.xbf
 C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_MainPage.xbf
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\AppBar.xbf
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\AppBar.g.i.cs
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\AppBar.g.cs
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\AppBar.xaml
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\AppBar.xbf
