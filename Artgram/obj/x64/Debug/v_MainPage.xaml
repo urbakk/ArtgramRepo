@@ -10,11 +10,12 @@
 
 
     <Grid Background="#FFEBE1F0">
+
         <Button x:ConnectionId='1' x:Name="button" HorizontalAlignment="Left" Margin="77,204,0,0" VerticalAlignment="Top" Height="179" Width="240" FontSize="18.667"                     >
             <Button.Background>
                 <ImageBrush ImageSource="ms-appx:///Assets/Square150x150Logo.png"/>
             </Button.Background>
-            <TextBlock x:ConnectionId='25' x:Name="textBlock_Copy" HorizontalAlignment="Left" Height="29" Margin="-30,63,-44,-67" TextWrapping="Wrap" Text="Najpopularniejsze" VerticalAlignment="Top" Width="151"/>
+            <TextBlock x:ConnectionId='16' x:Name="textBlock_Copy" HorizontalAlignment="Left" Height="29" Margin="-30,63,-44,-67" TextWrapping="Wrap" Text="Najpopularniejsze" VerticalAlignment="Top" Width="151"/>
         </Button>
         <Button x:ConnectionId='2' x:Name="button_Copy" Content="" HorizontalAlignment="Left" Margin="380,204,0,0" VerticalAlignment="Top" Height="179" Width="246"                          >
             <Button.Background>
@@ -58,25 +59,9 @@
         <TextBlock x:ConnectionId='13' x:Name="textBlock_Copy5" HorizontalAlignment="Left" Height="29" Margin="760,580,0,0" TextWrapping="Wrap" Text="Rysunek" VerticalAlignment="Top" Width="83" FontSize="18.667"/>
         <TextBlock x:ConnectionId='14' x:Name="textBlock_Copy6" HorizontalAlignment="Left" Height="29" Margin="474,580,0,0" TextWrapping="Wrap" Text="Malarstwo" VerticalAlignment="Top" Width="93" FontSize="18.667"/>
         <TextBlock x:ConnectionId='15' x:Name="textBlock_Copy7" HorizontalAlignment="Left" Height="29" Margin="146,580,0,0" TextWrapping="Wrap" Text="Rzeźbiarstwo" VerticalAlignment="Top" Width="115" FontSize="18.667"/>
-        <TextBox x:ConnectionId='16' x:Name="textBox2" HorizontalAlignment="Left" Height="50" Margin="309,90,0,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" Width="463" FontSize="18.667" Foreground="#FF706C6C"/>
-        <Button x:ConnectionId='17' x:Name="button1" Content="" HorizontalAlignment="Left" Margin="772,90,0,0" VerticalAlignment="Top" Height="50" Width="56" Background="#330033"                      >
-            <Button.Foreground>
-                <ImageBrush ImageSource="ms-appx:///Assets/LockScreenLogo.png" Stretch="None"/>
-            </Button.Foreground>
-        </Button>
-        <Button x:ConnectionId='18' x:Name="Login" Content="Zaloguj z FB" HorizontalAlignment="Left" Margin="980,90,0,0" VerticalAlignment="Top" Height="50" Width="130" FontSize="18"                     Background="#330033" Foreground="White"/>
-        <Button x:ConnectionId='19' x:Name="Logout" Content="Wyloguj z FB" HorizontalAlignment="Left" Margin="980,90,0,0" VerticalAlignment="Top" Height="50" Width="130" FontSize="18"                      Background="#330033" Foreground="White" Visibility="Collapsed"/>
+        <local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Width="1280"/>
         <!-- <fbsdk:FBLoginButton x:Name="Login" HorizontalAlignment="Left" Margin="1030,90,0,0" VerticalAlignment="Top" Height="50" Width="157" Click="Login_Click"/> -->
-        <fbsdk:ProfilePictureControl x:ConnectionId='20' x:Name="ProfilePic" Width="80" Height="80" Margin="1130,70,70,550"/>
-        <Image x:ConnectionId='21' x:Name="ProfilePicNone" Width="80" Height="80" Margin="1130,70,70,550" Source="Assets/User-head.png"/>
-        <Border BorderBrush="Black" BorderThickness="1" Width="80" Height="80" Margin="1130,70,70,550"/>
-        <TextBlock x:ConnectionId='22' x:Name="UserName" Margin="980,145,155,550" Text="Nie zalogowano" FontSize="14"/>
-        <Button x:ConnectionId='23' x:Name="button_Add" Content="Dodaj pracę" HorizontalAlignment="Left" Margin="850,90,0,0" VerticalAlignment="Top" Height="50" Width="120" FontSize="18"                          Background="#330033" Foreground="White"/>
-        <Button x:ConnectionId='24' x:Name="button_Logo" HorizontalAlignment="Left" Margin="110,61,0,0" VerticalAlignment="Top" Height="110" Width="170" FontSize="18"                          >
-            <Button.Background>
-                <ImageBrush ImageSource="ms-appx:///Assets/artgram_logo.png"/>
-            </Button.Background>
-        </Button>
+
     </Grid>
 </Page>
 

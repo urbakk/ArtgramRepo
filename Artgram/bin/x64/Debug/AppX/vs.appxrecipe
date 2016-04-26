@@ -22,13 +22,21 @@
     <AppXManifest Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+<<<<<<< HEAD
+      <Modified>2016-04-26T21:59:24.507</Modified>
+=======
       <Modified>2016-04-26T17:51:21.442</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.exe">
       <PackagePath>entrypoint\Artgram.exe</PackagePath>
+<<<<<<< HEAD
+      <Modified>2016-04-26T21:59:23.861</Modified>
+=======
       <Modified>2016-04-26T17:51:07.249</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -460,7 +468,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.dll">
       <PackagePath>winsdkfb.dll</PackagePath>
+<<<<<<< HEAD
+      <Modified>2016-04-26T19:40:33.758</Modified>
+=======
       <Modified>2016-04-26T11:39:49.941</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.winmd">
       <PackagePath>winsdkfb.winmd</PackagePath>
@@ -472,40 +484,72 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\Assets\artgram_logo.png">
       <PackagePath>Assets\artgram_logo.png</PackagePath>
+<<<<<<< HEAD
+      <Modified>2016-04-25T21:24:08.406</Modified>
+=======
       <Modified>2016-04-26T11:02:25.032</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\Assets\artgram_logo100x100.png">
       <PackagePath>Assets\artgram_logo100x100.png</PackagePath>
+<<<<<<< HEAD
+      <Modified>2016-04-25T21:24:08.409</Modified>
+=======
       <Modified>2016-04-26T11:02:25.037</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\Assets\artgram_logo1240x600.png">
       <PackagePath>Assets\artgram_logo1240x600.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+<<<<<<< HEAD
+      <Modified>2016-04-25T21:24:08.412</Modified>
+=======
       <Modified>2016-04-26T11:02:25.054</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\Assets\artgram_logo150x150.png">
       <PackagePath>Assets\artgram_logo150x150.png</PackagePath>
+<<<<<<< HEAD
+      <Modified>2016-04-25T21:24:08.414</Modified>
+=======
       <Modified>2016-04-26T11:02:25.088</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\Assets\artgram_logo300x300.png">
       <PackagePath>Assets\artgram_logo300x300.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+<<<<<<< HEAD
+      <Modified>2016-04-25T21:24:08.415</Modified>
+=======
       <Modified>2016-04-26T11:02:25.106</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\Assets\artgram_logo50x50.png">
       <PackagePath>Assets\artgram_logo50x50.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+<<<<<<< HEAD
+      <Modified>2016-04-25T21:24:08.417</Modified>
+=======
       <Modified>2016-04-26T11:02:25.116</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\Assets\artgram_logo620x300.png">
       <PackagePath>Assets\artgram_logo620x300.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+<<<<<<< HEAD
+      <Modified>2016-04-25T21:24:08.420</Modified>
+=======
       <Modified>2016-04-26T11:02:25.122</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\Assets\artgram_logo88x88.png">
       <PackagePath>Assets\artgram_logo88x88.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+<<<<<<< HEAD
+      <Modified>2016-04-25T21:24:08.421</Modified>
+=======
       <Modified>2016-04-26T11:02:25.136</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\Assets\User-head.png">
       <PackagePath>Assets\User-head.png</PackagePath>
@@ -549,7 +593,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.xr.xml">
       <PackagePath>Artgram.xr.xml</PackagePath>
+<<<<<<< HEAD
+      <Modified>2016-04-26T21:17:37.306</Modified>
+=======
       <Modified>2016-04-26T11:02:31.413</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10586.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -561,11 +609,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
+<<<<<<< HEAD
+      <Modified>2016-04-26T21:28:42.396</Modified>
+=======
       <Modified>2016-04-26T17:51:19.825</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Source\Repos\ArtgramRepo\Artgram\bin\x64\Debug\Core\Artgram.exe">
       <PackagePath>Artgram.exe</PackagePath>
+<<<<<<< HEAD
+      <Modified>2016-04-26T21:59:24.491</Modified>
+=======
       <Modified>2016-04-26T17:51:21.404</Modified>
+>>>>>>> refs/remotes/origin/master
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
