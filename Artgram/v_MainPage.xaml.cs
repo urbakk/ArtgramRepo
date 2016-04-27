@@ -59,17 +59,17 @@ namespace Artgram
             responseServer = Task.Run(() => Wyslanie(link, zap).Result).Result;
             List<Obraz> oMalunek = JsonConvert.DeserializeObject<List<Obraz>>(responseServer);
 
-<<<<<<< HEAD
+
             //List<Obraz> Obrazy = new List<Obraz>();
             
             List<Obraz> Obrazy = JsonConvert.DeserializeObject<List<Obraz>>(responseServer);
             url = Obrazy[0].Sciezka_dostepu;
             //textBox2.Text = url;
-=======
+
             zap = JsonConvert.SerializeObject(rys); //konwerter do JSONa
             responseServer = Task.Run(() => Wyslanie(link, zap).Result).Result;
             List<Obraz> oRys = JsonConvert.DeserializeObject<List<Obraz>>(responseServer);
->>>>>>> refs/remotes/origin/master
+
 
             zap = JsonConvert.SerializeObject(tatu); //konwerter do JSONa
             responseServer = Task.Run(() => Wyslanie(link, zap).Result).Result;
