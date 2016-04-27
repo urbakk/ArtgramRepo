@@ -98,8 +98,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="AppBar.xaml.cs">
+      <DependentUpon>AppBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="v_View.xaml.cs">
+      <DependentUpon>v_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="v_Add.xaml.cs">
+      <DependentUpon>v_Add.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="v_MainPage.xaml.cs">
+      <DependentUpon>v_MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +119,14 @@
     <None Include="Artgram_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\artgram_logo.png" />
+    <Content Include="Assets\artgram_logo100x100.png" />
+    <Content Include="Assets\artgram_logo1240x600.png" />
+    <Content Include="Assets\artgram_logo150x150.png" />
+    <Content Include="Assets\artgram_logo300x300.png" />
+    <Content Include="Assets\artgram_logo50x50.png" />
+    <Content Include="Assets\artgram_logo620x300.png" />
+    <Content Include="Assets\artgram_logo88x88.png" />
     <Content Include="Assets\User-head.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -125,17 +142,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Add.xaml">
+    <Page Include="AppBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="v_View.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View.xaml">
+    <Page Include="v_Add.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="v_MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
