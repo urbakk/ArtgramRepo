@@ -16,8 +16,8 @@
   </Properties>
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10240.0" MaxVersionTested="10.0.10586.0" />
-    <PackageDependency Name="Microsoft.NET.CoreRuntime.1.0" MinVersion="1.0.23430.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
-    <PackageDependency Name="Microsoft.VCLibs.140.00.Debug" MinVersion="14.0.22929.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
+    <PackageDependency Name="Microsoft.VCLibs.140.00.Debug" MinVersion="14.0.23918.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
+    <PackageDependency Name="Microsoft.NET.CoreRuntime.1.0" MinVersion="1.0.23819.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
   </Dependencies>
   <Resources>
     <Resource Language="EN-US" />
@@ -33,16 +33,51 @@
   <Capabilities>
     <Capability Name="internetClient" />
   </Capabilities>
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>winsdkfb.dll</Path>
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBProfilePictureData" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPaginatedArray" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBCursors" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBAppRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBUser" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBSingleValue" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBGroup" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPaging" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPermission" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPage" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBProfilePicture" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBAccessTokenData" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.ProfilePictureControl" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBMediaObject" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBClient" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.winsdkfb_uwp_XamlTypeInfo.XamlMetaDataProvider" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBLoginButton" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBSession" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBAppRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBResult" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBMediaStream" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FacebookDialog" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.ScaleConverter" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBFeedRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBError" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.ColorLuminosityConverter" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBSendRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBPermissions" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+  </Extensions>
   <build:Metadata>
     <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
     <build:Item Name="VisualStudio" Version="14.0" />
     <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2015" />
     <build:Item Name="OperatingSystem" Version="10.0.10586.0 (th2_release.151029-1700)" />
-    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="14.0.24720.0" />
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="14.0.25123.0" />
     <build:Item Name="ProjectGUID" Value="{586931F8-2947-4F21-9F5D-2CD71C449C26}" />
     <build:Item Name="OptimizingToolset" Value="None" />
     <build:Item Name="TargetRuntime" Value="Managed" />
-    <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="14.0.24720.0" />
-    <build:Item Name="MakePri.exe" Version="10.0.10586.15 (th2_release.151119-1817)" />
+    <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="14.0.25208.0" />
+    <build:Item Name="MakePri.exe" Version="10.0.10586.212 (th2_release_sec.160328-1908)" />
   </build:Metadata>
 </Package>

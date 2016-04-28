@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>f7247a0a-87c1-4b12-9d3e-586fb15d50c4</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>69B2B6DFC9354838722D284E9D242186D36A0750C7240A273BA7544B62FF17D0</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>68464BA14B50CF4A8EEAEE6CAA9889A69641FE2A8C7F7042044911EFFEC2663B</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>f7247a0a-87c1-4b12-9d3e-586fb15d50c4_1.0.0.0_x64__90qa9702jqn9a</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>f7247a0a-87c1-4b12-9d3e-586fb15d50c4_90qa9702jqn9a!App</RegisteredUserModeAppID>
     <RegisteredPackageID>f7247a0a-87c1-4b12-9d3e-586fb15d50c4</RegisteredPackageID>
@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-04-16T01:31:19.482</Modified>
+      <Modified>2016-04-26T23:10:25.895</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.exe">
       <PackagePath>entrypoint\Artgram.exe</PackagePath>
-      <Modified>2016-04-16T01:31:16.792</Modified>
+      <Modified>2016-04-26T23:10:23.517</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -101,6 +101,10 @@
     <AppxPackagedFile Include="C:\Users\urbak\.nuget\packages\Microsoft.Win32.Primitives\4.0.0\lib\dotnet\Microsoft.Win32.Primitives.dll">
       <PackagePath>Microsoft.Win32.Primitives.dll</PackagePath>
       <Modified>2016-03-23T14:29:32.758</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\.nuget\packages\Newtonsoft.Json\8.0.3\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+      <Modified>2016-03-14T20:30:06.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\.nuget\packages\System.AppContext\4.0.0\lib\netcore50\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
@@ -456,19 +460,56 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.dll">
       <PackagePath>winsdkfb.dll</PackagePath>
-      <Modified>2016-04-16T00:40:01.281</Modified>
+      <Modified>2016-04-26T23:06:01.754</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.winmd">
       <PackagePath>winsdkfb.winmd</PackagePath>
-      <Modified>2016-04-16T00:39:01.707</Modified>
+      <Modified>2016-04-26T23:05:59.075</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
       <Modified>2016-04-06T13:14:40.687</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2016-04-06T13:14:41.156</Modified>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\artgram_logo.png">
+      <PackagePath>Assets\artgram_logo.png</PackagePath>
+      <Modified>2016-04-25T21:24:08.406</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\artgram_logo100x100.png">
+      <PackagePath>Assets\artgram_logo100x100.png</PackagePath>
+      <Modified>2016-04-25T21:24:08.409</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\artgram_logo1240x600.png">
+      <PackagePath>Assets\artgram_logo1240x600.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-04-25T21:24:08.412</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\artgram_logo150x150.png">
+      <PackagePath>Assets\artgram_logo150x150.png</PackagePath>
+      <Modified>2016-04-25T21:24:08.414</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\artgram_logo300x300.png">
+      <PackagePath>Assets\artgram_logo300x300.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-04-25T21:24:08.415</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\artgram_logo50x50.png">
+      <PackagePath>Assets\artgram_logo50x50.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-04-25T21:24:08.417</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\artgram_logo620x300.png">
+      <PackagePath>Assets\artgram_logo620x300.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-04-25T21:24:08.420</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\artgram_logo88x88.png">
+      <PackagePath>Assets\artgram_logo88x88.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-04-25T21:24:08.421</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\User-head.png">
+      <PackagePath>Assets\User-head.png</PackagePath>
+      <Modified>2016-04-20T12:31:06.167</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -476,41 +517,39 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2016-04-06T13:14:40.687</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2016-04-06T13:14:40.687</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2016-04-06T13:14:40.687</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2016-04-06T13:14:40.687</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2016-04-06T13:14:40.687</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2016-04-06T13:14:40.687</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\winsdkfb\winsdkfb\winsdkfb.Shared\Images\fb_blank_profile_portrait.png">
       <PackagePath>winsdkfb\Images\fb_blank_profile_portrait.png</PackagePath>
       <Modified>2016-03-15T12:18:56.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+      <Modified>2016-04-06T13:14:41.156</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.xr.xml">
       <PackagePath>Artgram.xr.xml</PackagePath>
-      <Modified>2016-04-14T12:10:56.518</Modified>
+      <Modified>2016-04-26T21:17:37.306</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10586.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -522,11 +561,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-04-16T01:31:17.752</Modified>
+      <Modified>2016-04-26T23:10:24.287</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Core\Artgram.exe">
       <PackagePath>Artgram.exe</PackagePath>
-      <Modified>2016-04-16T01:31:19.470</Modified>
+      <Modified>2016-04-26T23:10:25.878</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

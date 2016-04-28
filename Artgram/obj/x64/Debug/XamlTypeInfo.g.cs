@@ -156,19 +156,33 @@ namespace Artgram.Artgram_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[5];
-            _typeNameTable[0] = "Artgram.Add";
-            _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[3] = "Artgram.MainPage";
-            _typeNameTable[4] = "Artgram.View";
+            _typeNameTable = new string[12];
+            _typeNameTable[0] = "winsdkfb.ProfilePictureControl";
+            _typeNameTable[1] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[2] = "winsdkfb.CroppingType";
+            _typeNameTable[3] = "System.Enum";
+            _typeNameTable[4] = "System.ValueType";
+            _typeNameTable[5] = "Object";
+            _typeNameTable[6] = "String";
+            _typeNameTable[7] = "Artgram.AppBar";
+            _typeNameTable[8] = "Artgram.View";
+            _typeNameTable[9] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[10] = "Artgram.Add";
+            _typeNameTable[11] = "Artgram.MainPage";
 
-            _typeTable = new global::System.Type[5];
-            _typeTable[0] = typeof(global::Artgram.Add);
-            _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[3] = typeof(global::Artgram.MainPage);
-            _typeTable[4] = typeof(global::Artgram.View);
+            _typeTable = new global::System.Type[12];
+            _typeTable[0] = typeof(global::winsdkfb.ProfilePictureControl);
+            _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[2] = typeof(global::winsdkfb.CroppingType);
+            _typeTable[3] = typeof(global::System.Enum);
+            _typeTable[4] = typeof(global::System.ValueType);
+            _typeTable[5] = typeof(global::System.Object);
+            _typeTable[6] = typeof(global::System.String);
+            _typeTable[7] = typeof(global::Artgram.AppBar);
+            _typeTable[8] = typeof(global::Artgram.View);
+            _typeTable[9] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[10] = typeof(global::Artgram.Add);
+            _typeTable[11] = typeof(global::Artgram.MainPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -203,9 +217,11 @@ namespace Artgram.Artgram_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_Add() { return new global::Artgram.Add(); }
-        private object Activate_3_MainPage() { return new global::Artgram.MainPage(); }
-        private object Activate_4_View() { return new global::Artgram.View(); }
+        private object Activate_0_ProfilePictureControl() { return new global::winsdkfb.ProfilePictureControl(); }
+        private object Activate_7_AppBar() { return new global::Artgram.AppBar(); }
+        private object Activate_8_View() { return new global::Artgram.View(); }
+        private object Activate_10_Add() { return new global::Artgram.Add(); }
+        private object Activate_11_MainPage() { return new global::Artgram.MainPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -217,31 +233,71 @@ namespace Artgram.Artgram_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  Artgram.Add
-                userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_Add;
+            case 0:   //  winsdkfb.ProfilePictureControl
+                userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_0_ProfilePictureControl;
+                userType.AddMemberName("CropMode");
+                userType.AddMemberName("UserId");
+                xamlType = userType;
+                break;
+
+            case 1:   //  Windows.UI.Xaml.Controls.UserControl
+                xamlType = new global::Artgram.Artgram_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 2:   //  winsdkfb.CroppingType
+                userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Square", global::winsdkfb.CroppingType.Square);
+                userType.AddEnumValue("Original", global::winsdkfb.CroppingType.Original);
+                xamlType = userType;
+                break;
+
+            case 3:   //  System.Enum
+                userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                xamlType = userType;
+                break;
+
+            case 4:   //  System.ValueType
+                userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                xamlType = userType;
+                break;
+
+            case 5:   //  Object
+                xamlType = new global::Artgram.Artgram_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 6:   //  String
+                xamlType = new global::Artgram.Artgram_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 7:   //  Artgram.AppBar
+                userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_7_AppBar;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 1:   //  Windows.UI.Xaml.Controls.Page
-                xamlType = new global::Artgram.Artgram_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 2:   //  Windows.UI.Xaml.Controls.UserControl
-                xamlType = new global::Artgram.Artgram_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 3:   //  Artgram.MainPage
+            case 8:   //  Artgram.View
                 userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_MainPage;
+                userType.Activator = Activate_8_View;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  Artgram.View
+            case 9:   //  Windows.UI.Xaml.Controls.Page
+                xamlType = new global::Artgram.Artgram_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 10:   //  Artgram.Add
                 userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_4_View;
+                userType.Activator = Activate_10_Add;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 11:   //  Artgram.MainPage
+                userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_11_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -304,11 +360,47 @@ namespace Artgram.Artgram_XamlTypeInfo
             return foundXamlType;
         }
 
+        private object get_0_ProfilePictureControl_CropMode(object instance)
+        {
+            var that = (global::winsdkfb.ProfilePictureControl)instance;
+            return that.CropMode;
+        }
+        private void set_0_ProfilePictureControl_CropMode(object instance, object Value)
+        {
+            var that = (global::winsdkfb.ProfilePictureControl)instance;
+            that.CropMode = (global::winsdkfb.CroppingType)Value;
+        }
+        private object get_1_ProfilePictureControl_UserId(object instance)
+        {
+            var that = (global::winsdkfb.ProfilePictureControl)instance;
+            return that.UserId;
+        }
+        private void set_1_ProfilePictureControl_UserId(object instance, object Value)
+        {
+            var that = (global::winsdkfb.ProfilePictureControl)instance;
+            that.UserId = (global::System.String)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
             global::Artgram.Artgram_XamlTypeInfo.XamlMember xamlMember = null;
-            // No Local Properties
+            global::Artgram.Artgram_XamlTypeInfo.XamlUserType userType;
+
+            switch (longMemberName)
+            {
+            case "winsdkfb.ProfilePictureControl.CropMode":
+                userType = (global::Artgram.Artgram_XamlTypeInfo.XamlUserType)GetXamlTypeByName("winsdkfb.ProfilePictureControl");
+                xamlMember = new global::Artgram.Artgram_XamlTypeInfo.XamlMember(this, "CropMode", "winsdkfb.CroppingType");
+                xamlMember.Getter = get_0_ProfilePictureControl_CropMode;
+                xamlMember.Setter = set_0_ProfilePictureControl_CropMode;
+                break;
+            case "winsdkfb.ProfilePictureControl.UserId":
+                userType = (global::Artgram.Artgram_XamlTypeInfo.XamlUserType)GetXamlTypeByName("winsdkfb.ProfilePictureControl");
+                xamlMember = new global::Artgram.Artgram_XamlTypeInfo.XamlMember(this, "UserId", "String");
+                xamlMember.Getter = get_1_ProfilePictureControl_UserId;
+                xamlMember.Setter = set_1_ProfilePictureControl_UserId;
+                break;
+            }
             return xamlMember;
         }
     }

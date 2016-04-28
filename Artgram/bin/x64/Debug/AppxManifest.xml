@@ -12,7 +12,7 @@
   <Properties>
     <DisplayName>Artgram</DisplayName>
     <PublisherDisplayName>tabac</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <Logo>Assets\artgram_logo50x50.png</Logo>
   </Properties>
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10240.0" MaxVersionTested="10.0.10586.0" />
@@ -23,9 +23,14 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="Artgram.exe" EntryPoint="Artgram.App">
-      <uap:VisualElements DisplayName="Artgram" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Artgram" BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+      <uap:VisualElements DisplayName="Artgram" Square150x150Logo="Assets\artgram_logo300x300.png" Square44x44Logo="Assets\artgram_logo88x88.png" Description="Artgram - best app for artists" BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\artgram_logo620x300.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\artgram_logo1240x600.png" />
       </uap:VisualElements>
     </Application>
   </Applications>
@@ -36,34 +41,34 @@
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
         <Path>winsdkfb.dll</Path>
-        <ActivatableClass ActivatableClassId="winsdkfb.FBAppRequest" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.winsdkfb_uwp_XamlTypeInfo.XamlMetaDataProvider" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.FBMediaStream" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBUser" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBProfilePictureData" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPermission" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPaging" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBSingleValue" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPaginatedArray" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPage" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBAppRequest" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBGroup" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBProfilePicture" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBCursors" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.FBPermissions" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.FacebookDialog" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBAppRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBUser" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBSingleValue" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBGroup" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPaging" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPermission" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBPage" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.Graph.FBProfilePicture" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="winsdkfb.FBAccessTokenData" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.FBError" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.FBFeedRequest" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.FBSession" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.FBClient" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.ScaleConverter" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="winsdkfb.ProfilePictureControl" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.FBResult" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.FBLoginButton" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.FBSendRequest" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="winsdkfb.ColorLuminosityConverter" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="winsdkfb.FBMediaObject" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBClient" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.winsdkfb_uwp_XamlTypeInfo.XamlMetaDataProvider" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBLoginButton" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBSession" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBAppRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBResult" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBMediaStream" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FacebookDialog" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.ScaleConverter" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBFeedRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBError" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.ColorLuminosityConverter" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBSendRequest" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="winsdkfb.FBPermissions" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
   </Extensions>
