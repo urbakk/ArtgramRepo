@@ -41,58 +41,18 @@ namespace Artgram
         public MainPage()
         {
             this.InitializeComponent();
-            //obekty do zapytan
-            Zapytanie rzezba = new Zapytanie("Nazwa_obrazu", "Sciezka_dostepu", "Liczba_WOW", "2"); 
-            Zapytanie malunek = new Zapytanie("Nazwa_obrazu", "Sciezka_dostepu", "Liczba_WOW", "3");
-            Zapytanie rys = new Zapytanie("Nazwa_obrazu", "Sciezka_dostepu", "Liczba_WOW", "4");
-            Zapytanie tatu = new Zapytanie("Nazwa_obrazu", "Sciezka_dostepu", "Liczba_WOW", "5");
-            //dane do wyszukania w zapytaniu
 
-            //wysłanie zapytania do serwera i przekonwertowanie danych na JSON
-            zap = JsonConvert.SerializeObject(rzezba); //konwerter do JSONa
-            //textBox2.Text = zap;
-            
-            responseServer = Task.Run(() => Wyslanie(link, zap).Result).Result; 
-            List<Obraz> oRzezba = JsonConvert.DeserializeObject<List<Obraz>>(responseServer);
+            Zapytanie rzezba = new Zapytanie("2");
+            button_Copy3.Background = ZmianaTla(rzezba, 0);
 
-            zap = JsonConvert.SerializeObject(malunek); //konwerter do JSONa
-            responseServer = Task.Run(() => Wyslanie(link, zap).Result).Result;
-            List<Obraz> oMalunek = JsonConvert.DeserializeObject<List<Obraz>>(responseServer);
+            Zapytanie malarstwo = new Zapytanie("3");
+            button_Copy4.Background = ZmianaTla(malarstwo, 0);
 
+            Zapytanie rysunek = new Zapytanie("4");
+            button_Copy5.Background = ZmianaTla(rysunek, 0);
 
-            //List<Obraz> Obrazy = new List<Obraz>();
-            
-            List<Obraz> Obrazy = JsonConvert.DeserializeObject<List<Obraz>>(responseServer);
-            url = Obrazy[0].Sciezka_dostepu;
-            //textBox2.Text = url;
-
-            zap = JsonConvert.SerializeObject(rys); //konwerter do JSONa
-            responseServer = Task.Run(() => Wyslanie(link, zap).Result).Result;
-            List<Obraz> oRys = JsonConvert.DeserializeObject<List<Obraz>>(responseServer);
-
-
-            zap = JsonConvert.SerializeObject(tatu); //konwerter do JSONa
-            responseServer = Task.Run(() => Wyslanie(link, zap).Result).Result;
-            List<Obraz> oTatu = JsonConvert.DeserializeObject<List<Obraz>>(responseServer);
-
-            
-            url = oRzezba[1].Sciezka_dostepu; //wyciągnięcie ścieżki do obrazu
-            //tlo = Task.Run(() => Zmiana_tla(url).Result).Result; ///zmiana tła
-            tlo = Zmiana_tla(url);
-            button_Copy3.Background = tlo;
-            url = oMalunek[1].Sciezka_dostepu;
-            //tlo = Task.Run(() => Zmiana_tla(url).Result).Result;
-            tlo = Zmiana_tla(url);
-            button_Copy4.Background = tlo;
-            url = oRys[1].Sciezka_dostepu;
-            //tlo = Task.Run(() => Zmiana_tla(url).Result).Result;
-            tlo = Zmiana_tla(url);
-            button_Copy5.Background = tlo;
-            url = oTatu[1].Sciezka_dostepu;
-            //tlo = Task.Run(() => Zmiana_tla(url).Result).Result;
-            tlo = Zmiana_tla(url);
-            button_Copy6.Background = tlo;
-            
+            Zapytanie tatuaze = new Zapytanie("5");
+            button_Copy6.Background = ZmianaTla(tatuaze, 0);
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -129,16 +89,6 @@ namespace Artgram
                 string responseServ = "Cos nie tak...";
                 return responseServ;
             }
-        }
-
-        //metoda asynchroniczna nie działa...
-        private ImageBrush Zmiana_tla(string http)
-        {
-
-            var uri = new Uri(http, UriKind.Absolute);
-            var img = new ImageBrush();
-            img.ImageSource = new BitmapImage(uri);
-            return img;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -191,12 +141,11 @@ namespace Artgram
             this.Frame.Navigate(typeof(MainPage));
         }
 
-        private class Zapytanie : Obraz
+        private class Zapytanie
         {
             public string ID_Kategorii;
 
-            public Zapytanie(string Nazwa_obrazu, string Sciezka_dostepu, string Liczba_WOW, string ID_Kategorii)
-                : base(Nazwa_obrazu, Sciezka_dostepu, Liczba_WOW)
+            public Zapytanie(string ID_Kategorii)
             {
                 this.ID_Kategorii = ID_Kategorii;
             }
@@ -212,6 +161,19 @@ namespace Artgram
                 this.Sciezka_dostepu = Sciezka_dostepu;
                 this.Liczba_WOW = Liczba_WOW;
             }
+        }
+
+        private ImageBrush ZmianaTla(Zapytanie kat, int losowa)
+        {
+            zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
+            responseServer = Task.Run(() => Wyslanie(link, zap).Result).Result; //Wyslanie danych do zapytania
+            List<Obraz> oKat = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //Konwersja wyniku zapytania z JSONa do listy
+            url = oKat[losowa].Sciezka_dostepu; //wyciągnięcie ścieżki do obrazu
+            
+            var uri = new Uri(url, UriKind.Absolute); 
+            var img = new ImageBrush();
+            img.ImageSource = new BitmapImage(uri);
+            return img;
         }
     }
 }
