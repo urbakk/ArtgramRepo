@@ -36,9 +36,9 @@ namespace Artgram
     public sealed partial class MainPage : Page
     {
         //int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) :O
-        private string responseServer, url, zap, 
+        private string responseServer, url, zap,
             link = "http://artgram.hostingpo.pl/login.php";
-        private int liczba = 1;
+            int gornyPrzedzial = 0, losowa = 0;
 
         public MainPage()
         {
@@ -46,19 +46,14 @@ namespace Artgram
             //obekty do zapytan
 
             Zapytanie rzezba = new Zapytanie("2");
-            button_Copy3.Background = Zmiana_tla(rzezba, liczba);
+            Zmiana_tla(rzezba);
             Zapytanie malarstwo = new Zapytanie("3");
-            button_Copy4.Background = Zmiana_tla(malarstwo, liczba);
+            Zmiana_tla(malarstwo);
             Zapytanie rysunek = new Zapytanie("4");
-            button_Copy5.Background = Zmiana_tla(rysunek, liczba);
+            Zmiana_tla(rysunek);
             Zapytanie tatuaze = new Zapytanie("5");
-            button_Copy6.Background = Zmiana_tla(tatuaze, liczba);
-            
-        }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-
+            Zmiana_tla(tatuaze);  
+        
         }
 
         private async Task<string> Wyslanie(string rzezb, string zap)
@@ -92,20 +87,39 @@ namespace Artgram
             }
         }
 
-        //metoda asynchroniczna nie działa...
-        private ImageBrush Zmiana_tla(Zapytanie kat, int losowa)
+        private async void Zmiana_tla(Zapytanie kat)
         {
+            string kategoria = kat.ID_Kategorii;
+            zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
+            responseServer =  await Wyslanie(link, zap); //wysłanie danych do zapytania
+            List<Obraz> oKat = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
+            gornyPrzedzial = oKat.Count;  //pobieranie wielkosci List<Obraz>
+            Random random = new Random();
+            losowa = random.Next(0, gornyPrzedzial);
 
-                    zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
-                    responseServer = Task.Run(() => Wyslanie(link, zap).Result).Result; //wysłanie danych do zapytania
-                    List<Obraz> oKat = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
-                    url = oKat[losowa].Sciezka_dostepu; //wyciągnięcie ścieżki do obrazu
+            url = oKat[losowa].Sciezka_dostepu; //wyciągnięcie losowej ścieżki do obrazu
 
-                    var uri = new Uri(url, UriKind.Absolute);
-                    var img = new ImageBrush();
-                    img.ImageSource = new BitmapImage(uri);
+            var uri = new Uri(url, UriKind.Absolute);
+            var img = new ImageBrush();
+            img.ImageSource = new BitmapImage(uri);
 
-                    return img;
+            if(kategoria.Equals("2"))   // w zależności od kategorii, nadajemy tło odpowiednim buttonom
+            {
+                button_Copy3.Background = img;
+            }
+            else if(kategoria.Equals("3"))
+            {
+                button_Copy4.Background = img;
+            }
+            else if(kategoria.Equals("4"))
+            {
+                button_Copy5.Background = img;
+            }
+            else 
+            {
+                button_Copy6.Background = img;
+            }
+
 
         }
 
@@ -179,6 +193,8 @@ namespace Artgram
                 this.Sciezka_dostepu = Sciezka_dostepu;
                 this.Liczba_WOW = Liczba_WOW;
             }
+            
         }
+                
     }
 }
