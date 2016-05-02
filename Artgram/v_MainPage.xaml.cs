@@ -39,24 +39,21 @@ namespace Artgram
         private string responseServer, url, zap, 
             link = "http://artgram.hostingpo.pl/login.php";
         private int liczba = 1;
-        private ImageBrush tlo = new ImageBrush();
 
         public MainPage()
         {
             this.InitializeComponent();
-
-            var disp = Windows.UI.Core.CoreWindow.GetForCurrentThread().Dispatcher;
-
             //obekty do zapytan
+
             Zapytanie rzezba = new Zapytanie("2");
-            Zmiana_tla(rzezba, liczba);
-            
+            button_Copy3.Background = Zmiana_tla(rzezba, liczba);
             Zapytanie malarstwo = new Zapytanie("3");
-            Zmiana_tla(malarstwo, liczba);
+            button_Copy4.Background = Zmiana_tla(malarstwo, liczba);
             Zapytanie rysunek = new Zapytanie("4");
-            Zmiana_tla(rysunek, liczba);
+            button_Copy5.Background = Zmiana_tla(rysunek, liczba);
             Zapytanie tatuaze = new Zapytanie("5");
-            Zmiana_tla(tatuaze, liczba);
+            button_Copy6.Background = Zmiana_tla(tatuaze, liczba);
+            
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -90,47 +87,26 @@ namespace Artgram
             }
             catch
             {
-                string responseServ = "Error";
+                string responseServ = "Cos nie tak...";
                 return responseServ;
             }
         }
 
         //metoda asynchroniczna nie działa...
-        private async void Zmiana_tla(Zapytanie kat, int losowa)
+        private ImageBrush Zmiana_tla(Zapytanie kat, int losowa)
         {
-            string kategoria = kat.ID_Kategorii;
-                zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
-                responseServer = await Wyslanie(link, zap); //wysłanie danych do zapytania
-                if (responseServer == "Error")
-                {
-                    textBlock.Text = "Błąd";
-                }
-                else
-                {
+
+                    zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
+                    responseServer = Task.Run(() => Wyslanie(link, zap).Result).Result; //wysłanie danych do zapytania
                     List<Obraz> oKat = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
                     url = oKat[losowa].Sciezka_dostepu; //wyciągnięcie ścieżki do obrazu
 
                     var uri = new Uri(url, UriKind.Absolute);
                     var img = new ImageBrush();
                     img.ImageSource = new BitmapImage(uri);
-                    
-                if (kategoria.Equals("2"))
-                {
-                    button_Copy3.Background = img;
-                }
-                else if (kategoria.Equals("3"))
-                {
-                    button_Copy4.Background = img;
-                }
-                else if (kategoria.Equals("4"))
-                {
-                    button_Copy5.Background = img;
-                }
-                else if (kategoria.Equals("5"))
-                {
-                    button_Copy6.Background = img;
-                }
-            }
+
+                    return img;
+
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -178,17 +154,12 @@ namespace Artgram
             this.Frame.Navigate(typeof(View));
         }
 
-        private void textBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void button_Logo_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
         }
 
-        public class Zapytanie
+        private class Zapytanie
         {
             public string ID_Kategorii;
 
