@@ -13,13 +13,14 @@
                 <ImageBrush Stretch="Fill" ImageSource="Assets/Square44x44Logo.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="button_Add" Content="+ Dodaj" HorizontalAlignment="Left" Height="51" Margin="270,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Foreground="White" Background="#FF330033"/>
+        <Button x:Name="button_Add" Content="+ Dodaj" HorizontalAlignment="Left" Height="51" Margin="270,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Foreground="White" Background="#FF330033" Click="button_Add_Click"/>
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="45" Margin="723,226,0,0" VerticalAlignment="Top" Width="204"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="45" Margin="723,295,0,0" TextWrapping="Wrap" Text="Dodaj nazwę" VerticalAlignment="Top" Width="459" FontSize="18.667" Foreground="#FF706C6C"/>
         <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="177" Margin="723,366,0,0" TextWrapping="Wrap" Text="Dodaj opis" VerticalAlignment="Top" Width="459" FontSize="18.667" Foreground="#FF706C6C"/>
         <Button x:Name="button_Cancel" Content="Anuluj" HorizontalAlignment="Left" Height="51" Margin="777,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Background="#FF330033" Foreground="White" Click="button_Cancel_Click"/>
-        <Button x:Name="button_Accept" Content="Akceptuj" HorizontalAlignment="Left" Height="51" Margin="1001,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Background="#FF330033" Foreground="White"/>
+        <Button x:Name="button_Accept" Content="Akceptuj" HorizontalAlignment="Left" Height="51" Margin="1001,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Background="#FF330033" Foreground="White" Click="button_Accept_Click"/>
         <local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Height="165" Width="1280"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="465,608,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="41" Width="283" FontSize="24"/>
     </Grid>
 
 

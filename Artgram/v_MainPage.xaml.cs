@@ -130,7 +130,7 @@ namespace Artgram
 
         private void button_Add_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Add));
+            this.Frame.Navigate(typeof(Add), "Wyslanie(link, zap)");
         }
 
         private void button_Copy_Click(object sender, RoutedEventArgs e)
