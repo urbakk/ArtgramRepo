@@ -22,13 +22,21 @@
     <AppXManifest Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+<<<<<<< HEAD
       <Modified>2016-05-05T13:42:31.455</Modified>
+=======
+      <Modified>2016-05-04T12:54:11.197</Modified>
+>>>>>>> master
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.exe">
       <PackagePath>entrypoint\Artgram.exe</PackagePath>
+<<<<<<< HEAD
       <Modified>2016-05-05T13:42:30.915</Modified>
+=======
+      <Modified>2016-05-04T12:54:10.561</Modified>
+>>>>>>> master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -468,7 +476,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.dll">
       <PackagePath>winsdkfb.dll</PackagePath>
+<<<<<<< HEAD
       <Modified>2016-05-05T13:38:44.955</Modified>
+=======
+      <Modified>2016-05-04T12:48:06.232</Modified>
+>>>>>>> master
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.winmd">
       <PackagePath>winsdkfb.winmd</PackagePath>
@@ -569,11 +581,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
+<<<<<<< HEAD
       <Modified>2016-05-05T13:38:50.656</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Core\Artgram.exe">
       <PackagePath>Artgram.exe</PackagePath>
       <Modified>2016-05-05T13:42:31.450</Modified>
+=======
+      <Modified>2016-05-04T12:48:11.565</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Core\Artgram.exe">
+      <PackagePath>Artgram.exe</PackagePath>
+      <Modified>2016-05-04T12:54:11.175</Modified>
+>>>>>>> master
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
