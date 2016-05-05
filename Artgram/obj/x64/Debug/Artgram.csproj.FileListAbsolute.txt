@@ -1489,3 +1489,5 @@ C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\qualifiers.t
 C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\qualifiers.txt.intermediate
 C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\ProjectArchitectures.txt
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Microsoft.Threading.Tasks.dll
