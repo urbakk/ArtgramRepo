@@ -29,7 +29,32 @@ namespace Artgram
         {
             this.InitializeComponent();
 
+            FBSession sess = FBSession.ActiveSession;
+            sess.FBAppId = "230142530675566";
+            sess.WinAppId = "s-1-15-2-2081801503-2397520940-272619875-1590401876-1557732794-2496746503-2085674722";
 
+
+            if (sess.User != null)
+            {
+                FBUser user = sess.User;
+                UserName.Text = user.Name;
+
+                string userId = user.Id;
+                string username = user.Name;
+                string locale = user.Locale;
+
+
+                ProfilePic.UserId = sess.User.Id;
+                //Debug.WriteLine(sess.User.Id);
+                //Debug.WriteLine(sess.User.Name);
+
+                //LoginStatus = 1;
+                Logout.Visibility = Visibility.Visible;     //Ukrywanie, pokazywanie przycisku zaloguj i wyloguj
+                Login.Visibility = Visibility.Collapsed;
+                ProfilePic.Visibility = Visibility.Visible;
+                ProfilePicNone.Visibility = Visibility.Collapsed;
+                Login.Content = "Zaloguj z FB";
+            }
         }
 
         private void button_Logo_Click(object sender, RoutedEventArgs e)
