@@ -11,6 +11,10 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Net;
 using System.Collections.ObjectModel;
+using Windows.Storage.Pickers;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.Storage;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -85,7 +89,7 @@ namespace Artgram
 
                     //ta petla dziala jakos na odwrot, nie wiem dlaczego... 
                     //źle porównuje stringi
-                    if (odpowiedz != "Dodano")
+                    if (odpowiedz == "Dodano")
                     {
                         textBlock.Text = "Obraz dodany.";
                         textBox.Text = "Dodaj nazwę";
@@ -99,9 +103,30 @@ namespace Artgram
             }
         }
 
-        private void button_Add_Click(object sender, RoutedEventArgs e)
+        private async void button_Add_Click(object sender, RoutedEventArgs e)
         {
+            FileOpenPicker Otwieracz = new FileOpenPicker();
+            Otwieracz.ViewMode = PickerViewMode.Thumbnail;
+            //ustawiamy domyslną lokalizację, w której otworzy się nowe okno dialogowe
+            Otwieracz.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            //określamy typy plików, jakie można dodawać
+            Otwieracz.FileTypeFilter.Add(".jpg");
+            Otwieracz.FileTypeFilter.Add(".jpeg");
+            Otwieracz.FileTypeFilter.Add(".png");
+            Otwieracz.FileTypeFilter.Add(".bmp");
 
+            StorageFile File = await Otwieracz.PickSingleFileAsync();
+
+            if (File != null)
+            {
+                var stream = await File.OpenAsync(FileAccessMode.Read);
+                var image = new ImageBrush();
+                var img = new BitmapImage();
+
+                img.SetSource(stream);
+                image.ImageSource = img;
+                button.Background = image;
+            }
         }
 
         private async Task<string> Wyslanie(string rzezb, string zap)
@@ -149,14 +174,5 @@ namespace Artgram
             }
         }
 
-        private class Kategoria
-        {
-            public string nazwa_kategorii;
-
-            public Kategoria (string nazwa_kategorii)
-            {
-                this.nazwa_kategorii = nazwa_kategorii;
-            }
-        }
     }
 }
