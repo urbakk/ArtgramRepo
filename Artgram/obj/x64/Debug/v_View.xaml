@@ -13,25 +13,25 @@
                 <ImageBrush Stretch="Fill" ImageSource="Assets/Square150x150Logo.png"/>
             </Button.Background>
         </Button>
-        <Button x:ConnectionId='2' x:Name="button1" Content="" HorizontalAlignment="Left" Margin="127,284,0,0" VerticalAlignment="Top" Height="141" Width="184">
+        <Button x:ConnectionId='2' x:Name="button1" Content="" HorizontalAlignment="Left" Margin="127,284,0,0" VerticalAlignment="Top" Height="141" Width="184" Visibility="Collapsed"                      >
             <Button.Background>
                 <ImageBrush Stretch="Fill" ImageSource="Assets/Square150x150Logo.png"/>
             </Button.Background>
         </Button>
-        <Button x:ConnectionId='3' x:Name="button1_Copy" Content="" HorizontalAlignment="Left" Margin="972,284,0,0" VerticalAlignment="Top" Height="141" Width="183">
+        <Button x:ConnectionId='3' x:Name="button1_Copy" Content="" HorizontalAlignment="Left" Margin="972,284,0,0" VerticalAlignment="Top" Height="141" Width="183"                             >
             <Button.Background>
                 <ImageBrush Stretch="Fill" ImageSource="Assets/Square150x150Logo.png"/>
             </Button.Background>
         </Button>
-        <TextBlock x:ConnectionId='4' x:Name="textBlock" HorizontalAlignment="Left" Height="28" Margin="166,426,0,0" TextWrapping="Wrap" Text="Poprzednie" VerticalAlignment="Top" Width="107" FontSize="18.667"/>
+        <TextBlock x:ConnectionId='4' x:Name="textBlock" HorizontalAlignment="Left" Height="28" Margin="166,426,0,0" TextWrapping="Wrap" Text="Poprzednie" VerticalAlignment="Top" Width="107" FontSize="18.667" Visibility="Collapsed"/>
         <TextBlock x:ConnectionId='5' x:Name="textBlock_Copy" HorizontalAlignment="Left" Height="28" Margin="1019,425,0,0" TextWrapping="Wrap" Text="Następne" VerticalAlignment="Top" Width="91" FontSize="18.667"/>
-        <TextBlock x:ConnectionId='6' x:Name="textBlock1" HorizontalAlignment="Left" Height="45" Margin="465,180,0,0" TextWrapping="Wrap" Text="                Nazwa" VerticalAlignment="Top" Width="348" FontSize="29.333" FontWeight="Bold"/>
-        <Button x:ConnectionId='7' x:Name="button_Wow" Content="WOW!" HorizontalAlignment="Left" Height="60" Margin="487,603,0,0" VerticalAlignment="Top" Width="153" Background="#FF330033" Foreground="White" FontSize="20"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="136" Margin="933,527,0,0" Stroke="Black" VerticalAlignment="Top" Width="281"/>
-        <TextBlock x:ConnectionId='8' x:Name="textBlock2" HorizontalAlignment="Left" Height="39" Margin="939,534,0,0" TextWrapping="Wrap" Text="Opis" VerticalAlignment="Top" Width="183" FontSize="20" Foreground="#FF706C6C"/>
-        <Button x:ConnectionId='9' x:Name="button_Contact" Content="Kontakt" HorizontalAlignment="Left" Height="60" Margin="678,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"/>
-        <Button x:ConnectionId='10' x:Name="button_Report" Content="Zgłoś!" HorizontalAlignment="Left" Height="60" Margin="166,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"/>
+        <TextBlock x:ConnectionId='6' x:Name="textBlock_nazwa" HorizontalAlignment="Left" Height="45" Margin="465,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348" FontSize="29.333" FontWeight="Bold"/>
+        <Button x:ConnectionId='7' x:Name="button_Wow" Content="WOW!" HorizontalAlignment="Left" Height="60" Margin="561,603,0,0" VerticalAlignment="Top" Width="153" Background="#FF330033" Foreground="White" FontSize="20"/>
+        <Button x:ConnectionId='8' x:Name="button_Contact" Content="Kontakt" HorizontalAlignment="Left" Height="60" Margin="760,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"/>
+        <Button x:ConnectionId='9' x:Name="button_Report" Content="Zgłoś!" HorizontalAlignment="Left" Height="60" Margin="416,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"/>
         <local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Width="1280"/>
+        <TextBlock x:ConnectionId='10' x:Name="textBlock_opis" HorizontalAlignment="Left" Margin="972,534,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="129" Width="218"/>
+        <TextBlock x:ConnectionId='11' x:Name="textBlock_WOW" HorizontalAlignment="Left" Height="60" Margin="311,603,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="45"/>
 
     </Grid>
 </Page>
