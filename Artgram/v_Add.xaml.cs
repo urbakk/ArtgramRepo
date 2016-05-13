@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Newtonsoft.Json;
@@ -15,6 +10,8 @@ using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage;
+using Windows.Storage.FileProperties;
+
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +22,9 @@ namespace Artgram
     /// </summary>
     public sealed partial class Add : Page
     {
+        private StorageFile plik;
+        private ulong maxFile = 2 * 1024 * 1024;
+
         public Add()
         {
             this.InitializeComponent();
@@ -89,11 +89,18 @@ namespace Artgram
 
                     //ta petla dziala jakos na odwrot, nie wiem dlaczego... 
                     //źle porównuje stringi
-                    if (odpowiedz == "Dodano")
+                    if (odpowiedz == "\tDodano\t")
                     {
                         textBlock.Text = "Obraz dodany.";
                         textBox.Text = "Dodaj nazwę";
                         textBox_Copy.Text = "Dodaj opis";
+                        comboBox.SelectedItem = "";
+
+                        var obrazek = new ImageBrush();
+                        var plik = new FileInfo("../Assets/Square44x44Logo.png");
+                        var uri = new Uri(plik.FullName);
+                        obrazek.ImageSource = new BitmapImage(uri);
+                        button.Background = obrazek;
                     }
                     else
                     {
@@ -119,6 +126,15 @@ namespace Artgram
 
             if (File != null)
             {
+                BasicProperties wlasciwosci = await File.GetBasicPropertiesAsync(); //pobranie danych o pliku (rozmiar)
+                //błąd, jeśli rozmiar pliku przekracza 2 MB
+                if (wlasciwosci.Size > maxFile)
+                {
+                    textBlock.Text = "Rozmiar pliku przekroczył 2 MB.";
+                    return;
+                }
+
+                plik = File;
                 var stream = await File.OpenAsync(FileAccessMode.Read);
                 var image = new ImageBrush();
                 var img = new BitmapImage();
