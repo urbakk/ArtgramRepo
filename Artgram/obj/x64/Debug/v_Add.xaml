@@ -14,7 +14,7 @@
             </Button.Background>
         </Button>
         <Button x:ConnectionId='2' x:Name="button_Add" Content="+ Dodaj" HorizontalAlignment="Left" Height="51" Margin="270,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Foreground="White" Background="#FF330033"                         />
-        <ComboBox x:ConnectionId='3' x:Name="comboBox" HorizontalAlignment="Left" Height="45" Margin="723,226,0,0" VerticalAlignment="Top" Width="204"/>
+        <ComboBox x:ConnectionId='3' x:Name="comboBox" HorizontalAlignment="Left" Height="Auto" Margin="723,226,0,0" VerticalAlignment="Top" Width="204" Header="Wybierz kategorię"/>
         <TextBox x:ConnectionId='4' x:Name="textBox" HorizontalAlignment="Left" Height="45" Margin="723,295,0,0" TextWrapping="Wrap" Text="Dodaj nazwę" VerticalAlignment="Top" Width="459" FontSize="18.667" Foreground="#FF706C6C"/>
         <TextBox x:ConnectionId='5' x:Name="textBox_Copy" HorizontalAlignment="Left" Height="177" Margin="723,366,0,0" TextWrapping="Wrap" Text="Dodaj opis" VerticalAlignment="Top" Width="459" FontSize="18.667" Foreground="#FF706C6C"/>
         <Button x:ConnectionId='6' x:Name="button_Cancel" Content="Anuluj" HorizontalAlignment="Left" Height="51" Margin="777,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Background="#FF330033" Foreground="White"                            />

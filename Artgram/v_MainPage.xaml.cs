@@ -36,7 +36,7 @@ namespace Artgram
     {
         //int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) :O
         private string responseServer, url, zap,
-            link = "http://artgram.hostingpo.pl/login2.php";
+            link = "http://artgram.hostingpo.pl/login.php";
         int gornyPrzedzial = 0, losowa = 0;
 
         public MainPage()
