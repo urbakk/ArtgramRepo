@@ -101,6 +101,7 @@
     <Compile Include="AppBar.xaml.cs">
       <DependentUpon>AppBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Obraz.cs" />
     <Compile Include="v_View.xaml.cs">
       <DependentUpon>v_View.xaml</DependentUpon>
     </Compile>
@@ -111,6 +112,7 @@
       <DependentUpon>v_MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Zapytanie.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

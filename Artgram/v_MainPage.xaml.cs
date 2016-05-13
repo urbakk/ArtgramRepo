@@ -25,7 +25,6 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.ApplicationModel.Core;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace Artgram
 {
     /// <summary>
@@ -37,8 +36,8 @@ namespace Artgram
     {
         //int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) :O
         private string responseServer, url, zap,
-            link = "http://artgram.hostingpo.pl/login.php";
-            int gornyPrzedzial = 0, losowa = 0;
+            link = "http://artgram.hostingpo.pl/login2.php";
+        int gornyPrzedzial = 0, losowa = 0;
 
         public MainPage()
         {
@@ -52,8 +51,8 @@ namespace Artgram
             Zapytanie rysunek = new Zapytanie("4");
             Zmiana_tla(rysunek);
             Zapytanie tatuaze = new Zapytanie("5");
-            Zmiana_tla(tatuaze);  
-        
+            Zmiana_tla(tatuaze);
+            
         }
 
         private async Task<string> Wyslanie(string rzezb, string zap)
@@ -91,7 +90,7 @@ namespace Artgram
         {
             string kategoria = kat.ID_Kategorii;
             zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
-            responseServer =  await Wyslanie(link, zap); //wysłanie danych do zapytania
+            responseServer = await Wyslanie(link, zap); //wysłanie danych do zapytania
             List<Obraz> oKat = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
             gornyPrzedzial = oKat.Count;  //pobieranie wielkosci List<Obraz>
             Random random = new Random();
@@ -103,19 +102,19 @@ namespace Artgram
             var img = new ImageBrush();
             img.ImageSource = new BitmapImage(uri);
 
-            if(kategoria.Equals("2"))   // w zależności od kategorii, nadajemy tło odpowiednim buttonom
+            if (kategoria.Equals("2"))   // w zależności od kategorii, nadajemy tło odpowiednim buttonom
             {
                 button_Copy3.Background = img;
             }
-            else if(kategoria.Equals("3"))
+            else if (kategoria.Equals("3"))
             {
                 button_Copy4.Background = img;
             }
-            else if(kategoria.Equals("4"))
+            else if (kategoria.Equals("4"))
             {
                 button_Copy5.Background = img;
             }
-            else 
+            else
             {
                 button_Copy6.Background = img;
             }
@@ -130,7 +129,7 @@ namespace Artgram
 
         private void button_Add_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Add), "Wyslanie(link, zap)");
+            this.Frame.Navigate(typeof(Add));
         }
 
         private void button_Copy_Click(object sender, RoutedEventArgs e)
@@ -150,22 +149,22 @@ namespace Artgram
 
         private void button_Copy3_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View));
+            this.Frame.Navigate(typeof(View), "2");
         }
 
         private void button_Copy4_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View));
+            this.Frame.Navigate(typeof(View), "3");
         }
 
         private void button_Copy5_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View));
+            this.Frame.Navigate(typeof(View), "4");
         }
 
         private void button_Copy6_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View));
+            this.Frame.Navigate(typeof(View), "5");
         }
 
         private void button_Logo_Click(object sender, RoutedEventArgs e)
@@ -173,28 +172,6 @@ namespace Artgram
             this.Frame.Navigate(typeof(MainPage));
         }
 
-        private class Zapytanie
-        {
-            public string ID_Kategorii;
-
-            public Zapytanie(string ID_Kategorii)
-            {
-                this.ID_Kategorii = ID_Kategorii;
-            }
-        }
-
-        private class Obraz
-        {
-            public string Nazwa_obrazu, Sciezka_dostepu, Liczba_WOW;
-
-            public Obraz(string Nazwa_obrazu, string Sciezka_dostepu, string Liczba_WOW)
-            {
-                this.Nazwa_obrazu = Nazwa_obrazu;
-                this.Sciezka_dostepu = Sciezka_dostepu;
-                this.Liczba_WOW = Liczba_WOW;
-            }
-            
-        }
-                
     }
 }
+
