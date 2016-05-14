@@ -26,7 +26,7 @@ namespace Artgram
     public sealed partial class View : Page
     {
         private string url, ID_kat, responseServer, zap,
-           link = "http://artgram.hostingpo.pl/login2.php";
+           link = "http://artgram.hostingpo.pl/view.php";
         int gornyPrzedzial = 0, licznik = 0, licznikPoprzednie, licznikNastepne;
 
         private void button1_Click(object sender, RoutedEventArgs e)

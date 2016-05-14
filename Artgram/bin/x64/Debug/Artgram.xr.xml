@@ -96,6 +96,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Header" />
     </RootType>
     <RootType FullName="Artgram.Add" />
     <RootType FullName="Artgram.MainPage" />
