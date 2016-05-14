@@ -1,2 +1,37 @@
-﻿  winsdkfb_uwp.vcxproj -> C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.dll
-  winsdkfb_uwp.vcxproj -> C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.pdb (Partial PDB)
+﻿  pch.cpp
+  ColorLuminosityConverter.cpp
+  FBSingleValue.cpp
+  FacebookAccessTokenData.cpp
+  FacebookAppRequest.cpp
+  FacebookClient.cpp
+  FacebookDialog.xaml.cpp
+  FacebookError.cpp
+  FacebookFeedRequest.cpp
+  FacebookLoginButton.cpp
+  FacebookMediaObject.cpp
+  FacebookMediaStream.cpp
+  FacebookPaginatedArray.cpp
+  FacebookPermissions.cpp
+  FacebookProfilePictureControl.xaml.cpp
+  FacebookResult.cpp
+  FacebookSendRequest.cpp
+  FacebookSession.cpp
+  FBAppRequest.cpp
+  FBCursors.cpp
+d:\artgramrepo\winsdkfb\winsdkfb\winsdkfb.shared\facebooksession.cpp(1513): warning C4307: '*': integral constant overflow
+  FBGroup.cpp
+  FBPage.cpp
+  FBPaging.cpp
+  FBPermission.cpp
+  FBProfilePicture.cpp
+  FBProfilePictureData.cpp
+  FBUser.cpp
+  HlsColor.cpp
+  ScaleConverter.cpp
+  XamlLibMetadataProvider.g.cpp
+  XamlTypeInfo.Impl.g.cpp
+  XamlTypeInfo.g.cpp
+  LINK : D:\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.dll not found or not built by the last incremental link; performing full link
+     Creating library D:\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.lib and object D:\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.exp
+  winsdkfb_uwp.vcxproj -> D:\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.dll
+  winsdkfb_uwp.vcxproj -> D:\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.pdb (Partial PDB)
