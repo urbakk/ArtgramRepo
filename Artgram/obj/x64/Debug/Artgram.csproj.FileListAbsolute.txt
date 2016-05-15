@@ -1491,3 +1491,13 @@ C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\MultipleQual
 C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\ProjectArchitectures.txt
 C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Microsoft.Threading.Tasks.Extensions.dll
 C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Microsoft.Threading.Tasks.dll
+D:\ArtgramRepo\Artgram\bin\x64\Debug\v_Szukaj.xbf
+D:\ArtgramRepo\Artgram\obj\x64\Debug\v_Szukaj.g.i.cs
+D:\ArtgramRepo\Artgram\obj\x64\Debug\v_Szukaj.g.cs
+D:\ArtgramRepo\Artgram\obj\x64\Debug\v_Szukaj.xaml
+D:\ArtgramRepo\Artgram\obj\x64\Debug\v_Szukaj.xbf
+D:\ArtgramRepo\Artgram\bin\x64\Debug\v_View_Szukaj.xbf
+D:\ArtgramRepo\Artgram\obj\x64\Debug\v_View_Szukaj.g.i.cs
+D:\ArtgramRepo\Artgram\obj\x64\Debug\v_View_Szukaj.g.cs
+D:\ArtgramRepo\Artgram\obj\x64\Debug\v_View_Szukaj.xaml
+D:\ArtgramRepo\Artgram\obj\x64\Debug\v_View_Szukaj.xbf
