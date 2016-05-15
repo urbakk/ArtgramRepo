@@ -101,5 +101,6 @@
     </RootType>
     <RootType FullName="Artgram.Add" />
     <RootType FullName="Artgram.MainPage" />
+    <RootType FullName="Artgram.v_View_Szukaj" />
   </Roots.RootTypes>
 </Roots>

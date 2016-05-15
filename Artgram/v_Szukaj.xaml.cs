@@ -27,11 +27,12 @@ namespace Artgram
     public sealed partial class v_Szukaj : Page
     {
         List<Obraz> ListaObrazow = new List<Obraz>();
-        int gornyPrzedzial, licznik = 0;
+        int gornyPrzedzial, licznik = 0, obraz0, obraz1, obraz2, obraz3;
+        string Nazwa_obrazu;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string Nazwa_obrazu = e.Parameter as string;
+            Nazwa_obrazu = e.Parameter as string;
             textBlock_Szukaj.Text = textBlock_Szukaj.Text + Nazwa_obrazu;
 
             Szukaj szukaj = new Szukaj(Nazwa_obrazu);
@@ -41,13 +42,28 @@ namespace Artgram
             if(gornyPrzedzial == 0)
             {
                 textBlock_Uwaga.Visibility = Visibility.Visible;
-               textBlock_Uwaga.Text = "Nie znaleziono wyników";
+                textBlock_Uwaga.Text = "Nie znaleziono wyników";
             }
             else 
             {
-                UstawObraz(licznik);
-            }        
-            
+                obraz0 = licznik;                    //obraz0, obraz1.. potrzebne do przeslania numeru zdjecia do wyswietlenia jeg widoku
+                UstawObraz(licznik, 0);              //Ustawi obraz na pierwszej pozycji
+                licznik++;
+                obraz1 = licznik;
+                UstawObraz(licznik, 1);              //Ustawia obraz na drugiej pozycji itd.
+                licznik++;
+                obraz2 = licznik;
+                UstawObraz(licznik, 2);
+                licznik++;
+                obraz3 = licznik;
+                UstawObraz(licznik, 3);
+                licznik++;
+
+                if (licznik < gornyPrzedzial)
+                {
+                    button_Dalej.Visibility = Visibility.Visible;
+                }
+            }                    
         }
 
         private async Task<string> Wyslanie(string zap)
@@ -110,49 +126,46 @@ namespace Artgram
             return img;                            
         }
 
-        private void UstawObraz(int licznik)
+        private void UstawObraz(int licznik, int miejsce)
         {
-            button0.Visibility = Visibility.Visible;
-            textBlock0.Visibility = Visibility.Visible;
-            button0.Background = PobierzObraz(ListaObrazow[licznik]);
-            textBlock0.Text = ListaObrazow[licznik].Nazwa_obrazu;
-            licznik++;
+            if(miejsce == 0)
+            {
+                button0.Visibility = Visibility.Visible;
+                textBlock0.Visibility = Visibility.Visible;
+                button0.Background = PobierzObraz(ListaObrazow[licznik]);
+                textBlock0.Text = ListaObrazow[licznik].Nazwa_obrazu;
+            }            
 
-            if (licznik < gornyPrzedzial)
+            if (licznik < gornyPrzedzial && miejsce == 1)
             {
                 button1.Visibility = Visibility.Visible;
                 textBlock1.Visibility = Visibility.Visible;
                 button1.Background = PobierzObraz(ListaObrazow[licznik]);
                 textBlock1.Text = ListaObrazow[licznik].Nazwa_obrazu;
-                licznik++;
             }
 
-            if (licznik < gornyPrzedzial)
+            if (licznik < gornyPrzedzial && miejsce == 2)
             {
                 button2.Visibility = Visibility.Visible;
                 textBlock2.Visibility = Visibility.Visible;
                 button2.Background = PobierzObraz(ListaObrazow[licznik]);
                 textBlock2.Text = ListaObrazow[licznik].Nazwa_obrazu;
-                licznik++;
             }
 
-            if (licznik < gornyPrzedzial)
+            if (licznik < gornyPrzedzial && miejsce == 3)
             {
                 button3.Visibility = Visibility.Visible;
                 textBlock3.Visibility = Visibility.Visible;
                 button3.Background = PobierzObraz(ListaObrazow[licznik]);
                 textBlock3.Text = ListaObrazow[licznik].Nazwa_obrazu;
-                licznik++;
             }
 
-            if (licznik < gornyPrzedzial)
-            {
-                button_Dalej.Visibility = Visibility.Visible;
-            }
+            
         }
 
         private void button_Dalej_Click(object sender, RoutedEventArgs e)
         {
+            button_Cofnij.Visibility = Visibility.Visible;
             button_Dalej.Visibility = Visibility.Collapsed;
             button0.Visibility = Visibility.Collapsed;
             textBlock0.Visibility = Visibility.Collapsed;
@@ -163,14 +176,70 @@ namespace Artgram
             button3.Visibility = Visibility.Collapsed;
             textBlock3.Visibility = Visibility.Collapsed;
 
-            licznik = licznik + 4;
-            UstawObraz(licznik);
+            obraz0 = licznik;
+            UstawObraz(licznik, 0);
+            licznik++;
+            obraz1 = licznik;
+            UstawObraz(licznik, 1);
+            licznik++;
+            obraz2 = licznik;
+            UstawObraz(licznik, 2);
+            licznik++;
+            obraz3 = licznik;
+            UstawObraz(licznik, 3);
+            licznik++;
+        }
+
+        private void button_Cofnij_Click(object sender, RoutedEventArgs e)
+        {
+            licznik = licznik - 8;
+            if (licznik == 0)
+            {
+                button_Cofnij.Visibility = Visibility.Collapsed;
+            }
+            obraz0 = licznik;
+            UstawObraz(licznik, 0);
+            licznik++;
+            obraz1 = licznik;
+            UstawObraz(licznik, 1);
+            licznik++;
+            obraz2 = licznik;
+            UstawObraz(licznik, 2);
+            licznik++;
+            obraz3 = licznik;
+            UstawObraz(licznik, 3);
+            licznik++;
+            button_Dalej.Visibility = Visibility.Visible;
+        }               
+
+        private void button0_Click(object sender, RoutedEventArgs e)
+        {
+            string[] lista = { ListaObrazow[obraz0].Nazwa_obrazu, ListaObrazow[obraz0].Opis_obrazu, ListaObrazow[obraz0].Liczba_WOW, ListaObrazow[obraz0].Sciezka_dostepu, Nazwa_obrazu };
+            this.Frame.Navigate(typeof(v_View_Szukaj), lista);
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            string[] lista = { ListaObrazow[obraz1].Nazwa_obrazu, ListaObrazow[obraz1].Opis_obrazu, ListaObrazow[obraz1].Liczba_WOW, ListaObrazow[obraz1].Sciezka_dostepu, Nazwa_obrazu};
+            this.Frame.Navigate(typeof(v_View_Szukaj), lista);
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            string[] lista = { ListaObrazow[obraz2].Nazwa_obrazu, ListaObrazow[obraz2].Opis_obrazu, ListaObrazow[obraz2].Liczba_WOW, ListaObrazow[obraz2].Sciezka_dostepu, Nazwa_obrazu };
+            this.Frame.Navigate(typeof(v_View_Szukaj), lista);
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            string[] lista = { ListaObrazow[obraz3].Nazwa_obrazu, ListaObrazow[obraz3].Opis_obrazu, ListaObrazow[obraz3].Liczba_WOW, ListaObrazow[obraz3].Sciezka_dostepu, Nazwa_obrazu };
+            this.Frame.Navigate(typeof(v_View_Szukaj), lista);
         }
 
         public v_Szukaj()
         {
             this.InitializeComponent();
-        }        
+        }
 
         class Szukaj
         {

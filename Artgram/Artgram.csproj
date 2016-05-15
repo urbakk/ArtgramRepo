@@ -115,6 +115,9 @@
       <DependentUpon>v_MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="v_View_Szukaj.xaml.cs">
+      <DependentUpon>v_View_Szukaj.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Zapytanie.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +169,10 @@
     <Page Include="v_MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="v_View_Szukaj.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
