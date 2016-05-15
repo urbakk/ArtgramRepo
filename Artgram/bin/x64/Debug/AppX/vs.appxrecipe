@@ -22,13 +22,13 @@
     <AppXManifest Include="D:\ArtgramRepo\Artgram\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-05-14T07:32:19.920</Modified>
+      <Modified>2016-05-14T22:06:52.061</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.exe">
       <PackagePath>entrypoint\Artgram.exe</PackagePath>
-      <Modified>2016-05-14T07:31:43.525</Modified>
+      <Modified>2016-05-14T22:06:50.693</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\tabac\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -468,7 +468,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.dll">
       <PackagePath>winsdkfb.dll</PackagePath>
-      <Modified>2016-05-14T07:31:20.626</Modified>
+      <Modified>2016-05-14T19:18:09.094</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.winmd">
       <PackagePath>winsdkfb.winmd</PackagePath>
@@ -569,11 +569,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ArtgramRepo\Artgram\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-05-14T07:31:53.718</Modified>
+      <Modified>2016-05-14T22:06:51.460</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ArtgramRepo\Artgram\bin\x64\Debug\Core\Artgram.exe">
       <PackagePath>Artgram.exe</PackagePath>
-      <Modified>2016-05-14T07:32:19.905</Modified>
+      <Modified>2016-05-14T22:06:52.056</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

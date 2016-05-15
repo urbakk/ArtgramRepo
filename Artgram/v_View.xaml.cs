@@ -25,39 +25,142 @@ namespace Artgram
     /// </summary>
     public sealed partial class View : Page
     {
-        private string url, ID_kat, responseServer, zap,
-           link = "http://artgram.hostingpo.pl/view.php";
-        int gornyPrzedzial = 0, licznik = 0, licznikPoprzednie, licznikNastepne;
+        string UrlObrazka, IdKategorii;
+        int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
+        List<Obraz> ListaObrazow = new List<Obraz>();
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void button1_Click(object sender, RoutedEventArgs e) //Poprzedni obraz
         {
-            licznik--;
-            Zapytanie zapytanie = new Zapytanie(ID_kat);
-            Zmiana_tla(zapytanie);
+            UstawObraz(ListaObrazow[licznikPoprzednie], "glowne"); //Ustawianie glownego obrazu
+            button1_Copy.Visibility = Visibility.Visible;
+            textBlock_Copy.Visibility = Visibility.Visible;
+            
+            if (licznikPoprzednie == gornyPrzedzial - 1 && licznik == gornyPrzedzial - 1)
+            {
+                licznikNastepne = 0;
+                UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                button1.Visibility = Visibility.Collapsed;
+                textBlock.Visibility = Visibility.Collapsed;
+            }
+            else if (licznikPoprzednie ==  licznik)
+            {
+                licznikNastepne = licznikPoprzednie + 1;
+                UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                button1.Visibility = Visibility.Collapsed;
+                textBlock.Visibility = Visibility.Collapsed;
+            }            
+            else if(licznikPoprzednie == 0)
+            {
+                licznikNastepne = licznikPoprzednie + 1;
+                UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                licznikPoprzednie = gornyPrzedzial - 1;
+                UstawObraz(ListaObrazow[licznikPoprzednie], "poprzednie"); //Ustawianie poprzedniego obrazu
+            }
+            else if(licznikPoprzednie == gornyPrzedzial - 1)
+            {
+                licznikNastepne = 0;
+                UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                licznikPoprzednie--;
+                UstawObraz(ListaObrazow[licznikPoprzednie], "poprzednie"); //Ustawianie poprzedniego obrazu
+            }
+            else
+            {
+                licznikNastepne = licznikPoprzednie + 1;
+                UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                licznikPoprzednie--;
+                UstawObraz(ListaObrazow[licznikPoprzednie], "poprzednie"); //Ustawianie poprzedniego obrazu
+            }
+            
         }
 
-        private void button1_Copy_Click_1(object sender, RoutedEventArgs e)
+        private void button1_Copy_Click_1(object sender, RoutedEventArgs e) //Następny obraz
         {
-            licznik++;
-            Zapytanie zapytanie = new Zapytanie(ID_kat);
-            Zmiana_tla(zapytanie);
+            UstawObraz(ListaObrazow[licznikNastepne], "glowne"); //Ustawianie glownego obrazu
+            button1.Visibility = Visibility.Visible;
+            textBlock.Visibility = Visibility.Visible;
+
+            if (licznikNastepne + 1 == licznik && licznikNastepne==0)
+            {                
+                licznikPoprzednie = gornyPrzedzial - 1;
+                UstawObraz(ListaObrazow[licznikPoprzednie], "poprzednie"); //Ustawianie następnego obrazu
+                button1_Copy.Visibility = Visibility.Collapsed;
+                textBlock_Copy.Visibility = Visibility.Collapsed;
+            }
+            else if(licznikNastepne + 1 == licznik)
+            {
+                licznikPoprzednie = licznikNastepne - 1;
+                UstawObraz(ListaObrazow[licznikPoprzednie], "poprzednie"); //Ustawianie następnego obrazu
+                button1_Copy.Visibility = Visibility.Collapsed;
+                textBlock_Copy.Visibility = Visibility.Collapsed;
+            }             
+            else if (licznikNastepne == 0)
+            {
+                licznikPoprzednie = gornyPrzedzial - 1;
+                UstawObraz(ListaObrazow[licznikPoprzednie], "poprzednie"); //Ustawianie poprzedniego obrazu
+                licznikNastepne++;
+                UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu                
+            }
+            else if (licznikNastepne == gornyPrzedzial - 1 && licznik == 0)
+            {
+                licznikPoprzednie = licznikNastepne - 1;
+                UstawObraz(ListaObrazow[licznikPoprzednie], "poprzednie"); //Ustawianie następnego obrazu
+                button1_Copy.Visibility = Visibility.Collapsed;
+                textBlock_Copy.Visibility = Visibility.Collapsed;
+            }
+            else if(licznikNastepne == gornyPrzedzial - 1)
+            {
+                licznikPoprzednie = licznikNastepne - 1;
+                UstawObraz(ListaObrazow[licznikPoprzednie], "poprzednie"); //Ustawianie następnego obrazu
+                licznikNastepne = 0;
+                UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+            }
+            else
+            {
+                licznikPoprzednie = licznikNastepne - 1;
+                UstawObraz(ListaObrazow[licznikPoprzednie], "poprzednie"); //Ustawianie następnego obrazu
+                licznikNastepne++;
+                UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu                
+            }            
         }
         
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ID_kat = e.Parameter as string;
-            licznik = 0;
-            Zapytanie zapytanie = new Zapytanie(ID_kat);
-            Zmiana_tla(zapytanie);
+            string[] Parametry = e.Parameter as string[];
+            UrlObrazka = Parametry[0];
+            IdKategorii = Parametry[1];
 
+            Zapytanie zapytanie = new Zapytanie(IdKategorii);
+            ListaObrazow = Task.Run(() => Pobierz_obrazy(zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
+            gornyPrzedzial = ListaObrazow.Count();
+                                   
+            while(licznik < gornyPrzedzial)
+            {
+                if(ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                {
+                    licznikNastepne = licznik + 1;
+                    licznikPoprzednie = licznik;
+                    if(licznikNastepne == gornyPrzedzial)
+                    {
+                        licznikNastepne = 0;
+                    }
+                    UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                    UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                    break;
+                }
+
+                licznik++;
+            }
         }
-        private async Task<string> Wyslanie(string rzezb, string zap)
+
+        private async Task<string> Wyslanie(string zap)
         {
+            string link = "http://artgram.hostingpo.pl/login.php";
+
             try
             {
                 string responseServ;
 
-                var request = (HttpWebRequest)WebRequest.Create(rzezb);
+                var request = (HttpWebRequest)WebRequest.Create(link);
                 request.ContentType = "application/json";
                 request.Method = "POST";
 
@@ -82,71 +185,63 @@ namespace Artgram
             }
         }
 
-        private async void Zmiana_tla(Zapytanie kat)
-        {            
-            string kategoria = kat.ID_Kategorii;
-            zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
-            responseServer = await Wyslanie(link, zap); //wysłanie danych do zapytania
-            List<Obraz> oKat = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
-            gornyPrzedzial = oKat.Count;  //pobieranie wielkosci List<Obraz>
-
-            licznikNastepne = licznik;
-            licznikPoprzednie = licznik;
-            url = oKat[licznik].Sciezka_dostepu; //wyciągnięcie ścieżki do obrazu glownego
-            var uri1 = new Uri(url, UriKind.Absolute);
-            var img1 = new ImageBrush();
-            img1.ImageSource = new BitmapImage(uri1);
-            button.Background = img1;
-            textBlock_nazwa.Text = oKat[licznik].Nazwa_obrazu;
-            textBlock_WOW.Text = oKat[licznik].Liczba_WOW;
-            if (oKat[licznik].Opis_obrazu == null)
+        private async Task<List<Obraz>> Pobierz_obrazy(Zapytanie kat)
+        {
+            string responseServer, zap;
+            try
             {
-                textBlock_opis.Text = "Autor nie dodał opisu";
+                zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
+                responseServer = await Wyslanie(zap); //wysłanie danych do zapytania
+                List<Obraz> ListaObrazow = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
+                return ListaObrazow;
             }
-            else
+            catch
             {
-                textBlock_opis.Text = oKat[licznik].Opis_obrazu;
-            }
-
-            licznikNastepne++;
-            licznikPoprzednie--;
-
-            if (licznikNastepne == gornyPrzedzial)  //Warunek obsługujący następne zdjęcia
-            {
-                button1_Copy.Visibility = Visibility.Collapsed;
-                textBlock_Copy.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                button1_Copy.Visibility = Visibility.Visible;
-                textBlock_Copy.Visibility = Visibility.Visible;
-
-                url = oKat[licznikNastepne].Sciezka_dostepu; //wyciągnięcie ścieżki do obrazu glownego
-                var uri2 = new Uri(url, UriKind.Absolute);
-                var img2 = new ImageBrush();
-                img2.ImageSource = new BitmapImage(uri2);
-                button1_Copy.Background = img2;
-            }
-
-
-            if (licznikPoprzednie < 0)  //Warunek obsługujący poprzednie zdjęcia
-            {
-                button1.Visibility = Visibility.Collapsed;
-                textBlock.Visibility = Visibility.Collapsed;                
-            }
-            else
-            {
-                button1.Visibility = Visibility.Visible;
-                textBlock.Visibility = Visibility.Visible;
-
-                url = oKat[licznikPoprzednie].Sciezka_dostepu; //wyciągnięcie ścieżki do obrazu glownego
-                var uri2 = new Uri(url, UriKind.Absolute);
-                var img2 = new ImageBrush();
-                img2.ImageSource = new BitmapImage(uri2);
-                button1.Background = img2;
+                return null;
             }
         }
-        
+
+        private void UstawObraz(Obraz obraz, string ktore)
+        {
+            string url;
+
+            if (ktore.Equals("glowne"))
+            {
+                //Ustawianie glownego obrazu
+                url = obraz.Sciezka_dostepu;
+                var uri = new Uri(url, UriKind.Absolute);
+                var img = new ImageBrush();
+                img.ImageSource = new BitmapImage(uri);
+                button.Background = img;
+                textBlock_nazwa.Text = obraz.Nazwa_obrazu;
+                textBlock_WOW.Text = obraz.Liczba_WOW;
+                if (obraz.Opis_obrazu == null)
+                {
+                    textBlock_opis.Text = "Autor nie dodał opisu";
+                }
+                else
+                {
+                    textBlock_opis.Text = obraz.Opis_obrazu;
+                }
+            }
+            else if (ktore.Equals("nastepne"))
+            {              
+                url = obraz.Sciezka_dostepu;
+                var uri = new Uri(url, UriKind.Absolute);
+                var img = new ImageBrush();
+                img.ImageSource = new BitmapImage(uri);
+                button1_Copy.Background = img;
+            }
+            else
+            {               
+                url = obraz.Sciezka_dostepu;
+                var uri = new Uri(url, UriKind.Absolute);
+                var img = new ImageBrush();
+                img.ImageSource = new BitmapImage(uri);
+                button1.Background = img;
+            }
+        }
+
         public View()
         {
             this.InitializeComponent();            
