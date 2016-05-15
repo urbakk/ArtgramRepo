@@ -22,13 +22,13 @@
     <AppXManifest Include="D:\ArtgramRepo\Artgram\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-05-14T22:06:52.061</Modified>
+      <Modified>2016-05-15T09:05:36.723</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.exe">
       <PackagePath>entrypoint\Artgram.exe</PackagePath>
-      <Modified>2016-05-14T22:06:50.693</Modified>
+      <Modified>2016-05-15T09:05:35.712</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\tabac\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -468,7 +468,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.dll">
       <PackagePath>winsdkfb.dll</PackagePath>
-      <Modified>2016-05-14T19:18:09.094</Modified>
+      <Modified>2016-05-15T06:35:35.769</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.winmd">
       <PackagePath>winsdkfb.winmd</PackagePath>
@@ -557,7 +557,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.xr.xml">
       <PackagePath>Artgram.xr.xml</PackagePath>
-      <Modified>2016-05-14T07:18:34.633</Modified>
+      <Modified>2016-05-15T07:26:20.455</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10586.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -569,11 +569,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ArtgramRepo\Artgram\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-05-14T22:06:51.460</Modified>
+      <Modified>2016-05-15T09:05:36.461</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\ArtgramRepo\Artgram\bin\x64\Debug\Core\Artgram.exe">
       <PackagePath>Artgram.exe</PackagePath>
-      <Modified>2016-05-14T22:06:52.056</Modified>
+      <Modified>2016-05-15T09:05:36.718</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

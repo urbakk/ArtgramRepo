@@ -89,6 +89,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="Artgram.v_Szukaj" />
     <RootType FullName="Artgram.View" />
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="HorizontalAlignment" />

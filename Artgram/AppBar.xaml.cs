@@ -87,11 +87,6 @@ namespace Artgram
             customFrame.Navigate(typeof(Add));
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
             //string SID = WebAuthenticationBroker.GetCurrentApplicationCallbackUri().ToString(); //SID aplikacji na Sklepie MS
@@ -174,6 +169,12 @@ namespace Artgram
             ProfilePicNone.Visibility = Visibility.Visible;
 
             UserName.Text = "Nie zalogowano";
+        }
+        
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            string wyszukaj = textBox2.Text;
+            this.customFrame.Navigate(typeof(v_Szukaj), wyszukaj);
         }
     }
 }
