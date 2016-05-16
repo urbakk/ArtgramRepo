@@ -11,4 +11,12 @@
     <ReferencePath>
     </ReferencePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DeviceId>2DDADD82-5910-40E6-894F-17EB5CD463EF</DeviceId>
+    <UseEmulator>false</UseEmulator>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DeviceId>2DDADD82-5910-40E6-894F-17EB5CD463EF</DeviceId>
+    <UseEmulator>true</UseEmulator>
+  </PropertyGroup>
 </Project>

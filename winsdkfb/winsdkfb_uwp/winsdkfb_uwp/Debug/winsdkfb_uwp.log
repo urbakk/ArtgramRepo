@@ -1,0 +1,40 @@
+﻿          1 file(s) copied.
+  pch.cpp
+  ColorLuminosityConverter.cpp
+  FacebookAccessTokenData.cpp
+  FacebookAppRequest.cpp
+  FacebookClient.cpp
+  FacebookDialog.xaml.cpp
+  FacebookError.cpp
+  FacebookFeedRequest.cpp
+  FacebookLoginButton.cpp
+  FacebookMediaObject.cpp
+  FacebookMediaStream.cpp
+  FacebookPaginatedArray.cpp
+  FacebookPermissions.cpp
+  FacebookSendRequest.cpp
+  FBAppRequest.cpp
+  FBCursors.cpp
+  FBGroup.cpp
+  FBPage.cpp
+  FacebookProfilePictureControl.xaml.cpp
+  FacebookResult.cpp
+  FacebookSession.cpp
+c:\users\mateusz\documents\github\artgramrepo\winsdkfb\winsdkfb\winsdkfb.shared\facebooksession.cpp(1513): warning C4307: '*': integral constant overflow
+  Generating Code...
+  Compiling...
+  FBPaging.cpp
+  FBPermission.cpp
+  FBSingleValue.cpp
+  FBProfilePicture.cpp
+  FBProfilePictureData.cpp
+  FBUser.cpp
+  HlsColor.cpp
+  ScaleConverter.cpp
+  XamlTypeInfo.Impl.g.cpp
+  XamlLibMetadataProvider.g.cpp
+  Generating Code...
+  XamlTypeInfo.g.cpp
+     Creating library C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Debug\winsdkfb_uwp\winsdkfb.lib and object C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Debug\winsdkfb_uwp\winsdkfb.exp
+  winsdkfb_uwp.vcxproj -> C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Debug\winsdkfb_uwp\winsdkfb.dll
+  winsdkfb_uwp.vcxproj -> C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Debug\winsdkfb_uwp\winsdkfb.pdb (Partial PDB)

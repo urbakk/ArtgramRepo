@@ -88,7 +88,9 @@ namespace Artgram
 
                 if (textBlock.Text != "Wybierz kategorię.")
                 {
+                    //wysłanie obrazka na serwer, w odpowiedzi dostajemy ścieżkę do tego obrazu
                     odpowiedz1 = await Wyslanie_obrazu(link1, plik);
+
                     if(odpowiedz1 == "\tNie\t")
                     {
                         textBlock.Text = "Obraz nie został dodany.";
@@ -201,15 +203,17 @@ namespace Artgram
 
             try
             {
-                HttpClient klient = new HttpClient();
-                klient.BaseAddress = new Uri(http);
-                MultipartFormDataContent form = new MultipartFormDataContent();
+                HttpClient klient = new HttpClient(); //stworzenie klienta http
+                klient.BaseAddress = new Uri(http); //stworzenie URI z linku hostingu
+                MultipartFormDataContent form = new MultipartFormDataContent(); //utworzenie pakietu danych
 
-                HttpContent content = new StringContent("fileUpload");
+                HttpContent content = new StringContent("fileUpload"); 
+                //nadanie nagłówka pakietowi, by był rozpoznawany przez serwer
                 form.Add(content, "fileUpload");
 
-                var stream = await plik1.OpenStreamForReadAsync();
+                var stream = await plik1.OpenStreamForReadAsync(); //wrzucenie pliku do streamu
                 content = new StreamContent(stream);
+                //ustawienie rodzaju przesyłanych danych
                 content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
                 {
                     Name = "fileUpload",
@@ -217,8 +221,9 @@ namespace Artgram
                 };
                 form.Add(content);
 
-                var response = await klient.PostAsync("dodobraz.php", form);
-                return response.Content.ReadAsStringAsync().Result;
+                //wysłanie żądania do konkretnego pliku php na serwerze
+                var response = await klient.PostAsync("dodobraz.php", form); 
+                return response.Content.ReadAsStringAsync().Result; //odpowiedź z serwera
             }
             catch
             {
@@ -241,5 +246,20 @@ namespace Artgram
             }
         }
 
+        private void textBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //funkcja, zeby po kliknieciu w boxa zniknęła zawartość
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= textBox_GotFocus;
+        }
+
+        private void textBox_Copy_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //funkcja, zeby po kliknieciu w boxa zniknęła zawartość
+            TextBox tb1 = (TextBox)sender;
+            tb1.Text = string.Empty;
+            tb1.GotFocus -= textBox_Copy_GotFocus;
+        }
     }
 }
