@@ -5,6 +5,8 @@ using Windows.UI.Xaml.Controls;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Collections.ObjectModel;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Media;
@@ -24,6 +26,7 @@ namespace Artgram
     {
         private StorageFile plik;
         private ulong maxFile = 2 * 1024 * 1024;
+        private ImageBrush obrazek = new ImageBrush();
 
         public Add()
         {
@@ -49,7 +52,8 @@ namespace Artgram
 
         private async void button_Accept_Click(object sender, RoutedEventArgs e)
         {
-            string link = "http://artgram.hostingpo.pl/dodawanie.php", odpowiedz, dane_obrazu;
+            string link = "http://artgram.hostingpo.pl/dodawanie.php", odpowiedz, odpowiedz1, dane_obrazu,
+                link1 = "http://artgram.hostingpo.pl";
 
             if(textBox.Text == "" || textBox_Copy.Text == "")
             {
@@ -84,28 +88,42 @@ namespace Artgram
 
                 if (textBlock.Text != "Wybierz kategorię.")
                 {
-                    dane_obrazu = JsonConvert.SerializeObject(Obraz);
-                    odpowiedz = await Wyslanie(link, dane_obrazu);
-
-                    //ta petla dziala jakos na odwrot, nie wiem dlaczego... 
-                    //źle porównuje stringi
-                    if (odpowiedz == "\tDodano\t")
+                    odpowiedz1 = await Wyslanie_obrazu(link1, plik);
+                    if(odpowiedz1 == "\tNie\t")
                     {
-                        textBlock.Text = "Obraz dodany.";
-                        textBox.Text = "Dodaj nazwę";
-                        textBox_Copy.Text = "Dodaj opis";
-                        comboBox.SelectedItem = "";
-
-                        var obrazek = new ImageBrush();
-                        var plik = new FileInfo("../Assets/Square44x44Logo.png");
-                        var uri = new Uri(plik.FullName);
-                        obrazek.ImageSource = new BitmapImage(uri);
-                        button.Background = obrazek;
+                        textBlock.Text = "Obraz nie został dodany.";
                     }
                     else
                     {
-                        textBlock.Text = "Błąd dodania obrazu do bazy.";
+                        //wysłanie danych, aby dodać nowy rekord do bazy danych
+                        Obraz.Sciezka_dostepu = odpowiedz1;
+                        dane_obrazu = JsonConvert.SerializeObject(Obraz);
+                        odpowiedz = await Wyslanie(link, dane_obrazu);
+
+                        if (odpowiedz == "\tDodano")
+                        {
+                            //przywrócenie pustego formularza
+                            textBlock.Text = "Obraz dodany.";
+                            textBox.Text = "Dodaj nazwę";
+                            textBox_Copy.Text = "Dodaj opis";
+                            comboBox.SelectedItem = "";
+
+                            var obrazek = new ImageBrush();
+                            var plik = new FileInfo("../Assets/Square44x44Logo.png");
+                            var uri = new Uri(plik.FullName);
+                            obrazek.ImageSource = new BitmapImage(uri);
+                            button.Background = obrazek;
+                        }
+                        else
+                        {
+                            textBlock.Text = "Błąd dodania do bazy";
+                        }
                     }
+                }
+                else
+                {
+                    //
+                    textBlock.Text = "Błąd systemu.";
                 }
             }
         }
@@ -141,6 +159,7 @@ namespace Artgram
 
                 img.SetSource(stream);
                 image.ImageSource = img;
+                obrazek = image;
                 button.Background = image;
             }
         }
@@ -173,6 +192,38 @@ namespace Artgram
             {
                 string responseServ = "Cos nie tak...";
                 return responseServ;
+            }
+        }
+
+        private async Task<string> Wyslanie_obrazu(string http, StorageFile plik1)
+        {
+            string zmienna;
+
+            try
+            {
+                HttpClient klient = new HttpClient();
+                klient.BaseAddress = new Uri(http);
+                MultipartFormDataContent form = new MultipartFormDataContent();
+
+                HttpContent content = new StringContent("fileUpload");
+                form.Add(content, "fileUpload");
+
+                var stream = await plik1.OpenStreamForReadAsync();
+                content = new StreamContent(stream);
+                content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "fileUpload",
+                    FileName = plik1.Name
+                };
+                form.Add(content);
+
+                var response = await klient.PostAsync("dodobraz.php", form);
+                return response.Content.ReadAsStringAsync().Result;
+            }
+            catch
+            {
+                zmienna = "Obraz nie został dodany";
+                return zmienna;
             }
         }
 
