@@ -25,7 +25,6 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.ApplicationModel.Core;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace Artgram
 {
     /// <summary>
@@ -36,33 +35,38 @@ namespace Artgram
     public sealed partial class MainPage : Page
     {
         //int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) :O
-        private string responseServer, url, zap,
-            link = "http://artgram.hostingpo.pl/login.php";
-            int gornyPrzedzial = 0, losowa = 0;
+        private string UrlRzezba, UrlMalarstwo, UrlRysunek, UrlTatuaze;
 
         public MainPage()
         {
             this.InitializeComponent();
-            //obekty do zapytan
 
             Zapytanie rzezba = new Zapytanie("2");
-            Zmiana_tla(rzezba);
+            UrlRzezba = Task.Run(() => Pobierz_url(rzezba).Result).Result;
+            button_Copy3.Background = Zmiana_tla(UrlRzezba);
+
             Zapytanie malarstwo = new Zapytanie("3");
-            Zmiana_tla(malarstwo);
+            UrlMalarstwo =Task.Run(() => Pobierz_url(malarstwo).Result).Result;
+            button_Copy4.Background = Zmiana_tla(UrlMalarstwo);
+
             Zapytanie rysunek = new Zapytanie("4");
-            Zmiana_tla(rysunek);
+            UrlRysunek = Task.Run(() => Pobierz_url(rysunek).Result).Result;
+            button_Copy5.Background = Zmiana_tla(UrlRysunek);
+
             Zapytanie tatuaze = new Zapytanie("5");
-            Zmiana_tla(tatuaze);  
-        
+            UrlTatuaze = Task.Run(() => Pobierz_url(tatuaze).Result).Result;
+            button_Copy6.Background = Zmiana_tla(UrlTatuaze);
         }
 
-        private async Task<string> Wyslanie(string rzezb, string zap)
+        private async Task<string> Wyslanie(string zap)
         {
+            string link = "http://artgram.hostingpo.pl/login.php";
+
             try
             {
                 string responseServ;
 
-                var request = (HttpWebRequest)WebRequest.Create(rzezb);
+                var request = (HttpWebRequest)WebRequest.Create(link);
                 request.ContentType = "application/json";
                 request.Method = "POST";
 
@@ -87,40 +91,36 @@ namespace Artgram
             }
         }
 
-        private async void Zmiana_tla(Zapytanie kat)
+        private async Task<string> Pobierz_url(Zapytanie kat)
         {
-            string kategoria = kat.ID_Kategorii;
-            zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
-            responseServer =  await Wyslanie(link, zap); //wysłanie danych do zapytania
-            List<Obraz> oKat = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
-            gornyPrzedzial = oKat.Count;  //pobieranie wielkosci List<Obraz>
-            Random random = new Random();
-            losowa = random.Next(0, gornyPrzedzial);
+            string url, responseServer, zap;
+            int gornyPrzedzial = 0, losowa = 0;
 
-            url = oKat[losowa].Sciezka_dostepu; //wyciągnięcie losowej ścieżki do obrazu
+            try
+            {
+                zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
+                responseServer = await Wyslanie(zap); //wysłanie danych do zapytania
+                List<Obraz> ListaObrazow = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
+                gornyPrzedzial = ListaObrazow.Count;  //pobieranie wielkosci List<Obraz>
+                Random random = new Random();
+                losowa = random.Next(0, gornyPrzedzial);
 
+                url = ListaObrazow[losowa].Sciezka_dostepu; //wyciągnięcie losowej ścieżki do obrazu
+                return url;
+            }
+            catch
+            {
+                return "Błąd w Pobierz_url()";
+            }
+        }
+
+        private ImageBrush Zmiana_tla(string url)
+        {           
             var uri = new Uri(url, UriKind.Absolute);
             var img = new ImageBrush();
             img.ImageSource = new BitmapImage(uri);
 
-            if(kategoria.Equals("2"))   // w zależności od kategorii, nadajemy tło odpowiednim buttonom
-            {
-                button_Copy3.Background = img;
-            }
-            else if(kategoria.Equals("3"))
-            {
-                button_Copy4.Background = img;
-            }
-            else if(kategoria.Equals("4"))
-            {
-                button_Copy5.Background = img;
-            }
-            else 
-            {
-                button_Copy6.Background = img;
-            }
-
-
+            return img;            
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -130,7 +130,7 @@ namespace Artgram
 
         private void button_Add_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Add), "Wyslanie(link, zap)");
+            this.Frame.Navigate(typeof(Add));
         }
 
         private void button_Copy_Click(object sender, RoutedEventArgs e)
@@ -150,22 +150,26 @@ namespace Artgram
 
         private void button_Copy3_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View));
+            string[] Lista = { UrlRzezba, "2" };
+            this.Frame.Navigate(typeof(View), Lista);
         }
 
         private void button_Copy4_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View));
+            string[] Lista = { UrlMalarstwo, "3" };
+            this.Frame.Navigate(typeof(View), Lista);
         }
 
         private void button_Copy5_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View));
+            string[] Lista = { UrlRysunek, "4" };
+            this.Frame.Navigate(typeof(View), Lista);
         }
 
         private void button_Copy6_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View));
+            string[] Lista = { UrlTatuaze, "5" };
+            this.Frame.Navigate(typeof(View), Lista);
         }
 
         private void button_Logo_Click(object sender, RoutedEventArgs e)
@@ -173,28 +177,6 @@ namespace Artgram
             this.Frame.Navigate(typeof(MainPage));
         }
 
-        private class Zapytanie
-        {
-            public string ID_Kategorii;
-
-            public Zapytanie(string ID_Kategorii)
-            {
-                this.ID_Kategorii = ID_Kategorii;
-            }
-        }
-
-        private class Obraz
-        {
-            public string Nazwa_obrazu, Sciezka_dostepu, Liczba_WOW;
-
-            public Obraz(string Nazwa_obrazu, string Sciezka_dostepu, string Liczba_WOW)
-            {
-                this.Nazwa_obrazu = Nazwa_obrazu;
-                this.Sciezka_dostepu = Sciezka_dostepu;
-                this.Liczba_WOW = Liczba_WOW;
-            }
-            
-        }
-                
     }
 }
+

@@ -60,7 +60,6 @@
         <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Height="29" Margin="474,580,0,0" TextWrapping="Wrap" Text="Malarstwo" VerticalAlignment="Top" Width="93" FontSize="18.667"/>
         <TextBlock x:Name="textBlock_Copy7" HorizontalAlignment="Left" Height="29" Margin="146,580,0,0" TextWrapping="Wrap" Text="Rzeźbiarstwo" VerticalAlignment="Top" Width="115" FontSize="18.667"/>
         <local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Width="1280"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="496,172,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top"/>
         <!-- <fbsdk:FBLoginButton x:Name="Login" HorizontalAlignment="Left" Margin="1030,90,0,0" VerticalAlignment="Top" Height="50" Width="157" Click="Login_Click"/> -->
 
     </Grid>
