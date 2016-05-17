@@ -24,6 +24,7 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="Background" />
       <RootProperty Name="Content" />
+      <RootProperty Name="IsEnabled" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="Click" />

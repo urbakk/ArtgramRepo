@@ -1511,3 +1511,13 @@ C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_Szukaj.xam
 C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_View_Szukaj.xaml
 C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_Szukaj.xbf
 C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_View_Szukaj.xbf
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\v_Szukaj.xbf
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\v_View_Szukaj.xbf
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_Szukaj.g.i.cs
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_Szukaj.g.cs
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_View_Szukaj.g.i.cs
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_View_Szukaj.g.cs
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_Szukaj.xaml
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_View_Szukaj.xaml
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_Szukaj.xbf
+C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_View_Szukaj.xbf
