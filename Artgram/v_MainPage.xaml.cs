@@ -35,32 +35,40 @@ namespace Artgram
     public sealed partial class MainPage : Page
     {
         //int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) :O
-        private string UrlRzezba, UrlMalarstwo, UrlRysunek, UrlTatuaze;
+        private string UrlRzezba, UrlMalarstwo, UrlRysunek, UrlTatuaze, UrlNajpopularniejsze, UrlNowe,
+            link = "http://artgram.hostingpo.pl/login.php",
+            linkNajpopularniejsze = "http://artgram.hostingpo.pl/najpopularniejsze.php",
+            linkNowe = "http://artgram.hostingpo.pl/nowe.php";
 
         public MainPage()
         {
             this.InitializeComponent();
 
             Zapytanie rzezba = new Zapytanie("2");
-            UrlRzezba = Task.Run(() => Pobierz_url(rzezba).Result).Result;
+            UrlRzezba = Task.Run(() => Pobierz_url(link, rzezba).Result).Result;
             button_Copy3.Background = Zmiana_tla(UrlRzezba);
 
             Zapytanie malarstwo = new Zapytanie("3");
-            UrlMalarstwo =Task.Run(() => Pobierz_url(malarstwo).Result).Result;
+            UrlMalarstwo =Task.Run(() => Pobierz_url(link, malarstwo).Result).Result;
             button_Copy4.Background = Zmiana_tla(UrlMalarstwo);
 
             Zapytanie rysunek = new Zapytanie("4");
-            UrlRysunek = Task.Run(() => Pobierz_url(rysunek).Result).Result;
+            UrlRysunek = Task.Run(() => Pobierz_url(link, rysunek).Result).Result;
             button_Copy5.Background = Zmiana_tla(UrlRysunek);
 
             Zapytanie tatuaze = new Zapytanie("5");
-            UrlTatuaze = Task.Run(() => Pobierz_url(tatuaze).Result).Result;
+            UrlTatuaze = Task.Run(() => Pobierz_url(link, tatuaze).Result).Result;
             button_Copy6.Background = Zmiana_tla(UrlTatuaze);
+
+            UrlNajpopularniejsze = Task.Run(() => Pobierz_url(linkNajpopularniejsze, tatuaze).Result).Result;  //Pobierz_url(linkNajpopularniejsze, tatuaze)- tatuaze nie są wykorzystywane, ale coś musialam przeslac zeby zadzialalo
+            button.Background = Zmiana_tla(UrlNajpopularniejsze);
+
+            UrlNowe = Task.Run(() => Pobierz_url(linkNowe, tatuaze).Result).Result;  // Pobierz_url(linkNowe, tatuaze)- tatuaze nie są wykorzystywane, ale coś musialam przeslac zeby zadzialalo
+            button_Copy.Background = Zmiana_tla(UrlNowe);
         }
 
-        private async Task<string> Wyslanie(string zap)
-        {
-            string link = "http://artgram.hostingpo.pl/login.php";
+        private async Task<string> Wyslanie(string link, string zap)
+        {           
 
             try
             {
@@ -91,7 +99,7 @@ namespace Artgram
             }
         }
 
-        private async Task<string> Pobierz_url(Zapytanie kat)
+        private async Task<string> Pobierz_url(string link, Zapytanie kat)
         {
             string url, responseServer, zap;
             int gornyPrzedzial = 0, losowa = 0;
@@ -99,7 +107,7 @@ namespace Artgram
             try
             {
                 zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
-                responseServer = await Wyslanie(zap); //wysłanie danych do zapytania
+                responseServer = await Wyslanie(link, zap); //wysłanie danych do zapytania
                 List<Obraz> ListaObrazow = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
                 gornyPrzedzial = ListaObrazow.Count;  //pobieranie wielkosci List<Obraz>
                 Random random = new Random();
@@ -122,10 +130,11 @@ namespace Artgram
 
             return img;            
         }
-
-        private void button_Click(object sender, RoutedEventArgs e)
+        
+        private void button_Click(object sender, RoutedEventArgs e) //Najpopularniejsze
         {
-            this.Frame.Navigate(typeof(View));
+            string[] Lista = { UrlNajpopularniejsze, "najpopularniejsze" };
+            this.Frame.Navigate(typeof(View), Lista);
         }
 
         private void button_Add_Click(object sender, RoutedEventArgs e)
@@ -133,9 +142,10 @@ namespace Artgram
             this.Frame.Navigate(typeof(Add));
         }
 
-        private void button_Copy_Click(object sender, RoutedEventArgs e)
+        private void button_Copy_Click(object sender, RoutedEventArgs e) //Nowe
         {
-            this.Frame.Navigate(typeof(View));
+            string[] Lista = { UrlNowe, "nowe" };
+            this.Frame.Navigate(typeof(View), Lista);
         }
 
         private void button_Copy1_Click(object sender, RoutedEventArgs e)
