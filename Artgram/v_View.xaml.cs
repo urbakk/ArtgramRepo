@@ -25,7 +25,10 @@ namespace Artgram
     /// </summary>
     public sealed partial class View : Page
     {
-        string UrlObrazka, IdKategorii;
+        string UrlObrazka, IdKategorii,
+            link = "http://artgram.hostingpo.pl/login.php",
+            linkNajpopularniejsze = "http://artgram.hostingpo.pl/najpopularniejsze.php",
+            linkNowe = "http://artgram.hostingpo.pl/nowe.php";
         int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
         List<Obraz> ListaObrazow = new List<Obraz>();
 
@@ -129,32 +132,82 @@ namespace Artgram
             UrlObrazka = Parametry[0];
             IdKategorii = Parametry[1];
 
-            Zapytanie zapytanie = new Zapytanie(IdKategorii);
-            ListaObrazow = Task.Run(() => Pobierz_obrazy(zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
-            gornyPrzedzial = ListaObrazow.Count();
-                                   
-            while(licznik < gornyPrzedzial)
+            if (!IdKategorii.Equals("najpopularniejsze") && !IdKategorii.Equals("nowe"))
             {
-                if(ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
-                {
-                    licznikNastepne = licznik + 1;
-                    licznikPoprzednie = licznik;
-                    if(licznikNastepne == gornyPrzedzial)
-                    {
-                        licznikNastepne = 0;
-                    }
-                    UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
-                    UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
-                    break;
-                }
+                Zapytanie zapytanie = new Zapytanie(IdKategorii);
+                ListaObrazow = Task.Run(() => Pobierz_obrazy(link, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
+                gornyPrzedzial = ListaObrazow.Count();
 
-                licznik++;
+                while (licznik < gornyPrzedzial)
+                {
+                    if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                    {
+                        licznikNastepne = licznik + 1;
+                        licznikPoprzednie = licznik;
+                        if (licznikNastepne == gornyPrzedzial)
+                        {
+                            licznikNastepne = 0;
+                        }
+                        UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                        UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                        break;
+                    }
+
+                    licznik++;
+                }
+            }
+            else if (IdKategorii.Equals("najpopularniejsze")) 
+            {
+                Zapytanie zapytanie = new Zapytanie("1");  //liczba w tym przypadku nie ma znaczenia, ale musi być
+                ListaObrazow = Task.Run(() => Pobierz_obrazy(linkNajpopularniejsze, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
+                gornyPrzedzial = ListaObrazow.Count();
+
+                while (licznik < gornyPrzedzial)
+                {
+                    if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                    {
+                        licznikNastepne = licznik + 1;
+                        licznikPoprzednie = licznik;
+                        if (licznikNastepne == gornyPrzedzial)
+                        {
+                            licznikNastepne = 0;
+                        }
+                        UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                        UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                        break;
+                    }
+
+                    licznik++;
+                }
+            }
+            else
+            {
+                Zapytanie zapytanie = new Zapytanie("1");  //liczba w tym przypadku nie ma znaczenia, ale musi być
+                ListaObrazow = Task.Run(() => Pobierz_obrazy(linkNowe, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
+                gornyPrzedzial = ListaObrazow.Count();
+
+                while (licznik < gornyPrzedzial)
+                {
+                    if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                    {
+                        licznikNastepne = licznik + 1;
+                        licznikPoprzednie = licznik;
+                        if (licznikNastepne == gornyPrzedzial)
+                        {
+                            licznikNastepne = 0;
+                        }
+                        UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                        UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                        break;
+                    }
+
+                    licznik++;
+                }
             }
         }
 
-        private async Task<string> Wyslanie(string zap)
-        {
-            string link = "http://artgram.hostingpo.pl/login.php";
+        private async Task<string> Wyslanie(string link, string zap)
+        {            
 
             try
             {
@@ -185,13 +238,13 @@ namespace Artgram
             }
         }
 
-        private async Task<List<Obraz>> Pobierz_obrazy(Zapytanie kat)
+        private async Task<List<Obraz>> Pobierz_obrazy(string link, Zapytanie kat)
         {
             string responseServer, zap;
             try
             {
                 zap = JsonConvert.SerializeObject(kat); //konwerter do JSONa
-                responseServer = await Wyslanie(zap); //wysłanie danych do zapytania
+                responseServer = await Wyslanie(link, zap); //wysłanie danych do zapytania
                 List<Obraz> ListaObrazow = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
                 return ListaObrazow;
             }
@@ -200,7 +253,7 @@ namespace Artgram
                 return null;
             }
         }
-
+                
         private void UstawObraz(Obraz obraz, string ktore)
         {
             string url;
