@@ -28,9 +28,30 @@ namespace Artgram
         string UrlObrazka, IdKategorii,
             link = "http://artgram.hostingpo.pl/login.php",
             linkNajpopularniejsze = "http://artgram.hostingpo.pl/najpopularniejsze.php",
-            linkNowe = "http://artgram.hostingpo.pl/nowe.php";
+            linkNowe = "http://artgram.hostingpo.pl/nowe.php",
+            linkWOW = "http://artgram.hostingpo.pl/zwieksz_wow.php",
+            linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php";
         int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
         List<Obraz> ListaObrazow = new List<Obraz>();
+
+        private async void button_Wow_Click(object sender, RoutedEventArgs e)
+        {
+            AppBar ap1 = new AppBar(); //potrzebne do uzyskania ID_Uzytkownika
+
+            int liczba_wow = 0;
+            string dane_polubienia, odpowiedz;
+            string ID_Obrazu = textBlock_ID_Obrazu.Text;
+
+            Int32.TryParse(textBlock_WOW.Text, out liczba_wow); //potrzebna konwersja
+            liczba_wow += 1;
+            textBlock_WOW.Text = liczba_wow.ToString();     //aktualizacja liczby wow
+
+            Dane_WOW obiekt_wow = new Dane_WOW(ap1.Wyslij_ID_Uz(), ID_Obrazu);
+            dane_polubienia = JsonConvert.SerializeObject(obiekt_wow);
+            odpowiedz = await Wyslanie(linkWOW, dane_polubienia);
+            odpowiedz = await Wyslanie(linkWOW_2, dane_polubienia);
+
+        }
 
         private void button1_Click(object sender, RoutedEventArgs e) //Poprzedni obraz
         {
@@ -268,6 +289,8 @@ namespace Artgram
                 button.Background = img;
                 textBlock_nazwa.Text = obraz.Nazwa_obrazu;
                 textBlock_WOW.Text = obraz.Liczba_WOW;
+                textBlock_ID_Obrazu.Text = obraz.ID_Obrazu.ToString();
+
                 if (obraz.Opis_obrazu == null)
                 {
                     textBlock_opis.Text = "Autor nie dodał opisu";
@@ -292,6 +315,17 @@ namespace Artgram
                 var img = new ImageBrush();
                 img.ImageSource = new BitmapImage(uri);
                 button1.Background = img;
+            }
+        }
+
+        private class Dane_WOW
+        {
+            public string ID_Uzytkownicy, ID_Obrazu;
+
+            public Dane_WOW(string ID_Uzytkownicy, string ID_Obrazu)
+            {
+                this.ID_Uzytkownicy = ID_Uzytkownicy;
+                this.ID_Obrazu = ID_Obrazu;
             }
         }
 
