@@ -35,10 +35,12 @@ namespace Artgram
     public sealed partial class MainPage : Page
     {
         //int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) :O
-        private string UrlRzezba, UrlMalarstwo, UrlRysunek, UrlTatuaze, UrlNajpopularniejsze, UrlNowe,
+        private string UrlRzezba, UrlMalarstwo, UrlRysunek, UrlTatuaze, UrlNajpopularniejsze, UrlNowe, ID_uzytkownika,
             link = "http://artgram.hostingpo.pl/login.php",
             linkNajpopularniejsze = "http://artgram.hostingpo.pl/najpopularniejsze.php",
             linkNowe = "http://artgram.hostingpo.pl/nowe.php";
+
+        AppBar ap1 = new AppBar();
 
         public MainPage()
         {
@@ -46,10 +48,17 @@ namespace Artgram
 
             Zapytanie rzezba = new Zapytanie("2");
             UrlRzezba = Task.Run(() => Pobierz_url(link, rzezba).Result).Result;
-            button_Copy3.Background = Zmiana_tla(UrlRzezba);
+            if(UrlRzezba == null)
+            {
+                Obsluga_bledu();
+            }
+            else
+            {
+                button_Copy3.Background = Zmiana_tla(UrlRzezba);
+            }           
 
             Zapytanie malarstwo = new Zapytanie("3");
-            UrlMalarstwo =Task.Run(() => Pobierz_url(link, malarstwo).Result).Result;
+            UrlMalarstwo = Task.Run(() => Pobierz_url(link, malarstwo).Result).Result;
             button_Copy4.Background = Zmiana_tla(UrlMalarstwo);
 
             Zapytanie rysunek = new Zapytanie("4");
@@ -65,10 +74,22 @@ namespace Artgram
 
             UrlNowe = Task.Run(() => Pobierz_url(linkNowe, tatuaze).Result).Result;  // Pobierz_url(linkNowe, tatuaze)- tatuaze nie są wykorzystywane, ale coś musialam przeslac zeby zadzialalo
             button_Copy.Background = Zmiana_tla(UrlNowe);
+
+            ID_uzytkownika = ap1.Wyslij_ID_Uz();
+            if (ID_uzytkownika != null)
+            {
+                button_Copy1.IsEnabled = true;
+                button_Copy2.IsEnabled = true;
+            }
+            else
+            {
+                button_Copy1.IsEnabled = false;
+                button_Copy2.IsEnabled = false;
+            }
         }
 
         private async Task<string> Wyslanie(string link, string zap)
-        {           
+        {
 
             try
             {
@@ -118,19 +139,49 @@ namespace Artgram
             }
             catch
             {
-                return "Błąd w Pobierz_url()";
+                return null;
             }
         }
 
         private ImageBrush Zmiana_tla(string url)
-        {           
-            var uri = new Uri(url, UriKind.Absolute);
-            var img = new ImageBrush();
-            img.ImageSource = new BitmapImage(uri);
+        {
+            if(url == null)
+            {
+                return null;
+            }
+            else
+            {
+                var uri = new Uri(url, UriKind.Absolute);
+                var img = new ImageBrush();
+                img.ImageSource = new BitmapImage(uri);
 
-            return img;            
+                return img;
+            }           
         }
-        
+
+        private void Obsluga_bledu()
+        {
+            button.Visibility = Visibility.Collapsed;
+            button_Copy.Visibility = Visibility.Collapsed;
+            button_Copy1.Visibility = Visibility.Collapsed;
+            button_Copy2.Visibility = Visibility.Collapsed;
+            button_Copy3.Visibility = Visibility.Collapsed;
+            button_Copy4.Visibility = Visibility.Collapsed;
+            button_Copy5.Visibility = Visibility.Collapsed;
+            button_Copy6.Visibility = Visibility.Collapsed;
+
+            textBlock_Copy.Visibility = Visibility.Collapsed;
+            textBlock_Copy1.Visibility = Visibility.Collapsed;
+            textBlock_Copy2.Visibility = Visibility.Collapsed;
+            textBlock_Copy3.Visibility = Visibility.Collapsed;
+            textBlock_Copy4.Visibility = Visibility.Collapsed;
+            textBlock_Copy5.Visibility = Visibility.Collapsed;
+            textBlock_Copy6.Visibility = Visibility.Collapsed;
+            textBlock_Copy7.Visibility = Visibility.Collapsed;
+
+            textBlock_Blad.Visibility = Visibility.Visible;
+        }
+
         private void button_Click(object sender, RoutedEventArgs e) //Najpopularniejsze
         {
             string[] Lista = { UrlNajpopularniejsze, "najpopularniejsze" };
@@ -155,7 +206,7 @@ namespace Artgram
 
         private void button_Copy2_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View));
+            this.Frame.Navigate(typeof(v_Szukaj), "Moje obrazy");
         }
 
         private void button_Copy3_Click(object sender, RoutedEventArgs e)
