@@ -28,25 +28,28 @@ namespace Artgram
     {
         List<Obraz> ListaObrazow = new List<Obraz>();
         int gornyPrzedzial, licznik = 0, obraz0, obraz1, obraz2, obraz3;
-        string Nazwa_obrazu;
+        string Nazwa_obrazu, Pomocnicza_nazwa_obrazu;
         AppBar ap1 = new AppBar();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Nazwa_obrazu = e.Parameter as string;
+            Pomocnicza_nazwa_obrazu = Nazwa_obrazu;
             if (Nazwa_obrazu.Equals("Moje obrazy"))
             {
-                // string ID_Uzytkownicy = ap1.Wyslij_ID_Uz();
+                string ID_Uzytkownicy = ap1.Wyslij_ID_Uz();
+                textBlock_Uwaga.Visibility = Visibility.Visible;
+                textBlock_Uwaga.Text = ID_Uzytkownicy;
                 Szukaj_moje szukaj_moje = new Szukaj_moje("1");
                 ListaObrazow = Task.Run(() => Pobierz_moje_obrazy(szukaj_moje).Result).Result;
                 gornyPrzedzial = ListaObrazow.Count();
             }
             else
             {
-                Nazwa_obrazu = Nazwa_obrazu.Remove(0, 6);
-                textBlock_Szukaj.Text = textBlock_Szukaj.Text + Nazwa_obrazu;
+                Pomocnicza_nazwa_obrazu = Pomocnicza_nazwa_obrazu.Remove(0, 6);
+                textBlock_Szukaj.Text = textBlock_Szukaj.Text + Pomocnicza_nazwa_obrazu;
 
-                Szukaj szukaj = new Szukaj(Nazwa_obrazu);
+                Szukaj szukaj = new Szukaj(Pomocnicza_nazwa_obrazu);
                 ListaObrazow = Task.Run(() => Pobierz_obrazy(szukaj).Result).Result;
                 gornyPrzedzial = ListaObrazow.Count();
             }
@@ -248,26 +251,58 @@ namespace Artgram
 
         private void button0_Click(object sender, RoutedEventArgs e)
         {
-            string[] lista = { ListaObrazow[obraz0].Nazwa_obrazu, ListaObrazow[obraz0].Opis_obrazu, ListaObrazow[obraz0].Liczba_WOW, ListaObrazow[obraz0].Sciezka_dostepu, Nazwa_obrazu };
-            this.Frame.Navigate(typeof(v_View_Szukaj), lista);
+            if (Nazwa_obrazu.Equals("Moje obrazy"))
+            {
+                string[] lista = { ListaObrazow[obraz0].Nazwa_obrazu, ListaObrazow[obraz0].Opis_obrazu, ListaObrazow[obraz0].Liczba_WOW, ListaObrazow[obraz0].Sciezka_dostepu, Nazwa_obrazu };
+                this.Frame.Navigate(typeof(v_Edycja), lista);
+            }
+            else
+            {
+                string[] lista = { ListaObrazow[obraz0].Nazwa_obrazu, ListaObrazow[obraz0].Opis_obrazu, ListaObrazow[obraz0].Liczba_WOW, ListaObrazow[obraz0].Sciezka_dostepu, Nazwa_obrazu };
+                this.Frame.Navigate(typeof(v_View_Szukaj), lista);
+            }                
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            string[] lista = { ListaObrazow[obraz1].Nazwa_obrazu, ListaObrazow[obraz1].Opis_obrazu, ListaObrazow[obraz1].Liczba_WOW, ListaObrazow[obraz1].Sciezka_dostepu, Nazwa_obrazu };
-            this.Frame.Navigate(typeof(v_View_Szukaj), lista);
+            if (Nazwa_obrazu.Equals("Moje obrazy"))
+            {
+                string[] lista = { ListaObrazow[obraz1].Nazwa_obrazu, ListaObrazow[obraz1].Opis_obrazu, ListaObrazow[obraz1].Liczba_WOW, ListaObrazow[obraz1].Sciezka_dostepu, Nazwa_obrazu };
+                this.Frame.Navigate(typeof(v_Edycja), lista);
+            }
+            else
+            {
+                string[] lista = { ListaObrazow[obraz1].Nazwa_obrazu, ListaObrazow[obraz1].Opis_obrazu, ListaObrazow[obraz1].Liczba_WOW, ListaObrazow[obraz1].Sciezka_dostepu, Nazwa_obrazu };
+                this.Frame.Navigate(typeof(v_View_Szukaj), lista);
+            }            
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            string[] lista = { ListaObrazow[obraz2].Nazwa_obrazu, ListaObrazow[obraz2].Opis_obrazu, ListaObrazow[obraz2].Liczba_WOW, ListaObrazow[obraz2].Sciezka_dostepu, Nazwa_obrazu };
-            this.Frame.Navigate(typeof(v_View_Szukaj), lista);
+            if (Nazwa_obrazu.Equals("Moje obrazy"))
+            {
+                string[] lista = { ListaObrazow[obraz2].Nazwa_obrazu, ListaObrazow[obraz2].Opis_obrazu, ListaObrazow[obraz2].Liczba_WOW, ListaObrazow[obraz2].Sciezka_dostepu, Nazwa_obrazu };
+                this.Frame.Navigate(typeof(v_Edycja), lista);
+            }
+            else
+            {
+                string[] lista = { ListaObrazow[obraz2].Nazwa_obrazu, ListaObrazow[obraz2].Opis_obrazu, ListaObrazow[obraz2].Liczba_WOW, ListaObrazow[obraz2].Sciezka_dostepu, Nazwa_obrazu };
+                this.Frame.Navigate(typeof(v_View_Szukaj), lista);
+            }
         }
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-            string[] lista = { ListaObrazow[obraz3].Nazwa_obrazu, ListaObrazow[obraz3].Opis_obrazu, ListaObrazow[obraz3].Liczba_WOW, ListaObrazow[obraz3].Sciezka_dostepu, Nazwa_obrazu };
-            this.Frame.Navigate(typeof(v_View_Szukaj), lista);
+            if (Nazwa_obrazu.Equals("Moje obrazy"))
+            {
+                string[] lista = { ListaObrazow[obraz3].Nazwa_obrazu, ListaObrazow[obraz3].Opis_obrazu, ListaObrazow[obraz3].Liczba_WOW, ListaObrazow[obraz3].Sciezka_dostepu, Nazwa_obrazu };
+                this.Frame.Navigate(typeof(v_Edycja), lista);
+            }
+            else
+            {
+                string[] lista = { ListaObrazow[obraz3].Nazwa_obrazu, ListaObrazow[obraz3].Opis_obrazu, ListaObrazow[obraz3].Liczba_WOW, ListaObrazow[obraz3].Sciezka_dostepu, Nazwa_obrazu };
+                this.Frame.Navigate(typeof(v_View_Szukaj), lista);
+            }
         }
 
         public v_Szukaj()

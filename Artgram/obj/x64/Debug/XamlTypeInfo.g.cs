@@ -156,7 +156,7 @@ namespace Artgram.Artgram_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[14];
+            _typeNameTable = new string[15];
             _typeNameTable[0] = "winsdkfb.ProfilePictureControl";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.UserControl";
             _typeNameTable[2] = "winsdkfb.CroppingType";
@@ -165,14 +165,15 @@ namespace Artgram.Artgram_XamlTypeInfo
             _typeNameTable[5] = "Object";
             _typeNameTable[6] = "String";
             _typeNameTable[7] = "Artgram.AppBar";
-            _typeNameTable[8] = "Artgram.v_Szukaj";
+            _typeNameTable[8] = "Artgram.v_Edycja";
             _typeNameTable[9] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[10] = "Artgram.View";
-            _typeNameTable[11] = "Artgram.Add";
-            _typeNameTable[12] = "Artgram.MainPage";
-            _typeNameTable[13] = "Artgram.v_View_Szukaj";
+            _typeNameTable[10] = "Artgram.v_Szukaj";
+            _typeNameTable[11] = "Artgram.View";
+            _typeNameTable[12] = "Artgram.Add";
+            _typeNameTable[13] = "Artgram.MainPage";
+            _typeNameTable[14] = "Artgram.v_View_Szukaj";
 
-            _typeTable = new global::System.Type[14];
+            _typeTable = new global::System.Type[15];
             _typeTable[0] = typeof(global::winsdkfb.ProfilePictureControl);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
             _typeTable[2] = typeof(global::winsdkfb.CroppingType);
@@ -181,12 +182,13 @@ namespace Artgram.Artgram_XamlTypeInfo
             _typeTable[5] = typeof(global::System.Object);
             _typeTable[6] = typeof(global::System.String);
             _typeTable[7] = typeof(global::Artgram.AppBar);
-            _typeTable[8] = typeof(global::Artgram.v_Szukaj);
+            _typeTable[8] = typeof(global::Artgram.v_Edycja);
             _typeTable[9] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[10] = typeof(global::Artgram.View);
-            _typeTable[11] = typeof(global::Artgram.Add);
-            _typeTable[12] = typeof(global::Artgram.MainPage);
-            _typeTable[13] = typeof(global::Artgram.v_View_Szukaj);
+            _typeTable[10] = typeof(global::Artgram.v_Szukaj);
+            _typeTable[11] = typeof(global::Artgram.View);
+            _typeTable[12] = typeof(global::Artgram.Add);
+            _typeTable[13] = typeof(global::Artgram.MainPage);
+            _typeTable[14] = typeof(global::Artgram.v_View_Szukaj);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -223,11 +225,12 @@ namespace Artgram.Artgram_XamlTypeInfo
 
         private object Activate_0_ProfilePictureControl() { return new global::winsdkfb.ProfilePictureControl(); }
         private object Activate_7_AppBar() { return new global::Artgram.AppBar(); }
-        private object Activate_8_v_Szukaj() { return new global::Artgram.v_Szukaj(); }
-        private object Activate_10_View() { return new global::Artgram.View(); }
-        private object Activate_11_Add() { return new global::Artgram.Add(); }
-        private object Activate_12_MainPage() { return new global::Artgram.MainPage(); }
-        private object Activate_13_v_View_Szukaj() { return new global::Artgram.v_View_Szukaj(); }
+        private object Activate_8_v_Edycja() { return new global::Artgram.v_Edycja(); }
+        private object Activate_10_v_Szukaj() { return new global::Artgram.v_Szukaj(); }
+        private object Activate_11_View() { return new global::Artgram.View(); }
+        private object Activate_12_Add() { return new global::Artgram.Add(); }
+        private object Activate_13_MainPage() { return new global::Artgram.MainPage(); }
+        private object Activate_14_v_View_Szukaj() { return new global::Artgram.v_View_Szukaj(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -283,9 +286,9 @@ namespace Artgram.Artgram_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 8:   //  Artgram.v_Szukaj
+            case 8:   //  Artgram.v_Edycja
                 userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_8_v_Szukaj;
+                userType.Activator = Activate_8_v_Edycja;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -294,30 +297,37 @@ namespace Artgram.Artgram_XamlTypeInfo
                 xamlType = new global::Artgram.Artgram_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 10:   //  Artgram.View
+            case 10:   //  Artgram.v_Szukaj
                 userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_10_View;
+                userType.Activator = Activate_10_v_Szukaj;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 11:   //  Artgram.Add
+            case 11:   //  Artgram.View
                 userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_11_Add;
+                userType.Activator = Activate_11_View;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 12:   //  Artgram.MainPage
+            case 12:   //  Artgram.Add
                 userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_12_MainPage;
+                userType.Activator = Activate_12_Add;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 13:   //  Artgram.v_View_Szukaj
+            case 13:   //  Artgram.MainPage
                 userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_13_v_View_Szukaj;
+                userType.Activator = Activate_13_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 14:   //  Artgram.v_View_Szukaj
+                userType = new global::Artgram.Artgram_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_14_v_View_Szukaj;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
