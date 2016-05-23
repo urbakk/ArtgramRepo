@@ -25,7 +25,7 @@ namespace Artgram
     public sealed partial class Add : Page
     {
         private StorageFile plik;
-        private ulong maxFile = 2 * 1024 * 1024;
+        private ulong maxFile = 500 * 1024;
         private ImageBrush obrazek = new ImageBrush();
 
         AppBar ap1 = new AppBar(); //potrzebne do uzyskania ID_Uzytkownika
