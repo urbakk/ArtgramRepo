@@ -29,22 +29,35 @@ namespace Artgram
         List<Obraz> ListaObrazow = new List<Obraz>();
         int gornyPrzedzial, licznik = 0, obraz0, obraz1, obraz2, obraz3;
         string Nazwa_obrazu;
+        AppBar ap1 = new AppBar();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Nazwa_obrazu = e.Parameter as string;
-            textBlock_Szukaj.Text = textBlock_Szukaj.Text + Nazwa_obrazu;
+            if (Nazwa_obrazu.Equals("Moje obrazy"))
+            {
+                // string ID_Uzytkownicy = ap1.Wyslij_ID_Uz();
+                Szukaj_moje szukaj_moje = new Szukaj_moje("1");
+                ListaObrazow = Task.Run(() => Pobierz_moje_obrazy(szukaj_moje).Result).Result;
+                gornyPrzedzial = ListaObrazow.Count();
+            }
+            else
+            {
+                Nazwa_obrazu = Nazwa_obrazu.Remove(0, 6);
+                textBlock_Szukaj.Text = textBlock_Szukaj.Text + Nazwa_obrazu;
 
-            Szukaj szukaj = new Szukaj(Nazwa_obrazu);
-            ListaObrazow = Task.Run(() => Pobierz_obrazy(szukaj).Result).Result;
-            gornyPrzedzial = ListaObrazow.Count();
-                      
-            if(gornyPrzedzial == 0)
+                Szukaj szukaj = new Szukaj(Nazwa_obrazu);
+                ListaObrazow = Task.Run(() => Pobierz_obrazy(szukaj).Result).Result;
+                gornyPrzedzial = ListaObrazow.Count();
+            }
+
+
+            if (gornyPrzedzial == 0)
             {
                 textBlock_Uwaga.Visibility = Visibility.Visible;
                 textBlock_Uwaga.Text = "Nie znaleziono wyników";
             }
-            else 
+            else
             {
                 obraz0 = licznik;                    //obraz0, obraz1.. potrzebne do przeslania numeru zdjecia do wyswietlenia jeg widoku
                 UstawObraz(licznik, 0);              //Ustawi obraz na pierwszej pozycji
@@ -63,12 +76,12 @@ namespace Artgram
                 {
                     button_Dalej.Visibility = Visibility.Visible;
                 }
-            }                    
+            }
         }
 
-        private async Task<string> Wyslanie(string zap)
+        private async Task<string> Wyslanie(string link, string zap)
         {
-            string link = "http://artgram.hostingpo.pl/szukaj.php";
+
 
             try
             {
@@ -101,11 +114,27 @@ namespace Artgram
 
         private async Task<List<Obraz>> Pobierz_obrazy(Szukaj nazwa)
         {
-            string responseServer, zap;
+            string responseServer, zap, link = "http://artgram.hostingpo.pl/szukaj.php"; ;
             try
             {
                 zap = JsonConvert.SerializeObject(nazwa); //konwerter do JSONa
-                responseServer = await Wyslanie(zap); //wysłanie danych do zapytania
+                responseServer = await Wyslanie(link, zap); //wysłanie danych do zapytania
+                List<Obraz> ListaObrazow = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
+                return ListaObrazow;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private async Task<List<Obraz>> Pobierz_moje_obrazy(Szukaj_moje nazwa)
+        {
+            string responseServer, zap, link = "http://artgram.hostingpo.pl/moje_obrazy.php";
+            try
+            {
+                zap = JsonConvert.SerializeObject(nazwa); //konwerter do JSONa
+                responseServer = await Wyslanie(link, zap); //wysłanie danych do zapytania
                 List<Obraz> ListaObrazow = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
                 return ListaObrazow;
             }
@@ -123,18 +152,18 @@ namespace Artgram
             var uri = new Uri(url, UriKind.Absolute);
             var img = new ImageBrush();
             img.ImageSource = new BitmapImage(uri);
-            return img;                            
+            return img;
         }
 
         private void UstawObraz(int licznik, int miejsce)
         {
-            if(miejsce == 0)
+            if (miejsce == 0)
             {
                 button0.Visibility = Visibility.Visible;
                 textBlock0.Visibility = Visibility.Visible;
                 button0.Background = PobierzObraz(ListaObrazow[licznik]);
                 textBlock0.Text = ListaObrazow[licznik].Nazwa_obrazu;
-            }            
+            }
 
             if (licznik < gornyPrzedzial && miejsce == 1)
             {
@@ -160,7 +189,7 @@ namespace Artgram
                 textBlock3.Text = ListaObrazow[licznik].Nazwa_obrazu;
             }
 
-            
+
         }
 
         private void button_Dalej_Click(object sender, RoutedEventArgs e)
@@ -188,6 +217,11 @@ namespace Artgram
             obraz3 = licznik;
             UstawObraz(licznik, 3);
             licznik++;
+
+            if (licznik < gornyPrzedzial)
+            {
+                button_Dalej.Visibility = Visibility.Visible;
+            }
         }
 
         private void button_Cofnij_Click(object sender, RoutedEventArgs e)
@@ -210,7 +244,7 @@ namespace Artgram
             UstawObraz(licznik, 3);
             licznik++;
             button_Dalej.Visibility = Visibility.Visible;
-        }               
+        }
 
         private void button0_Click(object sender, RoutedEventArgs e)
         {
@@ -220,7 +254,7 @@ namespace Artgram
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            string[] lista = { ListaObrazow[obraz1].Nazwa_obrazu, ListaObrazow[obraz1].Opis_obrazu, ListaObrazow[obraz1].Liczba_WOW, ListaObrazow[obraz1].Sciezka_dostepu, Nazwa_obrazu};
+            string[] lista = { ListaObrazow[obraz1].Nazwa_obrazu, ListaObrazow[obraz1].Opis_obrazu, ListaObrazow[obraz1].Liczba_WOW, ListaObrazow[obraz1].Sciezka_dostepu, Nazwa_obrazu };
             this.Frame.Navigate(typeof(v_View_Szukaj), lista);
         }
 
@@ -249,6 +283,16 @@ namespace Artgram
             {
                 this.Nazwa_obrazu = Nazwa_obrazu;
             }
+        }
+        class Szukaj_moje
+        {
+            public string ID_Uzytkownicy;
+
+            public Szukaj_moje(string ID_Uzytkownicy)
+            {
+                this.ID_Uzytkownicy = ID_Uzytkownicy;
+            }
+
         }
     }
 }

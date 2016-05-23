@@ -22,12 +22,12 @@
                 <ImageBrush Stretch="Fill" ImageSource="Assets/Square150x150Logo.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="button_Copy1" Content="" HorizontalAlignment="Left" Margin="677,204,0,0" VerticalAlignment="Top" Height="179" Width="240" Click="button_Copy1_Click">
+        <Button x:Name="button_Copy1"  IsEnabled="False" Content="" HorizontalAlignment="Left" Margin="677,204,0,0" VerticalAlignment="Top" Height="179" Width="240" Click="button_Copy1_Click">
             <Button.Background>
                 <ImageBrush Stretch="Fill" ImageSource="Assets/Square150x150Logo.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="button_Copy2" Content="" HorizontalAlignment="Left" Margin="980,204,0,0" VerticalAlignment="Top" Height="179" Width="246" Click="button_Copy2_Click">
+        <Button x:Name="button_Copy2"  IsEnabled="False" Content="" HorizontalAlignment="Left" Margin="980,204,0,0" VerticalAlignment="Top" Height="179" Width="246" Click="button_Copy2_Click">
             <Button.Background>
                 <ImageBrush Stretch="Fill" ImageSource="Assets/Square150x150Logo.png"/>
             </Button.Background>
@@ -54,12 +54,13 @@
         </Button>
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Height="29" Margin="474,342,0,0" TextWrapping="Wrap" Text="Nowe" VerticalAlignment="Top" Width="49" FontSize="18.667"/>
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Height="29" Margin="760,342,0,0" TextWrapping="Wrap" Text="Ulubione" VerticalAlignment="Top" Width="83" FontSize="18.667"/>
-        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Height="29" Margin="1078,342,0,0" TextWrapping="Wrap" Text="Historia" VerticalAlignment="Top" Width="83" FontSize="18.667"/>
+        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Height="29" Margin="1052,342,0,0" TextWrapping="Wrap" Text="Moje obrazy" VerticalAlignment="Top" Width="127" FontSize="18.667"/>
         <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Height="29" Margin="1078,580,0,0" TextWrapping="Wrap" Text="Tatuaże" VerticalAlignment="Top" Width="83" FontSize="18.667"/>
         <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Height="29" Margin="760,580,0,0" TextWrapping="Wrap" Text="Rysunek" VerticalAlignment="Top" Width="83" FontSize="18.667"/>
         <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Height="29" Margin="474,580,0,0" TextWrapping="Wrap" Text="Malarstwo" VerticalAlignment="Top" Width="93" FontSize="18.667"/>
         <TextBlock x:Name="textBlock_Copy7" HorizontalAlignment="Left" Height="29" Margin="146,580,0,0" TextWrapping="Wrap" Text="Rzeźbiarstwo" VerticalAlignment="Top" Width="115" FontSize="18.667"/>
         <local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Width="1280"/>
+        <TextBlock x:Name="textBlock_Blad" HorizontalAlignment="Left" Height="53" Margin="317,383,0,0" TextWrapping="Wrap" Text="Niestety wystąpił błąd podczas pobierania danych i aplikacja nie może działać poprawnie. Wróć do nas później i spróbuj ponownie! " VerticalAlignment="Top" Width="619" Visibility="Collapsed"/>
         <!-- <fbsdk:FBLoginButton x:Name="Login" HorizontalAlignment="Left" Margin="1030,90,0,0" VerticalAlignment="Top" Height="50" Width="157" Click="Login_Click"/> -->
 
     </Grid>

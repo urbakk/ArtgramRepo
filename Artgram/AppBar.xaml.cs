@@ -32,7 +32,6 @@ namespace Artgram
             FBSession sess = FBSession.ActiveSession;
             sess.FBAppId = "230142530675566";
             sess.WinAppId = "s-1-15-2-2081801503-2397520940-272619875-1590401876-1557732794-2496746503-2085674722";
-            
 
             if (sess.User != null)
             {
@@ -138,6 +137,7 @@ namespace Artgram
                 ProfilePicNone.Visibility = Visibility.Collapsed;
                 Login.Content = "Zaloguj z FB";
                 button_Add.IsEnabled = true;
+                this.customFrame.Navigate(typeof(MainPage));
             }
             else
             {
@@ -171,11 +171,12 @@ namespace Artgram
 
             UserName.Text = "Nie zalogowano";
             button_Add.IsEnabled = false;
+            this.customFrame.Navigate(typeof(MainPage));
         }
-        
+
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            string wyszukaj = textBox2.Text;
+            string wyszukaj = "szukaj" + textBox2.Text;
             this.customFrame.Navigate(typeof(v_Szukaj), wyszukaj);
         }
 
@@ -194,6 +195,14 @@ namespace Artgram
             {
                 return null;
             }
+        }
+        
+        private void textBox2_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //funkcja, zeby po kliknieciu w boxa zniknęła zawartość
+            TextBox tb1 = (TextBox)sender;
+            tb1.Text = string.Empty;
+            tb1.GotFocus -= textBox2_GotFocus;
         }
     }
 }
