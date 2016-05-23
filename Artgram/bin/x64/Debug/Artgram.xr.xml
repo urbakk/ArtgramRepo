@@ -61,8 +61,8 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="Height" />
       <RootProperty Name="TextWrapping" />
+      <RootProperty Name="Height" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="FontWeight" />
     </RootType>
@@ -85,14 +85,12 @@
     <RootType FullName="Artgram.AppBar">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Width" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="Artgram.v_Szukaj" />
-    <RootType FullName="Artgram.View" />
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Height" />
@@ -101,6 +99,9 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Header" />
     </RootType>
+    <RootType FullName="Artgram.v_Edycja" />
+    <RootType FullName="Artgram.v_Szukaj" />
+    <RootType FullName="Artgram.View" />
     <RootType FullName="Artgram.Add" />
     <RootType FullName="Artgram.MainPage" />
     <RootType FullName="Artgram.v_View_Szukaj" />
