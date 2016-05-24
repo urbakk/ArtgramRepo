@@ -34,6 +34,7 @@ namespace Artgram
             linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php";
         int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
         List<Obraz> ListaObrazow = new List<Obraz>();
+        AppBar ap1 = new AppBar();
 
         private async void button_Wow_Click(object sender, RoutedEventArgs e)
         {
@@ -208,8 +209,8 @@ namespace Artgram
             }
             else if (IdKategorii.Equals("Ulubione"))
             {
-                Zapytanie zapytanie = new Zapytanie("1");  //liczba w tym przypadku nie ma znaczenia, ale musi być
-                ListaObrazow = Task.Run(() => Pobierz_obrazy(linkUlubione, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
+                Szukaj_moje szukaj_ulubione = new Szukaj_moje(ap1.Wyslij_ID_Uz());
+                ListaObrazow = Task.Run(() => Pobierz_obrazy_ulubione(linkUlubione, szukaj_ulubione).Result).Result;
 
                 if (ListaObrazow != null)
                 {
@@ -241,6 +242,9 @@ namespace Artgram
                     textBlock_opis.Visibility = Visibility.Collapsed;
                     button1_Copy.Visibility = Visibility.Collapsed;
                     textBlock_Copy.Visibility = Visibility.Collapsed;
+                    button_Report.Visibility = Visibility.Collapsed;
+                    button_Contact.Visibility = Visibility.Collapsed;
+                    button_Wow.Visibility = Visibility.Collapsed;
                 }
             }
 
@@ -373,7 +377,25 @@ namespace Artgram
             }
         }
 
-        public View()
+        private async Task<List<Obraz>> Pobierz_obrazy_ulubione(string link, Szukaj_moje nazwa)
+        {
+            string responseServer, zap;
+            try
+            {
+                zap = JsonConvert.SerializeObject(nazwa); //konwerter do JSONa
+                responseServer = await Wyslanie(link, zap); //wysłanie danych do zapytania
+                List<Obraz> ListaObrazow = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
+                return ListaObrazow;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+    
+
+    public View()
         {
             this.InitializeComponent();            
         }

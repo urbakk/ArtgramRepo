@@ -237,7 +237,7 @@ namespace Artgram
 
         private void button_Copy1_Click(object sender, RoutedEventArgs e)
         {
-            string[] Lista = { UrlMoje, "Ulubione" };
+            string[] Lista = { UrlUlubione, "Ulubione" };
             this.Frame.Navigate(typeof(View), Lista);
         }
 
