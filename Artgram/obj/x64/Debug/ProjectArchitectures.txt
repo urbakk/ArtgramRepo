@@ -1,2 +1,2 @@
-D:\ArtgramRepo\Artgram\Artgram.csproj;x64
-D:\ArtgramRepo\winsdkfb\winsdkfb_uwp\winsdkfb_uwp\winsdkfb_uwp.vcxproj;x64
+C:\Users\Nikola\Source\Repos\ArtgramRepo\Artgram\Artgram.csproj;x64
+C:\Users\Nikola\Source\Repos\ArtgramRepo\winsdkfb\winsdkfb_uwp\winsdkfb_uwp\winsdkfb_uwp.vcxproj;x64
