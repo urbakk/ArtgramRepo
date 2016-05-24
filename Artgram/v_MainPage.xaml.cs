@@ -34,7 +34,7 @@ namespace Artgram
 
     public sealed partial class MainPage : Page
     {
-        //int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) :O
+        //int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) gasp emoticon
         private string UrlRzezba, UrlMalarstwo, UrlRysunek, UrlTatuaze, UrlNajpopularniejsze, UrlNowe, UrlUlubione, ID_uzytkownika, UrlMoje,
             link = "http://artgram.hostingpo.pl/login.php",
             linkNajpopularniejsze = "http://artgram.hostingpo.pl/najpopularniejsze.php",
@@ -42,6 +42,8 @@ namespace Artgram
             linkUlubione = "http://artgram.hostingpo.pl/ulubione.php",
             linkNowe = "http://artgram.hostingpo.pl/nowe.php";
         List<Obraz> ListaObrazow = new List<Obraz>();
+        List<Obraz> ListaObrazow1 = new List<Obraz>();
+        List<Obraz> ListaObrazow2 = new List<Obraz>();
         int losowo, Przedzial1, Przedzial2;
 
         AppBar ap1 = new AppBar();
@@ -52,14 +54,14 @@ namespace Artgram
 
             Zapytanie rzezba = new Zapytanie("2");
             UrlRzezba = Task.Run(() => Pobierz_url(link, rzezba).Result).Result;
-            if(UrlRzezba == null)
+            if (UrlRzezba == null)
             {
                 Obsluga_bledu();
             }
             else
             {
                 button_Copy3.Background = Zmiana_tla(UrlRzezba);
-            }           
+            }
 
             Zapytanie malarstwo = new Zapytanie("3");
             UrlMalarstwo = Task.Run(() => Pobierz_url(link, malarstwo).Result).Result;
@@ -79,35 +81,36 @@ namespace Artgram
             UrlNowe = Task.Run(() => Pobierz_url(linkNowe, tatuaze).Result).Result;  // Pobierz_url(linkNowe, tatuaze)- tatuaze nie są wykorzystywane, ale coś musialam przeslac zeby zadzialalo
             button_Copy.Background = Zmiana_tla(UrlNowe);
 
-            ID_uzytkownika = ap1.Wyslij_ID_Uz();  
-            if (ID_uzytkownika != null)  
+            ID_uzytkownika = ap1.Wyslij_ID_Uz();
+            if (ID_uzytkownika != null)
             {
                 button_Copy1.IsEnabled = true;
                 button_Copy2.IsEnabled = true;
 
                 //Moje brazy:
-                Szukaj_moje szukaj_moje = new Szukaj_moje(ID_uzytkownika);  
-                ListaObrazow = Task.Run(() => Pobierz_obrazy(linkMoje, szukaj_moje).Result).Result;
-                                                
-                if (ListaObrazow != null)
+                Szukaj_moje szukaj_moje = new Szukaj_moje(ID_uzytkownika);
+                ListaObrazow1 = Task.Run(() => Pobierz_obrazy(linkMoje, szukaj_moje).Result).Result;
+                Przedzial1 = ListaObrazow1.Count;  //pobieranie wielkosci List<Obraz>
+
+                if (Przedzial1 != 0)
                 {
-                    Przedzial1 = ListaObrazow.Count;  //pobieranie wielkosci List<Obraz>
+
                     Random random = new Random();
                     losowo = random.Next(0, Przedzial1);
-                    UrlMoje = ListaObrazow[losowo].Sciezka_dostepu;
+                    UrlMoje = ListaObrazow1[losowo].Sciezka_dostepu;
                     button_Copy2.Background = Zmiana_tla(UrlMoje);
                 }
 
                 //Ulubione:
                 Szukaj_moje szukaj_ulubione = new Szukaj_moje(ID_uzytkownika);
-                ListaObrazow = Task.Run(() => Pobierz_obrazy(linkUlubione, szukaj_ulubione).Result).Result;
-                
-                if (ListaObrazow != null)
+                ListaObrazow2 = Task.Run(() => Pobierz_obrazy(linkUlubione, szukaj_ulubione).Result).Result;
+
+                if (ListaObrazow2 != null)
                 {
-                    Przedzial2 = ListaObrazow.Count;  //pobieranie wielkosci List<Obraz>
+                    Przedzial2 = ListaObrazow2.Count;  //pobieranie wielkosci List<Obraz>
                     Random random = new Random();
                     losowo = random.Next(0, Przedzial2);
-                    UrlUlubione = ListaObrazow[losowo].Sciezka_dostepu;
+                    UrlUlubione = ListaObrazow2[losowo].Sciezka_dostepu;
                     button_Copy1.Background = Zmiana_tla(UrlUlubione);
                 }
 
@@ -178,7 +181,7 @@ namespace Artgram
 
         private ImageBrush Zmiana_tla(string url)
         {
-            if(url == null)
+            if (url == null)
             {
                 return null;
             }
@@ -189,7 +192,7 @@ namespace Artgram
                 img.ImageSource = new BitmapImage(uri);
 
                 return img;
-            }           
+            }
         }
 
         private void Obsluga_bledu()
@@ -290,4 +293,3 @@ namespace Artgram
 
     }
 }
-

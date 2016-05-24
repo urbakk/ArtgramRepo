@@ -14,10 +14,10 @@
             </Button.Background>
         </Button>
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="Auto" Margin="723,226,0,0" VerticalAlignment="Top" Width="204" Header="Wybierz kategorię"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="45" Margin="723,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="459" FontSize="18.667" Foreground="#FF706C6C"/>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="177" Margin="723,366,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="459" FontSize="18.667" Foreground="#FF706C6C"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="45" Margin="723,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="459" FontSize="18.667" Foreground="#FF706C6C" GotFocus="textBox_GotFocus"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="177" Margin="723,366,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="459" FontSize="18.667" Foreground="#FF706C6C" GotFocus="textBox_Copy_GotFocus"/>
         <Button x:Name="button_Cancel" Content="Powrót do moich obrazów" HorizontalAlignment="Left" Height="51" Margin="696,598,0,0" VerticalAlignment="Top" Width="264" FontSize="20" Background="#FF330033" Foreground="White" Click="button_Cancel_Click"/>
-        <Button x:Name="button_Accept" Content="Akceptuj" HorizontalAlignment="Left" Height="51" Margin="1001,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Background="#FF330033" Foreground="White"/>
+        <Button x:Name="button_Accept" Content="Akceptuj" HorizontalAlignment="Left" Height="51" Margin="1001,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Background="#FF330033" Foreground="White" Click="button_Accept_Click"/>
         <local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Height="165" Width="1280"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="465,608,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="41" Width="283" FontSize="24"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="465,167,0,0" TextWrapping="Wrap" Text="Edycja" VerticalAlignment="Top" Height="41" Width="283" FontSize="24"/>
