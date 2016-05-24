@@ -28,12 +28,11 @@
         <TextBlock x:Name="textBlock_nazwa" HorizontalAlignment="Left" Height="205" Margin="373,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="495" FontSize="29.333" FontWeight="Bold"/>
         <Button x:Name="button_Wow" Content="WOW!" HorizontalAlignment="Left" Height="60" Margin="561,603,0,0" VerticalAlignment="Top" Width="153" Background="#FF330033" Foreground="White" FontSize="20" Click="button_Wow_Click"/>
         <Button x:Name="button_Contact" Content="Kontakt" HorizontalAlignment="Left" Height="60" Margin="760,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"/>
-        <Button x:Name="button_Report" Content="Zgłoś!" HorizontalAlignment="Left" Height="60" Margin="416,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White" Click="button_Report_Click"/>
+        <Button x:Name="button_Report" Content="Zgłoś!" HorizontalAlignment="Left" Height="60" Margin="416,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"/>
         <local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Width="1280"/>
         <TextBlock x:Name="textBlock_opis" HorizontalAlignment="Left" Margin="972,534,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="129" Width="218"/>
         <TextBlock x:Name="textBlock_WOW" HorizontalAlignment="Left" Height="60" Margin="311,603,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="45"/>
         <TextBlock x:Name="textBlock_ID_Obrazu" HorizontalAlignment="Left" Margin="605,663,0,0" TextWrapping="Wrap" Text="Nic" VerticalAlignment="Top" Visibility="Collapsed"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="27" Margin="457,148,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="371"/>
 
     </Grid>
 </Page>

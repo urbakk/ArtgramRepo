@@ -31,30 +31,8 @@ namespace Artgram
             linkNowe = "http://artgram.hostingpo.pl/nowe.php",
             linkWOW = "http://artgram.hostingpo.pl/zwieksz_wow.php",
             linkUlubione = "http://artgram.hostingpo.pl/ulubione.php",
-            linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php",
-            linkZglos = "http://artgram.hostingpo.pl/zglos.php";
+            linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php";
         int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
-
-
-        private async void button_Report_Click(object sender, RoutedEventArgs e)
-        {
-            string odpowiedz, dane;
-            Zglos report = new Zglos(ListaObrazow[licznik].ID_Obrazu, ListaObrazow[licznik].Nazwa_obrazu);
-            dane = JsonConvert.SerializeObject(report);
-
-            odpowiedz = await Wyslanie(linkZglos, dane);
-
-            if (odpowiedz == "Wyslano")
-            {
-                textBlock1.Text = "Obraz został zgłoszony.";
-                button_Report.IsEnabled = false;
-            }
-            else
-            {
-                textBlock1.Text = "Napotkano problem ze zgłoszniem.";
-            }
-        }
-
         List<Obraz> ListaObrazow = new List<Obraz>();
 
         private async void button_Wow_Click(object sender, RoutedEventArgs e)
@@ -395,22 +373,9 @@ namespace Artgram
             }
         }
 
-        public class Zglos
-        {
-            public string ID_Obrazu, Nazwa_obrazu;
-
-            public Zglos (string ID_Obrazu, string Nazwa_obrazu)
-            {
-                this.ID_Obrazu = ID_Obrazu;
-                this.Nazwa_obrazu = Nazwa_obrazu;
-            }
-        }
-
         public View()
         {
-            this.InitializeComponent();
-
-            textBlock1.Text = "";   
+            this.InitializeComponent();            
         }
     }
 }
