@@ -30,25 +30,18 @@ namespace Artgram
             linkNajpopularniejsze = "http://artgram.hostingpo.pl/najpopularniejsze.php",
             linkNowe = "http://artgram.hostingpo.pl/nowe.php",
             linkWOW = "http://artgram.hostingpo.pl/zwieksz_wow.php",
-<<<<<<< HEAD
             linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php",
             linkBlokada = "http://artgram.hostingpo.pl/blokada_wow.php",
             linkUsun = "http://artgram.hostingpo.pl/usun.php",
-            linkZmniejsz = "http://artgram.hostingpo.pl/zmniejsz_wow.php";
-=======
+            linkZmniejsz = "http://artgram.hostingpo.pl/zmniejsz_wow.php",
             linkUlubione = "http://artgram.hostingpo.pl/ulubione.php",
-            linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php",
             linkZglos = "http://artgram.hostingpo.pl/zglos.php";
->>>>>>> refs/remotes/origin/master
         int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
         bool stan_ulubionego; 
         List<Obraz> ListaObrazow = new List<Obraz>();
-<<<<<<< HEAD
         List<Ulubione> ListaUlubionych = new List<Ulubione>();
 
         AppBar ap1 = new AppBar(); //potrzebne do uzyskania ID_Uzytkownika
-=======
-        AppBar ap1 = new AppBar();
 
         private async void button_Report_Click(object sender, RoutedEventArgs e)
         {
@@ -68,7 +61,6 @@ namespace Artgram
                 textBlock1.Text = "Napotkano problem ze zgłoszniem.";
             }
         }
->>>>>>> refs/remotes/origin/master
 
         private async void button_Wow_Click(object sender, RoutedEventArgs e)
         {
