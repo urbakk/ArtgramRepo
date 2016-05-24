@@ -30,27 +30,64 @@ namespace Artgram
             linkNajpopularniejsze = "http://artgram.hostingpo.pl/najpopularniejsze.php",
             linkNowe = "http://artgram.hostingpo.pl/nowe.php",
             linkWOW = "http://artgram.hostingpo.pl/zwieksz_wow.php",
-            linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php";
+            linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php",
+            linkBlokada = "http://artgram.hostingpo.pl/blokada_wow.php",
+            linkUsun = "http://artgram.hostingpo.pl/usun.php",
+            linkZmniejsz = "http://artgram.hostingpo.pl/zmniejsz_wow.php";
         int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
+        bool stan_ulubionego; 
         List<Obraz> ListaObrazow = new List<Obraz>();
+        List<Ulubione> ListaUlubionych = new List<Ulubione>();
+
+        AppBar ap1 = new AppBar(); //potrzebne do uzyskania ID_Uzytkownika
 
         private async void button_Wow_Click(object sender, RoutedEventArgs e)
         {
-            AppBar ap1 = new AppBar(); //potrzebne do uzyskania ID_Uzytkownika
 
             int liczba_wow = 0;
             string dane_polubienia, odpowiedz;
             string ID_Obrazu = textBlock_ID_Obrazu.Text;
+            string ID_Uzytkownicy = ap1.Wyslij_ID_Uz();
 
-            Int32.TryParse(textBlock_WOW.Text, out liczba_wow); //potrzebna konwersja
-            liczba_wow += 1;
-            textBlock_WOW.Text = liczba_wow.ToString();     //aktualizacja liczby wow
+            if (ID_Uzytkownicy == null)
+            {
+                button_Wow.Content = "Najpierw się zaloguj!";
+            }
 
-            Dane_WOW obiekt_wow = new Dane_WOW(ap1.Wyslij_ID_Uz(), ID_Obrazu);
-            dane_polubienia = JsonConvert.SerializeObject(obiekt_wow);
-            odpowiedz = await Wyslanie(linkWOW, dane_polubienia);
-            odpowiedz = await Wyslanie(linkWOW_2, dane_polubienia);
+            else
+            {
+                Dane_WOW obiekt_wow = new Dane_WOW(ID_Uzytkownicy, ID_Obrazu);
+                dane_polubienia = JsonConvert.SerializeObject(obiekt_wow);
 
+
+                if (stan_ulubionego == false)
+                {
+                    Int32.TryParse(textBlock_WOW.Text, out liczba_wow); //potrzebna konwersja
+                    liczba_wow += 1;
+                    textBlock_WOW.Text = liczba_wow.ToString();     //aktualizacja liczby wow
+                    button_Wow.Content = "";
+                    
+                    odpowiedz = await Wyslanie(linkWOW, dane_polubienia);
+                    odpowiedz = await Wyslanie(linkWOW_2, dane_polubienia);
+
+                    button_Wow.Background = new ImageBrush { ImageSource = new BitmapImage(new Uri("ms-appx:///assets/wow-no.png")) };
+                    stan_ulubionego = true;
+                }
+
+                else
+                {
+                    Int32.TryParse(textBlock_WOW.Text, out liczba_wow); //potrzebna konwersja
+                    liczba_wow -= 1;
+                    textBlock_WOW.Text = liczba_wow.ToString();     //aktualizacja liczby wow
+                    button_Wow.Content = "";
+
+                    odpowiedz = await Wyslanie(linkUsun, dane_polubienia);
+                    odpowiedz = await Wyslanie(linkZmniejsz, dane_polubienia);
+
+                    button_Wow.Background = new ImageBrush { ImageSource = new BitmapImage(new Uri("ms-appx:///assets/wow.png")) };
+                    stan_ulubionego = false;
+                }
+            }
         }
 
         private void button1_Click(object sender, RoutedEventArgs e) //Poprzedni obraz
@@ -275,7 +312,23 @@ namespace Artgram
             }
         }
                 
-        private void UstawObraz(Obraz obraz, string ktore)
+        private async Task<List<Ulubione>> Pobierz_ulubione(string link, Ulubione ulub)
+        {
+            string responseServer, ulubiona_praca;
+            try
+            {
+                ulubiona_praca = JsonConvert.SerializeObject(ulub); //konwerter do JSONa
+                responseServer = await Wyslanie(link, ulubiona_praca); //wysłanie danych do zapytania
+                List<Ulubione> ListaUlubionych = JsonConvert.DeserializeObject<List<Ulubione>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
+                return ListaUlubionych;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private async void UstawObraz(Obraz obraz, string ktore)
         {
             string url;
 
@@ -291,9 +344,28 @@ namespace Artgram
                 textBlock_WOW.Text = obraz.Liczba_WOW;
                 textBlock_ID_Obrazu.Text = obraz.ID_Obrazu.ToString();
 
+                //******************
+                Ulubione ulub = new Ulubione(ap1.Wyslij_ID_Uz(), obraz.ID_Obrazu.ToString());
+                ListaUlubionych = await Pobierz_ulubione(linkBlokada, ulub);
+
+                if (ListaUlubionych.Count != 0) 
+                {
+                    button_Wow.Background = new ImageBrush { ImageSource = new BitmapImage(new Uri("ms-appx:///assets/wow-no.png")) };
+                    stan_ulubionego = true;
+                }
+
+                else
+                {
+                    button_Wow.Background = new ImageBrush { ImageSource = new BitmapImage(new Uri("ms-appx:///assets/wow.png")) };
+                    stan_ulubionego = false; 
+                }
+
+                //******************
+
                 if (obraz.Opis_obrazu == null)
                 {
                     textBlock_opis.Text = "Autor nie dodał opisu";
+
                 }
                 else
                 {

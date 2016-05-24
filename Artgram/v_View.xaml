@@ -26,7 +26,11 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="28" Margin="166,426,0,0" TextWrapping="Wrap" Text="Poprzednie" VerticalAlignment="Top" Width="107" FontSize="18.667" Visibility="Collapsed"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Height="28" Margin="1019,425,0,0" TextWrapping="Wrap" Text="Następne" VerticalAlignment="Top" Width="91" FontSize="18.667"/>
         <TextBlock x:Name="textBlock_nazwa" HorizontalAlignment="Left" Height="45" Margin="465,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348" FontSize="29.333" FontWeight="Bold"/>
-        <Button x:Name="button_Wow" Content="WOW!" HorizontalAlignment="Left" Height="60" Margin="561,603,0,0" VerticalAlignment="Top" Width="153" Background="#FF330033" Foreground="White" FontSize="20" Click="button_Wow_Click"/>
+        <Button x:Name="button_Wow" HorizontalAlignment="Left" Height="110" Margin="541,583,0,0" VerticalAlignment="Top" Width="200" Foreground="Black" FontSize="20" Click="button_Wow_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Fill" ImageSource="Assets/wow.png"/>
+            </Button.Background>
+        </Button>
         <Button x:Name="button_Contact" Content="Kontakt" HorizontalAlignment="Left" Height="60" Margin="760,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"/>
         <Button x:Name="button_Report" Content="Zgłoś!" HorizontalAlignment="Left" Height="60" Margin="416,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"/>
         <local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Width="1280"/>
