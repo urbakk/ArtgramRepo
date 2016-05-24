@@ -34,7 +34,7 @@
                 <TextBox
                     x:Name="textBox2"  Height="40" TextWrapping="Wrap" Text="Szukaj..." 
                     VerticalAlignment="Center" FontSize="18" Foreground="#FF706C6C" 
-                    HorizontalAlignment="Left" Width="400" MinWidth="250">
+                    HorizontalAlignment="Left" Width="400" MinWidth="250" GotFocus="textBox2_GotFocus">
 
                 </TextBox>
                 <Button x:Name="button1" HorizontalAlignment="Left" 
