@@ -35,7 +35,7 @@ namespace Artgram
     public sealed partial class MainPage : Page
     {
         //int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) :O
-        private string UrlRzezba, UrlMalarstwo, UrlRysunek, UrlTatuaze, UrlNajpopularniejsze, UrlNowe, ID_uzytkownika, UrlMoje,
+        private string UrlRzezba, UrlMalarstwo, UrlRysunek, UrlTatuaze, UrlNajpopularniejsze, UrlNowe, UrlUlubione, ID_uzytkownika, UrlMoje,
             link = "http://artgram.hostingpo.pl/login.php",
             linkNajpopularniejsze = "http://artgram.hostingpo.pl/najpopularniejsze.php",
             linkMoje = "http://artgram.hostingpo.pl/moje_obrazy.php",
@@ -88,17 +88,28 @@ namespace Artgram
                 //Moje brazy:
                 Szukaj_moje szukaj_moje = new Szukaj_moje(ID_uzytkownika);  
                 ListaObrazow = Task.Run(() => Pobierz_obrazy(linkMoje, szukaj_moje).Result).Result;
-                Przedzial1 = ListaObrazow.Count;  //pobieranie wielkosci List<Obraz>
-                                
-                if (Przedzial1 != 0)
+                                                
+                if (ListaObrazow != null)
                 {
+                    Przedzial1 = ListaObrazow.Count;  //pobieranie wielkosci List<Obraz>
                     Random random = new Random();
                     losowo = random.Next(0, Przedzial1);
                     UrlMoje = ListaObrazow[losowo].Sciezka_dostepu;
                     button_Copy2.Background = Zmiana_tla(UrlMoje);
                 }
 
+                //Ulubione:
+                Szukaj_moje szukaj_ulubione = new Szukaj_moje(ID_uzytkownika);
+                ListaObrazow = Task.Run(() => Pobierz_obrazy(linkUlubione, szukaj_ulubione).Result).Result;
                 
+                if (ListaObrazow != null)
+                {
+                    Przedzial2 = ListaObrazow.Count;  //pobieranie wielkosci List<Obraz>
+                    Random random = new Random();
+                    losowo = random.Next(0, Przedzial2);
+                    UrlUlubione = ListaObrazow[losowo].Sciezka_dostepu;
+                    button_Copy1.Background = Zmiana_tla(UrlUlubione);
+                }
 
             }
             else
@@ -223,7 +234,7 @@ namespace Artgram
 
         private void button_Copy1_Click(object sender, RoutedEventArgs e)
         {
-            string[] Lista = { UrlMoje, "" };
+            string[] Lista = { UrlMoje, "Ulubione" };
             this.Frame.Navigate(typeof(View), Lista);
         }
 
