@@ -33,7 +33,6 @@ namespace Artgram
             sess.FBAppId = "230142530675566";
             sess.WinAppId = "s-1-15-2-2081801503-2397520940-272619875-1590401876-1557732794-2496746503-2085674722";
 
-
             if (sess.User != null)
             {
                 FBUser user = sess.User;
@@ -42,7 +41,6 @@ namespace Artgram
                 string userId = user.Id;
                 string username = user.Name;
                 string locale = user.Locale;
-
 
                 ProfilePic.UserId = sess.User.Id;
                 //Debug.WriteLine(sess.User.Id);
@@ -54,6 +52,7 @@ namespace Artgram
                 ProfilePic.Visibility = Visibility.Visible;
                 ProfilePicNone.Visibility = Visibility.Collapsed;
                 Login.Content = "Zaloguj z FB";
+                button_Add.IsEnabled = true;
             }
         }
 
@@ -137,6 +136,8 @@ namespace Artgram
                 ProfilePic.Visibility = Visibility.Visible;
                 ProfilePicNone.Visibility = Visibility.Collapsed;
                 Login.Content = "Zaloguj z FB";
+                button_Add.IsEnabled = true;
+                this.customFrame.Navigate(typeof(MainPage));
             }
             else
             {
@@ -169,12 +170,39 @@ namespace Artgram
             ProfilePicNone.Visibility = Visibility.Visible;
 
             UserName.Text = "Nie zalogowano";
+            button_Add.IsEnabled = false;
+            this.customFrame.Navigate(typeof(MainPage));
         }
-        
+
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            string wyszukaj = textBox2.Text;
+            string wyszukaj = "szukaj" + textBox2.Text;
             this.customFrame.Navigate(typeof(v_Szukaj), wyszukaj);
+        }
+
+        public string Wyslij_ID_Uz()    //publiczna funkcja zwracająca ID_Uzytkownika w innych widokach
+        {
+            FBSession sess = FBSession.ActiveSession;
+
+            if (sess.User != null)
+            {
+                FBUser user = sess.User;
+                string userId = user.Id;
+                return userId;
+            }
+
+            else
+            {
+                return null;
+            }
+        }
+        
+        private void textBox2_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //funkcja, zeby po kliknieciu w boxa zniknęła zawartość
+            TextBox tb1 = (TextBox)sender;
+            tb1.Text = string.Empty;
+            tb1.GotFocus -= textBox2_GotFocus;
         }
     }
 }

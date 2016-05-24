@@ -102,6 +102,10 @@
       <DependentUpon>AppBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Obraz.cs" />
+    <Compile Include="Szukaj_moje.cs" />
+    <Compile Include="v_Edycja.xaml.cs">
+      <DependentUpon>v_Edycja.xaml</DependentUpon>
+    </Compile>
     <Compile Include="v_Szukaj.xaml.cs">
       <DependentUpon>v_Szukaj.xaml</DependentUpon>
     </Compile>
@@ -151,6 +155,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="AppBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="v_Edycja.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

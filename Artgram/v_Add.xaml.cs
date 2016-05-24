@@ -25,8 +25,10 @@ namespace Artgram
     public sealed partial class Add : Page
     {
         private StorageFile plik;
-        private ulong maxFile = 2 * 1024 * 1024;
+        private ulong maxFile = 500 * 1024;
         private ImageBrush obrazek = new ImageBrush();
+
+        AppBar ap1 = new AppBar(); //potrzebne do uzyskania ID_Uzytkownika
 
         public Add()
         {
@@ -62,9 +64,8 @@ namespace Artgram
             else
             {
                 textBlock.Text = "Proszę czekać...";
-                Obraz_dod Obraz = new Obraz_dod(textBox.Text, textBox_Copy.Text, "", "");
+                Obraz_dod Obraz = new Obraz_dod(textBox.Text, textBox_Copy.Text, "", "", ap1.Wyslij_ID_Uz());
                 
-
                 if ( comboBox.SelectedItem == "Rzeźba")
                 {
                     Obraz.ID_Kategorii = "2";
@@ -234,15 +235,16 @@ namespace Artgram
 
         private class Obraz_dod
         {
-            public string Nazwa_obrazu, Opis_obrazu, Sciezka_dostepu, ID_Kategorii;
+            public string Nazwa_obrazu, Opis_obrazu, Sciezka_dostepu, ID_Kategorii, ID_Uzytkownicy;
 
             public Obraz_dod (string Nazwa_obrazu, string Opis_obrazu, string Sciezka_dostepu, 
-                string ID_Kategorii)
+                string ID_Kategorii, string ID_Uzytkownicy)
             {
                 this.Nazwa_obrazu = Nazwa_obrazu;
                 this.Opis_obrazu = Opis_obrazu;
                 this.Sciezka_dostepu = Sciezka_dostepu;
                 this.ID_Kategorii = ID_Kategorii;
+                this.ID_Uzytkownicy = ID_Uzytkownicy;
             }
         }
 
