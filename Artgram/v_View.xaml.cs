@@ -30,16 +30,45 @@ namespace Artgram
             linkNajpopularniejsze = "http://artgram.hostingpo.pl/najpopularniejsze.php",
             linkNowe = "http://artgram.hostingpo.pl/nowe.php",
             linkWOW = "http://artgram.hostingpo.pl/zwieksz_wow.php",
+<<<<<<< HEAD
             linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php",
             linkBlokada = "http://artgram.hostingpo.pl/blokada_wow.php",
             linkUsun = "http://artgram.hostingpo.pl/usun.php",
             linkZmniejsz = "http://artgram.hostingpo.pl/zmniejsz_wow.php";
+=======
+            linkUlubione = "http://artgram.hostingpo.pl/ulubione.php",
+            linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php",
+            linkZglos = "http://artgram.hostingpo.pl/zglos.php";
+>>>>>>> refs/remotes/origin/master
         int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
         bool stan_ulubionego; 
         List<Obraz> ListaObrazow = new List<Obraz>();
+<<<<<<< HEAD
         List<Ulubione> ListaUlubionych = new List<Ulubione>();
 
         AppBar ap1 = new AppBar(); //potrzebne do uzyskania ID_Uzytkownika
+=======
+        AppBar ap1 = new AppBar();
+
+        private async void button_Report_Click(object sender, RoutedEventArgs e)
+        {
+            string odpowiedz, dane;
+            Zglos report = new Zglos(ListaObrazow[licznik].ID_Obrazu, ListaObrazow[licznik].Nazwa_obrazu);
+            dane = JsonConvert.SerializeObject(report);
+
+            odpowiedz = await Wyslanie(linkZglos, dane);
+
+            if (odpowiedz == "Wyslano")
+            {
+                textBlock1.Text = "Obraz został zgłoszony.";
+                button_Report.IsEnabled = false;
+            }
+            else
+            {
+                textBlock1.Text = "Napotkano problem ze zgłoszniem.";
+            }
+        }
+>>>>>>> refs/remotes/origin/master
 
         private async void button_Wow_Click(object sender, RoutedEventArgs e)
         {
@@ -92,6 +121,8 @@ namespace Artgram
 
         private void button1_Click(object sender, RoutedEventArgs e) //Poprzedni obraz
         {
+            textBlock1.Text = ""; //resetowanie okienka powiadomień
+
             UstawObraz(ListaObrazow[licznikPoprzednie], "glowne"); //Ustawianie glownego obrazu
             button1_Copy.Visibility = Visibility.Visible;
             textBlock_Copy.Visibility = Visibility.Visible;
@@ -136,6 +167,8 @@ namespace Artgram
 
         private void button1_Copy_Click_1(object sender, RoutedEventArgs e) //Następny obraz
         {
+            textBlock1.Text = ""; // resetowanie okienka powiadomień
+
             UstawObraz(ListaObrazow[licznikNastepne], "glowne"); //Ustawianie glownego obrazu
             button1.Visibility = Visibility.Visible;
             textBlock.Visibility = Visibility.Visible;
@@ -190,77 +223,123 @@ namespace Artgram
             UrlObrazka = Parametry[0];
             IdKategorii = Parametry[1];
 
-            if (!IdKategorii.Equals("najpopularniejsze") && !IdKategorii.Equals("nowe"))
+            if (!IdKategorii.Equals("najpopularniejsze") && !IdKategorii.Equals("nowe") && !IdKategorii.Equals("Ulubione"))
             {
                 Zapytanie zapytanie = new Zapytanie(IdKategorii);
                 ListaObrazow = Task.Run(() => Pobierz_obrazy(link, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
-                gornyPrzedzial = ListaObrazow.Count();
+                
+                    gornyPrzedzial = ListaObrazow.Count();
 
-                while (licznik < gornyPrzedzial)
-                {
-                    if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                    while (licznik < gornyPrzedzial)
                     {
-                        licznikNastepne = licznik + 1;
-                        licznikPoprzednie = licznik;
-                        if (licznikNastepne == gornyPrzedzial)
+                        if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
                         {
-                            licznikNastepne = 0;
+                            licznikNastepne = licznik + 1;
+                            licznikPoprzednie = licznik;
+                            if (licznikNastepne == gornyPrzedzial)
+                            {
+                                licznikNastepne = 0;
+                            }
+                            UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                            UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                            break;
                         }
-                        UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
-                        UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
-                        break;
-                    }
 
-                    licznik++;
-                }
+                        licznik++;
+                    }
+                
             }
-            else if (IdKategorii.Equals("najpopularniejsze")) 
+            else if (IdKategorii.Equals("najpopularniejsze"))
             {
                 Zapytanie zapytanie = new Zapytanie("1");  //liczba w tym przypadku nie ma znaczenia, ale musi być
                 ListaObrazow = Task.Run(() => Pobierz_obrazy(linkNajpopularniejsze, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
+
                 gornyPrzedzial = ListaObrazow.Count();
 
-                while (licznik < gornyPrzedzial)
-                {
-                    if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                    while (licznik < gornyPrzedzial)
                     {
-                        licznikNastepne = licznik + 1;
-                        licznikPoprzednie = licznik;
-                        if (licznikNastepne == gornyPrzedzial)
+                        if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
                         {
-                            licznikNastepne = 0;
+                            licznikNastepne = licznik + 1;
+                            licznikPoprzednie = licznik;
+                            if (licznikNastepne == gornyPrzedzial)
+                            {
+                                licznikNastepne = 0;
+                            }
+                            UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                            UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                            break;
                         }
-                        UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
-                        UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
-                        break;
-                    }
 
-                    licznik++;
+                        licznik++;
+                    }
+                
+            }
+            else if (IdKategorii.Equals("Ulubione"))
+            {
+                Szukaj_moje szukaj_ulubione = new Szukaj_moje(ap1.Wyslij_ID_Uz());
+                ListaObrazow = Task.Run(() => Pobierz_obrazy_ulubione(linkUlubione, szukaj_ulubione).Result).Result;
+
+                if (ListaObrazow != null)
+                {
+                    gornyPrzedzial = ListaObrazow.Count();
+                    while (licznik < gornyPrzedzial)
+                    {
+                        if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                        {
+                            licznikNastepne = licznik + 1;
+                            licznikPoprzednie = licznik;
+                            if (licznikNastepne == gornyPrzedzial)
+                            {
+                                licznikNastepne = 0;
+                            }
+                            UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                            UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                            break;
+                        }
+
+                        licznik++;
+                    }
+                }
+                else
+                {
+                    button.Visibility = Visibility.Collapsed;
+                    textBlock_nazwa.Text = "Niestety nie posiadasz ulubionych zdjęć. Kliknij opcję WOW przy obrazku, który Ci się podoba, aby dodać go do ulubionych.";
+                    textBlock_WOW.Visibility = Visibility.Collapsed;
+                    textBlock_ID_Obrazu.Visibility = Visibility.Collapsed;
+                    textBlock_opis.Visibility = Visibility.Collapsed;
+                    button1_Copy.Visibility = Visibility.Collapsed;
+                    textBlock_Copy.Visibility = Visibility.Collapsed;
+                    button_Report.Visibility = Visibility.Collapsed;
+                    button_Contact.Visibility = Visibility.Collapsed;
+                    button_Wow.Visibility = Visibility.Collapsed;
                 }
             }
+
             else
             {
                 Zapytanie zapytanie = new Zapytanie("1");  //liczba w tym przypadku nie ma znaczenia, ale musi być
-                ListaObrazow = Task.Run(() => Pobierz_obrazy(linkNowe, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
+                ListaObrazow = Task.Run(() => Pobierz_obrazy(linkNowe, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii                              
                 gornyPrzedzial = ListaObrazow.Count();
 
-                while (licznik < gornyPrzedzial)
-                {
-                    if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                    while (licznik < gornyPrzedzial)
                     {
-                        licznikNastepne = licznik + 1;
-                        licznikPoprzednie = licznik;
-                        if (licznikNastepne == gornyPrzedzial)
+                        if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
                         {
-                            licznikNastepne = 0;
+                            licznikNastepne = licznik + 1;
+                            licznikPoprzednie = licznik;
+                            if (licznikNastepne == gornyPrzedzial)
+                            {
+                                licznikNastepne = 0;
+                            }
+                            UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                            UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                            break;
                         }
-                        UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
-                        UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
-                        break;
-                    }
 
-                    licznik++;
-                }
+                        licznik++;
+                    }
+                
             }
         }
 
@@ -401,9 +480,37 @@ namespace Artgram
             }
         }
 
-        public View()
+        private async Task<List<Obraz>> Pobierz_obrazy_ulubione(string link, Szukaj_moje nazwa)
         {
-            this.InitializeComponent();            
+            string responseServer, zap;
+            try
+            {
+                zap = JsonConvert.SerializeObject(nazwa); //konwerter do JSONa
+                responseServer = await Wyslanie(link, zap); //wysłanie danych do zapytania
+                List<Obraz> ListaObrazow = JsonConvert.DeserializeObject<List<Obraz>>(responseServer); //konwersja wyniku zapytania z JSONa do listy
+                return ListaObrazow;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+    public class Zglos
+        {
+            string ID_Obrazu, Nazwa_obrazu;
+
+            public Zglos (string ID_Obrazu, string Nazwa_obrazu)
+            {
+                this.ID_Obrazu = ID_Obrazu;
+                this.Nazwa_obrazu = Nazwa_obrazu;
+            }
+        }
+
+    public View()
+        {
+            this.InitializeComponent();
+            textBlock1.Text = "";       
         }
     }
 }

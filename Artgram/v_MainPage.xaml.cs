@@ -34,13 +34,17 @@ namespace Artgram
 
     public sealed partial class MainPage : Page
     {
-        //int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) :O
-        private string UrlRzezba, UrlMalarstwo, UrlRysunek, UrlTatuaze, UrlNajpopularniejsze, UrlNowe, ID_uzytkownika, UrlMoje,
+        //int LoginStatus;    //Do sprawdzania stanu logowania (ma być w tym miejscu?) gasp emoticon
+        private string UrlRzezba, UrlMalarstwo, UrlRysunek, UrlTatuaze, UrlNajpopularniejsze, UrlNowe, UrlUlubione, ID_uzytkownika, UrlMoje,
             link = "http://artgram.hostingpo.pl/login.php",
             linkNajpopularniejsze = "http://artgram.hostingpo.pl/najpopularniejsze.php",
+            linkMoje = "http://artgram.hostingpo.pl/moje_obrazy.php",
+            linkUlubione = "http://artgram.hostingpo.pl/ulubione.php",
             linkNowe = "http://artgram.hostingpo.pl/nowe.php";
         List<Obraz> ListaObrazow = new List<Obraz>();
-        int losowo, Przedzial;
+        List<Obraz> ListaObrazow1 = new List<Obraz>();
+        List<Obraz> ListaObrazow2 = new List<Obraz>();
+        int losowo, Przedzial1, Przedzial2;
 
         AppBar ap1 = new AppBar();
 
@@ -50,14 +54,14 @@ namespace Artgram
 
             Zapytanie rzezba = new Zapytanie("2");
             UrlRzezba = Task.Run(() => Pobierz_url(link, rzezba).Result).Result;
-            if(UrlRzezba == null)
+            if (UrlRzezba == null)
             {
                 Obsluga_bledu();
             }
             else
             {
                 button_Copy3.Background = Zmiana_tla(UrlRzezba);
-            }           
+            }
 
             Zapytanie malarstwo = new Zapytanie("3");
             UrlMalarstwo = Task.Run(() => Pobierz_url(link, malarstwo).Result).Result;
@@ -83,20 +87,41 @@ namespace Artgram
                 button_Copy1.IsEnabled = true;
                 button_Copy2.IsEnabled = true;
 
-                //string ID_Uzytkownicy = ap1.Wyslij_ID_Uz();
-                Szukaj_moje szukaj_moje = new Szukaj_moje("1");
-                ListaObrazow = Task.Run(() => Pobierz_moje_obrazy(szukaj_moje).Result).Result;
-                Przedzial = ListaObrazow.Count;  //pobieranie wielkosci List<Obraz>
-                Random random = new Random();
-                losowo = random.Next(0, Przedzial);
-                UrlMoje = ListaObrazow[losowo].Sciezka_dostepu;
-                button_Copy2.Background = Zmiana_tla(UrlMoje);
+                //Moje brazy:
+                Szukaj_moje szukaj_moje = new Szukaj_moje(ID_uzytkownika);
+                ListaObrazow1 = Task.Run(() => Pobierz_obrazy(linkMoje, szukaj_moje).Result).Result;
+                Przedzial1 = ListaObrazow1.Count;  //pobieranie wielkosci List<Obraz>
+
+                if (Przedzial1 != 0)
+                {
+
+                    Random random = new Random();
+                    losowo = random.Next(0, Przedzial1);
+                    UrlMoje = ListaObrazow1[losowo].Sciezka_dostepu;
+                    button_Copy2.Background = Zmiana_tla(UrlMoje);
+                }
+
+                //Ulubione:
+                Szukaj_moje szukaj_ulubione = new Szukaj_moje(ID_uzytkownika);
+                ListaObrazow2 = Task.Run(() => Pobierz_obrazy(linkUlubione, szukaj_ulubione).Result).Result;
+
+                if (ListaObrazow2 != null)
+                {
+                    Przedzial2 = ListaObrazow2.Count;  //pobieranie wielkosci List<Obraz>
+                    Random random = new Random();
+                    losowo = random.Next(0, Przedzial2);
+                    UrlUlubione = ListaObrazow2[losowo].Sciezka_dostepu;
+                    button_Copy1.Background = Zmiana_tla(UrlUlubione);
+                }
+
             }
             else
             {
                 button_Copy1.IsEnabled = false;
                 button_Copy2.IsEnabled = false;
             }
+
+
         }
 
         private async Task<string> Wyslanie(string link, string zap)
@@ -156,7 +181,7 @@ namespace Artgram
 
         private ImageBrush Zmiana_tla(string url)
         {
-            if(url == null)
+            if (url == null)
             {
                 return null;
             }
@@ -167,7 +192,7 @@ namespace Artgram
                 img.ImageSource = new BitmapImage(uri);
 
                 return img;
-            }           
+            }
         }
 
         private void Obsluga_bledu()
@@ -212,7 +237,8 @@ namespace Artgram
 
         private void button_Copy1_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(View));
+            string[] Lista = { UrlUlubione, "Ulubione" };
+            this.Frame.Navigate(typeof(View), Lista);
         }
 
         private void button_Copy2_Click(object sender, RoutedEventArgs e)
@@ -249,9 +275,9 @@ namespace Artgram
             this.Frame.Navigate(typeof(MainPage));
         }
 
-        private async Task<List<Obraz>> Pobierz_moje_obrazy(Szukaj_moje nazwa)
+        private async Task<List<Obraz>> Pobierz_obrazy(string link, Szukaj_moje nazwa)
         {
-            string responseServer, zap, link = "http://artgram.hostingpo.pl/moje_obrazy.php";
+            string responseServer, zap;
             try
             {
                 zap = JsonConvert.SerializeObject(nazwa); //konwerter do JSONa
@@ -267,4 +293,3 @@ namespace Artgram
 
     }
 }
-
