@@ -30,6 +30,7 @@ namespace Artgram
             linkNajpopularniejsze = "http://artgram.hostingpo.pl/najpopularniejsze.php",
             linkNowe = "http://artgram.hostingpo.pl/nowe.php",
             linkWOW = "http://artgram.hostingpo.pl/zwieksz_wow.php",
+            linkUlubione = "http://artgram.hostingpo.pl/ulubione.php",
             linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php";
         int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
         List<Obraz> ListaObrazow = new List<Obraz>();
@@ -153,77 +154,120 @@ namespace Artgram
             UrlObrazka = Parametry[0];
             IdKategorii = Parametry[1];
 
-            if (!IdKategorii.Equals("najpopularniejsze") && !IdKategorii.Equals("nowe"))
+            if (!IdKategorii.Equals("najpopularniejsze") && !IdKategorii.Equals("nowe") && !IdKategorii.Equals("Ulubione"))
             {
                 Zapytanie zapytanie = new Zapytanie(IdKategorii);
                 ListaObrazow = Task.Run(() => Pobierz_obrazy(link, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
-                gornyPrzedzial = ListaObrazow.Count();
+                
+                    gornyPrzedzial = ListaObrazow.Count();
 
-                while (licznik < gornyPrzedzial)
-                {
-                    if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                    while (licznik < gornyPrzedzial)
                     {
-                        licznikNastepne = licznik + 1;
-                        licznikPoprzednie = licznik;
-                        if (licznikNastepne == gornyPrzedzial)
+                        if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
                         {
-                            licznikNastepne = 0;
+                            licznikNastepne = licznik + 1;
+                            licznikPoprzednie = licznik;
+                            if (licznikNastepne == gornyPrzedzial)
+                            {
+                                licznikNastepne = 0;
+                            }
+                            UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                            UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                            break;
                         }
-                        UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
-                        UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
-                        break;
-                    }
 
-                    licznik++;
-                }
+                        licznik++;
+                    }
+                
             }
-            else if (IdKategorii.Equals("najpopularniejsze")) 
+            else if (IdKategorii.Equals("najpopularniejsze"))
             {
                 Zapytanie zapytanie = new Zapytanie("1");  //liczba w tym przypadku nie ma znaczenia, ale musi być
                 ListaObrazow = Task.Run(() => Pobierz_obrazy(linkNajpopularniejsze, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
+
                 gornyPrzedzial = ListaObrazow.Count();
 
-                while (licznik < gornyPrzedzial)
-                {
-                    if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                    while (licznik < gornyPrzedzial)
                     {
-                        licznikNastepne = licznik + 1;
-                        licznikPoprzednie = licznik;
-                        if (licznikNastepne == gornyPrzedzial)
+                        if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
                         {
-                            licznikNastepne = 0;
+                            licznikNastepne = licznik + 1;
+                            licznikPoprzednie = licznik;
+                            if (licznikNastepne == gornyPrzedzial)
+                            {
+                                licznikNastepne = 0;
+                            }
+                            UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                            UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                            break;
                         }
-                        UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
-                        UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
-                        break;
-                    }
 
-                    licznik++;
+                        licznik++;
+                    }
+                
+            }
+            else if (IdKategorii.Equals("Ulubione"))
+            {
+                Zapytanie zapytanie = new Zapytanie("1");  //liczba w tym przypadku nie ma znaczenia, ale musi być
+                ListaObrazow = Task.Run(() => Pobierz_obrazy(linkUlubione, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
+
+                if (ListaObrazow != null)
+                {
+                    gornyPrzedzial = ListaObrazow.Count();
+                    while (licznik < gornyPrzedzial)
+                    {
+                        if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                        {
+                            licznikNastepne = licznik + 1;
+                            licznikPoprzednie = licznik;
+                            if (licznikNastepne == gornyPrzedzial)
+                            {
+                                licznikNastepne = 0;
+                            }
+                            UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                            UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                            break;
+                        }
+
+                        licznik++;
+                    }
+                }
+                else
+                {
+                    button.Visibility = Visibility.Collapsed;
+                    textBlock_nazwa.Text = "Niestety nie posiadasz ulubionych zdjęć. Kliknij opcję WOW przy obrazku, który Ci się podoba, aby dodać go do ulubionych.";
+                    textBlock_WOW.Visibility = Visibility.Collapsed;
+                    textBlock_ID_Obrazu.Visibility = Visibility.Collapsed;
+                    textBlock_opis.Visibility = Visibility.Collapsed;
+                    button1_Copy.Visibility = Visibility.Collapsed;
+                    textBlock_Copy.Visibility = Visibility.Collapsed;
                 }
             }
+
             else
             {
                 Zapytanie zapytanie = new Zapytanie("1");  //liczba w tym przypadku nie ma znaczenia, ale musi być
-                ListaObrazow = Task.Run(() => Pobierz_obrazy(linkNowe, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii
+                ListaObrazow = Task.Run(() => Pobierz_obrazy(linkNowe, zapytanie).Result).Result; //Pobieranie listy obrazów z danej kategorii                              
                 gornyPrzedzial = ListaObrazow.Count();
 
-                while (licznik < gornyPrzedzial)
-                {
-                    if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
+                    while (licznik < gornyPrzedzial)
                     {
-                        licznikNastepne = licznik + 1;
-                        licznikPoprzednie = licznik;
-                        if (licznikNastepne == gornyPrzedzial)
+                        if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)
                         {
-                            licznikNastepne = 0;
+                            licznikNastepne = licznik + 1;
+                            licznikPoprzednie = licznik;
+                            if (licznikNastepne == gornyPrzedzial)
+                            {
+                                licznikNastepne = 0;
+                            }
+                            UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
+                            UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                            break;
                         }
-                        UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
-                        UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
-                        break;
-                    }
 
-                    licznik++;
-                }
+                        licznik++;
+                    }
+                
             }
         }
 
