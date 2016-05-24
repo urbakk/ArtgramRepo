@@ -1526,3 +1526,8 @@ D:\ArtgramRepo\Artgram\obj\x64\Debug\v_Edycja.g.cs
 D:\ArtgramRepo\Artgram\obj\x64\Debug\v_Edycja.xaml
 D:\ArtgramRepo\Artgram\obj\x64\Debug\v_Edycja.xbf
 D:\ArtgramRepo\Artgram\bin\x64\Debug\v_Edycja.xbf
+C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\v_Edycja.xbf
+C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_Edycja.g.i.cs
+C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_Edycja.g.cs
+C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_Edycja.xaml
+C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\obj\x64\Debug\v_Edycja.xbf
