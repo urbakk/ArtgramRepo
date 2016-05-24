@@ -38,9 +38,7 @@ namespace Artgram
             if (Nazwa_obrazu.Equals("Moje obrazy"))
             {
                 string ID_Uzytkownicy = ap1.Wyslij_ID_Uz();
-                textBlock_Uwaga.Visibility = Visibility.Visible;
-                textBlock_Uwaga.Text = ID_Uzytkownicy;
-                Szukaj_moje szukaj_moje = new Szukaj_moje("1");
+                Szukaj_moje szukaj_moje = new Szukaj_moje(ID_Uzytkownicy);
                 ListaObrazow = Task.Run(() => Pobierz_moje_obrazy(szukaj_moje).Result).Result;
                 gornyPrzedzial = ListaObrazow.Count();
             }

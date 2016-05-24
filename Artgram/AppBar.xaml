@@ -21,7 +21,7 @@
         <Button x:Name="button_Add" Content="Dodaj pracę" IsEnabled="False" HorizontalAlignment="Left" Margin="841,60,0,0" VerticalAlignment="Top" Height="50" Width="116" FontSize="18" Click="button_Add_Click" Background="#330033" Foreground="White"/>
         <Button x:Name="Login" Content="Zaloguj z FB" HorizontalAlignment="Left" Margin="1034,60,0,0" VerticalAlignment="Top" Height="50" Width="130" FontSize="18" Click="Login_Click" Background="#330033" Foreground="White"/>
         <Button x:Name="Logout" Content="Wyloguj z FB" HorizontalAlignment="Left" Margin="980,60,0,0" VerticalAlignment="Top" Height="50" Width="130" FontSize="18" Click="Logout_Click" Background="#330033" Foreground="White" Visibility="Collapsed"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="50" Margin="222,60,0,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" Width="463" FontSize="18.667" Foreground="#FF706C6C"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="50" Margin="222,60,0,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" Width="463" FontSize="18.667" Foreground="#FF706C6C" GotFocus="textBox2_GotFocus"/>
         <Button x:Name="button1" Content="" HorizontalAlignment="Left" Margin="685,60,0,0" VerticalAlignment="Top" Height="50" Width="56" Background="#330033" Click="button1_Click">
             <Button.Foreground>
                 <ImageBrush ImageSource="ms-appx:///Assets/LockScreenLogo.png" Stretch="None"/>
