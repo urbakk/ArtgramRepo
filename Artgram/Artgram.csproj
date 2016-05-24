@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="Obraz.cs" />
     <Compile Include="Szukaj_moje.cs" />
+    <Compile Include="Ulubione.cs" />
     <Compile Include="v_Edycja.xaml.cs">
       <DependentUpon>v_Edycja.xaml</DependentUpon>
     </Compile>
@@ -139,7 +140,10 @@
     <Content Include="Assets\artgram_logo50x50.png" />
     <Content Include="Assets\artgram_logo620x300.png" />
     <Content Include="Assets\artgram_logo88x88.png" />
+    <Content Include="Assets\artgram_logo_duze.png" />
     <Content Include="Assets\User-head.png" />
+    <Content Include="Assets\wow-no.png" />
+    <Content Include="Assets\wow.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
