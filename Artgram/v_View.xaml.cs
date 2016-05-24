@@ -31,10 +31,30 @@ namespace Artgram
             linkNowe = "http://artgram.hostingpo.pl/nowe.php",
             linkWOW = "http://artgram.hostingpo.pl/zwieksz_wow.php",
             linkUlubione = "http://artgram.hostingpo.pl/ulubione.php",
-            linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php";
+            linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php",
+            linkZglos = "http://artgram.hostingpo.pl/zglos.php";
         int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
         List<Obraz> ListaObrazow = new List<Obraz>();
         AppBar ap1 = new AppBar();
+
+        private async void button_Report_Click(object sender, RoutedEventArgs e)
+        {
+            string odpowiedz, dane;
+            Zglos report = new Zglos(ListaObrazow[licznik].ID_Obrazu, ListaObrazow[licznik].Nazwa_obrazu);
+            dane = JsonConvert.SerializeObject(report);
+
+            odpowiedz = await Wyslanie(linkZglos, dane);
+
+            if (odpowiedz == "Wyslano")
+            {
+                textBlock1.Text = "Obraz został zgłoszony.";
+                button_Report.IsEnabled = false;
+            }
+            else
+            {
+                textBlock1.Text = "Napotkano problem ze zgłoszniem.";
+            }
+        }
 
         private async void button_Wow_Click(object sender, RoutedEventArgs e)
         {
@@ -57,6 +77,8 @@ namespace Artgram
 
         private void button1_Click(object sender, RoutedEventArgs e) //Poprzedni obraz
         {
+            textBlock1.Text = ""; //resetowanie okienka powiadomień
+
             UstawObraz(ListaObrazow[licznikPoprzednie], "glowne"); //Ustawianie glownego obrazu
             button1_Copy.Visibility = Visibility.Visible;
             textBlock_Copy.Visibility = Visibility.Visible;
@@ -101,6 +123,8 @@ namespace Artgram
 
         private void button1_Copy_Click_1(object sender, RoutedEventArgs e) //Następny obraz
         {
+            textBlock1.Text = ""; // resetowanie okienka powiadomień
+
             UstawObraz(ListaObrazow[licznikNastepne], "glowne"); //Ustawianie glownego obrazu
             button1.Visibility = Visibility.Visible;
             textBlock.Visibility = Visibility.Visible;
@@ -393,11 +417,21 @@ namespace Artgram
             }
         }
 
-    
+    public class Zglos
+        {
+            string ID_Obrazu, Nazwa_obrazu;
+
+            public Zglos (string ID_Obrazu, string Nazwa_obrazu)
+            {
+                this.ID_Obrazu = ID_Obrazu;
+                this.Nazwa_obrazu = Nazwa_obrazu;
+            }
+        }
 
     public View()
         {
-            this.InitializeComponent();            
+            this.InitializeComponent();
+            textBlock1.Text = "";       
         }
     }
 }
