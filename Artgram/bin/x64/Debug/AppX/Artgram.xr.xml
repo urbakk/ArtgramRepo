@@ -19,6 +19,8 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
+      <RootMethod Name="GetRow" />
+      <RootMethod Name="SetRow" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
