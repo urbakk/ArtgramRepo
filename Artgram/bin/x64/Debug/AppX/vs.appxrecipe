@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-05-24T18:31:17.036</Modified>
+      <Modified>2016-05-24T21:06:58.008</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.exe">
       <PackagePath>entrypoint\Artgram.exe</PackagePath>
-      <Modified>2016-05-24T18:31:15.624</Modified>
+      <Modified>2016-05-24T21:06:46.064</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -468,7 +468,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.dll">
       <PackagePath>winsdkfb.dll</PackagePath>
-      <Modified>2016-05-24T15:01:01.450</Modified>
+      <Modified>2016-05-24T19:44:38.980</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\x64\Debug\winsdkfb_uwp\winsdkfb.winmd">
       <PackagePath>winsdkfb.winmd</PackagePath>
@@ -557,7 +557,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Artgram.xr.xml">
       <PackagePath>Artgram.xr.xml</PackagePath>
-      <Modified>2016-05-24T18:09:52.171</Modified>
+      <Modified>2016-05-24T19:14:29.766</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.10586.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -569,11 +569,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-05-24T18:31:16.626</Modified>
+      <Modified>2016-05-24T21:06:55.769</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\bin\x64\Debug\Core\Artgram.exe">
       <PackagePath>Artgram.exe</PackagePath>
-      <Modified>2016-05-24T18:31:17.023</Modified>
+      <Modified>2016-05-24T21:06:57.944</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
