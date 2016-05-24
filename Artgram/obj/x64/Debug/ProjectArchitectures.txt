@@ -1,2 +1,2 @@
-C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\Artgram\Artgram.csproj;x64
-C:\Users\Mateusz\Documents\GitHub\ArtgramRepo\winsdkfb\winsdkfb_uwp\winsdkfb_uwp\winsdkfb_uwp.vcxproj;x64
+D:\ArtgramRepo\Artgram\Artgram.csproj;x64
+D:\ArtgramRepo\winsdkfb\winsdkfb_uwp\winsdkfb_uwp\winsdkfb_uwp.vcxproj;x64
