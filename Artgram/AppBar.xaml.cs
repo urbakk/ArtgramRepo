@@ -14,6 +14,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using winsdkfb;
 using winsdkfb.Graph;
+using System.Windows.Input;
+
+
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -28,7 +31,7 @@ namespace Artgram
         public AppBar()
         {
             this.InitializeComponent();
-
+            textBox2.KeyDown += new KeyEventHandler(textBox2_KeyDown);
             FBSession sess = FBSession.ActiveSession;
             sess.FBAppId = "230142530675566";
             sess.WinAppId = "s-1-15-2-2081801503-2397520940-272619875-1590401876-1557732794-2496746503-2085674722";
@@ -203,6 +206,16 @@ namespace Artgram
             TextBox tb1 = (TextBox)sender;
             tb1.Text = string.Empty;
             tb1.GotFocus -= textBox2_GotFocus;
+        }
+
+        private void textBox2_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                string wyszukaj = "szukaj" + textBox2.Text;
+                this.customFrame.Navigate(typeof(v_Szukaj), wyszukaj);
+
+            }
         }
     }
 }
