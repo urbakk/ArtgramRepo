@@ -271,10 +271,11 @@ namespace Artgram
             {
                 Szukaj_moje szukaj_ulubione = new Szukaj_moje(ap1.Wyslij_ID_Uz());
                 ListaObrazow = Task.Run(() => Pobierz_obrazy_ulubione(linkUlubione, szukaj_ulubione).Result).Result;
+                gornyPrzedzial = ListaObrazow.Count();
 
-                if (ListaObrazow != null)
+                if (gornyPrzedzial != 0)
                 {
-                    gornyPrzedzial = ListaObrazow.Count();
+                    
                     while (licznik < gornyPrzedzial)
                     {
                         if (ListaObrazow[licznik].Sciezka_dostepu == UrlObrazka)

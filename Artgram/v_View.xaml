@@ -25,7 +25,7 @@
         </Button>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="28" Margin="166,426,0,0" TextWrapping="Wrap" Text="Poprzednie" VerticalAlignment="Top" Width="107" FontSize="18.667" Visibility="Collapsed"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Height="28" Margin="1019,425,0,0" TextWrapping="Wrap" Text="Następne" VerticalAlignment="Top" Width="91" FontSize="18.667"/>
-        <TextBlock x:Name="textBlock_nazwa" HorizontalAlignment="Left" Height="45" Margin="465,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348" FontSize="29.333" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock_nazwa" HorizontalAlignment="Left" Height="358" Margin="465,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348" FontSize="29.333" FontWeight="Bold"/>
         <Button x:Name="button_Wow" HorizontalAlignment="Left" Height="110" Margin="541,583,0,0" VerticalAlignment="Top" Width="200" Foreground="Black" FontSize="20" Click="button_Wow_Click">
             <Button.Background>
                 <ImageBrush Stretch="Fill" ImageSource="Assets/wow.png"/>
