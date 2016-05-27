@@ -392,6 +392,9 @@
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\User-head.png">
       <PackagePath>Assets\User-head.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\wow-bez.png">
+      <PackagePath>Assets\wow-bez.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\urbak\Documents\GitHub\ArtgramRepo\Artgram\Assets\wow-no.png">
       <PackagePath>Assets\wow-no.png</PackagePath>
     </AppxPackagedFile>

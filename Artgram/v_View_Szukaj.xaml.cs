@@ -52,6 +52,7 @@ namespace Artgram
             //textBlock_ID_Obrazu1.Text = ID_Obrazu;
             List<Ulubione> ListaUlubionych = new List<Ulubione>();
 
+            //******************
             Ulubione ulub = new Ulubione(ap1.Wyslij_ID_Uz(), ID_Obrazu);
             ListaUlubionych = await Pobierz_ulubione(linkBlokada, ulub);
 
@@ -67,6 +68,7 @@ namespace Artgram
                 stan_ulubionego = false; 
             }
 
+            //******************
 
             if (lista[1] == null)
             {
@@ -87,7 +89,7 @@ namespace Artgram
 
         private async void button_Wow_Click(object sender, RoutedEventArgs e)
         {
-            
+            //ID_Obrazu = textBlock_ID_Obrazu1.Text;
             int liczba_wow = 0;
             string dane_polubienia, odpowiedz;
             //string ID_Obrazu = textBlock_ID_Obrazu1.Text;
@@ -100,6 +102,7 @@ namespace Artgram
 
             else
             {
+
                 Dane_WOW obiekt_wow = new Dane_WOW(ID_Uzytkownicy, ID_Obrazu);
                 dane_polubienia = JsonConvert.SerializeObject(obiekt_wow);
 
