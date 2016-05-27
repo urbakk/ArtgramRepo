@@ -25,7 +25,7 @@
         <local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Width="1280"/>
         <TextBlock x:Name="textBlock_opis" HorizontalAlignment="Left" Margin="807,333,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="219" Width="383"/>
         <TextBlock x:Name="textBlock_WOW" HorizontalAlignment="Left" Height="60" Margin="149,603,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="45"/>
-        <Button x:Name="button_Powrot" Content="Powrót do wyszukiwana" HorizontalAlignment="Left" Height="60" Margin="895,603,0,0" VerticalAlignment="Top" Width="265" FontSize="20" Background="#FF330033" Foreground="White" Click="button_Powrot_Click"/>
+        <Button x:Name="button_Powrot" Content="Powrót do wyszukiwania" HorizontalAlignment="Left" Height="60" Margin="895,603,0,0" VerticalAlignment="Top" Width="265" FontSize="20" Background="#FF330033" Foreground="White" Click="button_Powrot_Click"/>
         <TextBlock x:Name="textBlock_ID_Obrazu1" HorizontalAlignment="Left" Margin="746,624,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Visibility="Collapsed"/>
 
     </Grid>
