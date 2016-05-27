@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="Artgram.Add"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Artgram"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="#FFEBE1F0">
+
+        <local:AppBar HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto"/>
+
+
+        <Grid Margin="0,165,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" >
+
+                <Button x:ConnectionId='8' x:Name="button" 
+                        HorizontalAlignment="Center" Height="383"  VerticalAlignment="Center" Width="537">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="Assets/Square44x44Logo.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0" Margin="0,0,0,40">
+                <Button x:ConnectionId='6' x:Name="button_Add"  Content="+ Dodaj" 
+                        HorizontalAlignment="Center" Height="51" Width="Auto" FontSize="20" 
+                        Foreground="White" Background="#FF330033"                         />
+                <TextBlock x:ConnectionId='7' x:Name="textBlock" TextWrapping="Wrap" Text="TextBlock"  HorizontalAlignment="Right" Height="41" Width="200" FontSize="24"/>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="1">
+
+                <ComboBox x:ConnectionId='3' x:Name="comboBox" Margin="0, 20" HorizontalAlignment="Left"  Height="Auto" Width="204" Header="Wybierz kategorię"/>
+                <TextBox x:ConnectionId='4' x:Name="textBox"  Margin="0,100" 
+                         VerticalAlignment="Top" HorizontalAlignment="Left" Height="Auto"  TextWrapping="Wrap" Text="Dodaj nazwę"  Width="440" 
+                         FontSize="18.667" Foreground="#FF706C6C"                            />
+                <TextBox x:ConnectionId='5' x:Name="textBox_Copy"  Margin="0,180,0,0" 
+                         VerticalAlignment="Top" HorizontalAlignment="Left" Height="238"  TextWrapping="Wrap" Text="Dodaj opis"  Width="459" 
+                         FontSize="18.667" Foreground="#FF706C6C"                                 />
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1" >
+                <Button x:ConnectionId='1' x:Name="button_Cancel" Content="Anuluj"  Height="51"  
+                        VerticalAlignment="Top" Width="111" 
+                        FontSize="20" Background="#FF330033" Foreground="White"                            />
+                <Button x:ConnectionId='2' x:Name="button_Accept" Content="Akceptuj"   Height="51"  
+                        VerticalAlignment="Top" Margin="250,0,0,0" Width="201" MinWidth="150" 
+                        FontSize="20" Background="#FF330033" Foreground="White"                            />
+            </Grid>
+
+
+        </Grid>
+
+        <!--<Button x:Name="button" Content="" HorizontalAlignment="Left" Height="383" Margin="90,200,0,0" VerticalAlignment="Top" Width="537">
+            
+<Button.Background>
+                
+<ImageBrush Stretch="Fill" ImageSource="Assets/Square44x44Logo.png"/>
+            
+</Button.Background>
+        
+</Button>
+        
+<Button x:Name="button_Add" Content="+ Dodaj" HorizontalAlignment="Left" Height="51" Margin="270,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Foreground="White" Background="#FF330033" Click="button_Add_Click"/>
+        
+<ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="Auto" Margin="723,226,0,0" VerticalAlignment="Top" Width="204" Header="Wybierz kategorię"/>
+        
+<TextBox x:Name="textBox" HorizontalAlignment="Left" Height="45" Margin="723,295,0,0" TextWrapping="Wrap" Text="Dodaj nazwę" VerticalAlignment="Top" Width="459" FontSize="18.667" Foreground="#FF706C6C" GotFocus="textBox_GotFocus"/>
+        
+<TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="177" Margin="723,366,0,0" TextWrapping="Wrap" Text="Dodaj opis" VerticalAlignment="Top" Width="459" FontSize="18.667" Foreground="#FF706C6C" GotFocus="textBox_Copy_GotFocus"/>
+        
+<Button x:Name="button_Cancel" Content="Anuluj" HorizontalAlignment="Left" Height="51" Margin="777,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Background="#FF330033" Foreground="White" Click="button_Cancel_Click"/>
+        
+<Button x:Name="button_Accept" Content="Akceptuj" HorizontalAlignment="Left" Height="51" Margin="1001,598,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Background="#FF330033" Foreground="White" Click="button_Accept_Click"/>
+        
+<local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Height="165" Width="1280"/>
+        
+<TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="465,608,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="41" Width="283" FontSize="24"/>
+    -->
+
+    </Grid>
+
+
+
+</Page>
+
