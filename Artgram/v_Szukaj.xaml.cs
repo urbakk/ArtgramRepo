@@ -38,9 +38,10 @@ namespace Artgram
             if (Nazwa_obrazu.Equals("Moje obrazy"))
             {
                 string ID_Uzytkownicy = ap1.Wyslij_ID_Uz();
+
                 Szukaj_moje szukaj_moje = new Szukaj_moje(ID_Uzytkownicy);
                 ListaObrazow = Task.Run(() => Pobierz_moje_obrazy(szukaj_moje).Result).Result;
-                gornyPrzedzial = ListaObrazow.Count();
+                
             }
             else
             {
@@ -49,9 +50,9 @@ namespace Artgram
 
                 Szukaj szukaj = new Szukaj(Pomocnicza_nazwa_obrazu);
                 ListaObrazow = Task.Run(() => Pobierz_obrazy(szukaj).Result).Result;
-                gornyPrzedzial = ListaObrazow.Count();
+                
             }
-
+            gornyPrzedzial = ListaObrazow.Count();
 
             if (gornyPrzedzial == 0)
             {
@@ -257,7 +258,7 @@ namespace Artgram
             }
             else
             {
-                string[] lista = { ListaObrazow[obraz0].Nazwa_obrazu, ListaObrazow[obraz0].Opis_obrazu, ListaObrazow[obraz0].Liczba_WOW, ListaObrazow[obraz0].Sciezka_dostepu, Nazwa_obrazu };
+                string[] lista = { ListaObrazow[obraz0].Nazwa_obrazu, ListaObrazow[obraz0].Opis_obrazu, ListaObrazow[obraz0].Liczba_WOW, ListaObrazow[obraz0].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz0].ID_Obrazu };
                 this.Frame.Navigate(typeof(v_View_Szukaj), lista);
             }                
         }
@@ -271,7 +272,7 @@ namespace Artgram
             }
             else
             {
-                string[] lista = { ListaObrazow[obraz1].Nazwa_obrazu, ListaObrazow[obraz1].Opis_obrazu, ListaObrazow[obraz1].Liczba_WOW, ListaObrazow[obraz1].Sciezka_dostepu, Nazwa_obrazu };
+                string[] lista = { ListaObrazow[obraz1].Nazwa_obrazu, ListaObrazow[obraz1].Opis_obrazu, ListaObrazow[obraz1].Liczba_WOW, ListaObrazow[obraz1].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz1].ID_Obrazu };
                 this.Frame.Navigate(typeof(v_View_Szukaj), lista);
             }            
         }
@@ -285,7 +286,7 @@ namespace Artgram
             }
             else
             {
-                string[] lista = { ListaObrazow[obraz2].Nazwa_obrazu, ListaObrazow[obraz2].Opis_obrazu, ListaObrazow[obraz2].Liczba_WOW, ListaObrazow[obraz2].Sciezka_dostepu, Nazwa_obrazu };
+                string[] lista = { ListaObrazow[obraz2].Nazwa_obrazu, ListaObrazow[obraz2].Opis_obrazu, ListaObrazow[obraz2].Liczba_WOW, ListaObrazow[obraz2].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz2].ID_Obrazu };
                 this.Frame.Navigate(typeof(v_View_Szukaj), lista);
             }
         }
@@ -299,7 +300,7 @@ namespace Artgram
             }
             else
             {
-                string[] lista = { ListaObrazow[obraz3].Nazwa_obrazu, ListaObrazow[obraz3].Opis_obrazu, ListaObrazow[obraz3].Liczba_WOW, ListaObrazow[obraz3].Sciezka_dostepu, Nazwa_obrazu };
+                string[] lista = { ListaObrazow[obraz3].Nazwa_obrazu, ListaObrazow[obraz3].Opis_obrazu, ListaObrazow[obraz3].Liczba_WOW, ListaObrazow[obraz3].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz3].ID_Obrazu };
                 this.Frame.Navigate(typeof(v_View_Szukaj), lista);
             }
         }

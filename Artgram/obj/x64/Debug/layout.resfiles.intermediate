@@ -1,6 +1,7 @@
 WinMetadata\Windows.winmd
 ApplicationInsights.config
 Assets\artgram_logo.png
+Assets\artgram_logo_duze.png
 Assets\artgram_logo100x100.png
 Assets\artgram_logo1240x600.png
 Assets\artgram_logo150x150.png
@@ -16,5 +17,8 @@ Assets\Square44x44Logo.targetsize-24_altform-unplated.png
 Assets\StoreLogo.png
 Assets\User-head.png
 Assets\Wide310x150Logo.scale-200.png
+Assets\wow.png
+Assets\wow-bez.png
+Assets\wow-no.png
 Artgram.xr.xml
 Properties\Default.rd.xml
