@@ -32,7 +32,7 @@
             </Button.Background>
         </Button>
 
-        <Button x:Name="button_Contact" Content="Kontakt" HorizontalAlignment="Left" Height="60" Margin="760,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"/>
+        <Button x:Name="button_Contact" Content="Kontakt" HorizontalAlignment="Left" Height="60" Margin="760,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White" Click="Kontakt_Click"/>
         <Button x:Name="button_Report" Content="Zgłoś!" HorizontalAlignment="Left" Height="60" Margin="416,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White" Click="button_Report_Click"/>
         <local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Width="1280"/>
         <TextBlock x:Name="textBlock_opis" HorizontalAlignment="Left" Margin="972,534,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="129" Width="218"/>

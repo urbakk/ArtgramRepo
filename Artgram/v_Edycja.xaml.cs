@@ -50,6 +50,23 @@ namespace Artgram
             }
 
             doWyszukaj = lista[4];   //Nazwa po której szukaliśmy. Potrzebna do powrotu
+
+            if (list[6] == "2")
+            {
+                comboBox.SelectedItem = "Rzeźba";
+            }
+            else if (list[6] == "3")
+            {
+                comboBox.SelectedItem = "Malarstwo";
+            }
+            else if (list[6] == "4")
+            {
+                comboBox.SelectedItem = "Rysunek";
+            }
+            else if (list[6] == "5")
+            {
+                comboBox.SelectedItem = "Tatuaże";
+            }
         }
 
         private void button_Cancel_Click(object sender, RoutedEventArgs e)
@@ -63,14 +80,17 @@ namespace Artgram
             textBlock.Text = "";
 
             var opcje = new ObservableCollection<string>(); //utworzenie kolekcji z opcjami wyboru kategorii
-            var item = ""; //proces uzupełniania kolekcji
-            opcje.Add(item);
+            //var item = ""; //proces uzupełniania kolekcji
+            //opcje.Add(item);
             opcje.Add("Rzeźba");
             opcje.Add("Malarstwo");
             opcje.Add("Rysunek");
             opcje.Add("Tatuaże");
 
             comboBox.ItemsSource = opcje;
+
+
+
         }
 
         private async void button_Accept_Click(object sender, RoutedEventArgs e)
@@ -105,6 +125,7 @@ namespace Artgram
                 else
                 {
                     textBlock.Text = "Wybierz kategorię.";
+                    return;
                 }
                 
                 if (textBlock.Text != "Wybierz kategorię.")
