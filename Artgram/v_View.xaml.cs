@@ -35,11 +35,42 @@ namespace Artgram
             linkUsun = "http://artgram.hostingpo.pl/usun.php",
             linkZmniejsz = "http://artgram.hostingpo.pl/zmniejsz_wow.php",
             linkUlubione = "http://artgram.hostingpo.pl/ulubione.php",
-            linkZglos = "http://artgram.hostingpo.pl/zglos.php";
+            linkZglos = "http://artgram.hostingpo.pl/zglos.php",
+            linkKontakt = "http://artgram.hostingpo.pl/kontakt.php";
         int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
         bool stan_ulubionego; 
         List<Obraz> ListaObrazow = new List<Obraz>();
         List<Ulubione> ListaUlubionych = new List<Ulubione>();
+
+        private async void Kontakt_Click(object sender, RoutedEventArgs e)
+        {
+            string http = "http://www.facebook.com/", user, adres,
+                msg = "{ \"ID_Obrazu\" : \"" + ListaObrazow[licznik].ID_Obrazu + "\"}";
+
+            user = await Wyslanie(linkKontakt, msg);
+            user = user.Replace("\t", "");
+            List<Kontakt> Użytkownik = JsonConvert.DeserializeObject<List<Kontakt>>(user);
+
+            if (Użytkownik[0].ID_Uzytkownicy == "1")
+            {
+                textBlock1.Text = "Obrazek systemowy. Nie można przekierować.";
+            }
+            else if (Użytkownik[0].ID_Uzytkownicy == "\tError in selecting")
+            {
+                textBlock1.Text = "Problem połączenia.";
+            }
+            else
+            {
+                adres = http + Użytkownik[0].ID_Uzytkownicy;
+                var success = await Windows.System.Launcher.LaunchUriAsync(new Uri(adres));
+                if (success)
+                {
+                    textBlock1.Text = "Wyświetlanie.";
+                }
+                else
+                    textBlock1.Text = "Otwarcie strony się nie powiodło.";
+            }
+        }
 
         AppBar ap1 = new AppBar(); //potrzebne do uzyskania ID_Uzytkownika
 
@@ -58,7 +89,7 @@ namespace Artgram
             }
             else
             {
-                textBlock1.Text = "Napotkano problem ze zgłoszniem.";
+                textBlock1.Text = "Napotkano problem ze zgłoszeniem.";
             }
         }
 
@@ -497,6 +528,16 @@ namespace Artgram
             {
                 this.ID_Obrazu = ID_Obrazu;
                 this.Nazwa_obrazu = Nazwa_obrazu;
+            }
+        }
+
+    public class Kontakt
+        {
+            public string ID_Uzytkownicy;
+
+            public Kontakt (string ID_Uzytkownicy)
+            {
+                this.ID_Uzytkownicy = ID_Uzytkownicy;
             }
         }
 
