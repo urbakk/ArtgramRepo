@@ -37,15 +37,17 @@ namespace Artgram
             linkUlubione = "http://artgram.hostingpo.pl/ulubione.php",
             linkZglos = "http://artgram.hostingpo.pl/zglos.php",
             linkKontakt = "http://artgram.hostingpo.pl/kontakt.php";
-        int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
+        int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie, licz;
         bool stan_ulubionego; 
         List<Obraz> ListaObrazow = new List<Obraz>();
         List<Ulubione> ListaUlubionych = new List<Ulubione>();
 
         private async void Kontakt_Click(object sender, RoutedEventArgs e)
         {
+            int liczba = licz;
+
             string http = "http://www.facebook.com/", user, adres,
-                msg = "{ \"ID_Obrazu\" : \"" + ListaObrazow[licznik].ID_Obrazu + "\"}";
+                msg = "{ \"ID_Obrazu\" : \"" + ListaObrazow[liczba].ID_Obrazu + "\"}";
 
             user = await Wyslanie(linkKontakt, msg);
             user = user.Replace("\t", "");
@@ -149,6 +151,7 @@ namespace Artgram
             UstawObraz(ListaObrazow[licznikPoprzednie], "glowne"); //Ustawianie glownego obrazu
             button1_Copy.Visibility = Visibility.Visible;
             textBlock_Copy.Visibility = Visibility.Visible;
+            licz = licznikPoprzednie;
             
             if (licznikPoprzednie == gornyPrzedzial - 1 && licznik == gornyPrzedzial - 1)
             {
@@ -195,6 +198,7 @@ namespace Artgram
             UstawObraz(ListaObrazow[licznikNastepne], "glowne"); //Ustawianie glownego obrazu
             button1.Visibility = Visibility.Visible;
             textBlock.Visibility = Visibility.Visible;
+            licz = licznikNastepne;
 
             if (licznikNastepne + 1 == licznik && licznikNastepne==0)
             {                
@@ -265,6 +269,7 @@ namespace Artgram
                             }
                             UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
                             UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                            licz = licznik;
                             break;
                         }
 
