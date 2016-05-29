@@ -321,6 +321,8 @@ namespace Artgram
                             if (licznikNastepne == gornyPrzedzial)
                             {
                                 licznikNastepne = 0;
+                                button1_Copy.Visibility = Visibility.Collapsed;
+                                textBlock_Copy.Visibility = Visibility.Collapsed;
                             }
                             UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
                             UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
@@ -342,6 +344,7 @@ namespace Artgram
                     button_Report.Visibility = Visibility.Collapsed;
                     button_Contact.Visibility = Visibility.Collapsed;
                     button_Wow.Visibility = Visibility.Collapsed;
+                    image.Visibility = Visibility.Collapsed;
                 }
             }
 
