@@ -26,11 +26,13 @@ namespace Artgram
     /// </summary>
     public sealed partial class v_View_Szukaj : Page
     {
+        int licz;
         string linkWOW = "http://artgram.hostingpo.pl/zwieksz_wow.php",
             linkWOW_2 = "http://artgram.hostingpo.pl/zwieksz_wow_2.php",
             linkBlokada = "http://artgram.hostingpo.pl/blokada_wow.php",
             linkUsun = "http://artgram.hostingpo.pl/usun.php",
-            linkZmniejsz = "http://artgram.hostingpo.pl/zmniejsz_wow.php";
+            linkZmniejsz = "http://artgram.hostingpo.pl/zmniejsz_wow.php",
+            linkKontakt = "http://artgram.hostingpo.pl/kontakt.php";
 
         string url, doWyszukaj, ID_Obrazu;
         bool stan_ulubionego;
@@ -80,6 +82,36 @@ namespace Artgram
             }
 
             doWyszukaj = lista[4];   //Nazwa po której szukaliśmy. Potrzebna do powrotu
+        }
+
+        private async void Kontakt1_Click(object sender, RoutedEventArgs e)
+        {
+            string http = "http://www.facebook.com/", user, adres,
+                msg = "{ \"ID_Obrazu\" : \"" + list[5] + "\"}";
+
+            user = await Wyslanie(linkKontakt, msg);
+            user = user.Replace("\t", "");
+            List<Kontakt> Użytkownik = JsonConvert.DeserializeObject<List<Kontakt>>(user);
+
+            if (Użytkownik[0].ID_Uzytkownicy == "1")
+            {
+                textBlock_nazwa_Copy.Text = "Obrazek systemowy. Nie można przekierować.";
+            }
+            else if (Użytkownik[0].ID_Uzytkownicy == "\tError in selecting")
+            {
+                textBlock_nazwa_Copy.Text = "Problem połączenia.";
+            }
+            else
+            {
+                adres = http + Użytkownik[0].ID_Uzytkownicy;
+                var success = await Windows.System.Launcher.LaunchUriAsync(new Uri(adres));
+                if (success)
+                {
+                    textBlock_nazwa_Copy.Text = "Wyświetlanie.";
+                }
+                else
+                    textBlock_nazwa_Copy.Text = "Otwarcie strony się nie powiodło.";
+            }
         }
 
         public v_View_Szukaj()
@@ -198,6 +230,16 @@ namespace Artgram
             {
                 this.ID_Uzytkownicy = ID_Uzytkownicy;
                 this.ID_Obrazu = ID_Obrazu;
+            }
+        }
+
+        public class Kontakt
+        {
+            public string ID_Uzytkownicy;
+
+            public Kontakt(string ID_Uzytkownicy)
+            {
+                this.ID_Uzytkownicy = ID_Uzytkownicy;
             }
         }
     }
