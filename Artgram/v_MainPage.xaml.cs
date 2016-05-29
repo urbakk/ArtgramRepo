@@ -104,10 +104,11 @@ namespace Artgram
                 //Ulubione:
                 Szukaj_moje szukaj_ulubione = new Szukaj_moje(ID_uzytkownika);
                 ListaObrazow2 = Task.Run(() => Pobierz_obrazy(linkUlubione, szukaj_ulubione).Result).Result;
+                Przedzial2 = ListaObrazow2.Count;  //pobieranie wielkosci List<Obraz>
 
-                if (ListaObrazow2 != null)
+                if (Przedzial2 != 0)
                 {
-                    Przedzial2 = ListaObrazow2.Count;  //pobieranie wielkosci List<Obraz>
+                    
                     Random random = new Random();
                     losowo = random.Next(0, Przedzial2);
                     UrlUlubione = ListaObrazow2[losowo].Sciezka_dostepu;

@@ -142,6 +142,7 @@
     <Content Include="Assets\artgram_logo88x88.png" />
     <Content Include="Assets\artgram_logo_duze.png" />
     <Content Include="Assets\User-head.png" />
+    <Content Include="Assets\wow-bez.png" />
     <Content Include="Assets\wow-no.png" />
     <Content Include="Assets\wow.png" />
     <Content Include="Properties\Default.rd.xml" />
