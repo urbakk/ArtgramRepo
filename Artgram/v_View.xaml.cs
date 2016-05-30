@@ -35,11 +35,44 @@ namespace Artgram
             linkUsun = "http://artgram.hostingpo.pl/usun.php",
             linkZmniejsz = "http://artgram.hostingpo.pl/zmniejsz_wow.php",
             linkUlubione = "http://artgram.hostingpo.pl/ulubione.php",
-            linkZglos = "http://artgram.hostingpo.pl/zglos.php";
-        int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie;
+            linkZglos = "http://artgram.hostingpo.pl/zglos.php",
+            linkKontakt = "http://artgram.hostingpo.pl/kontakt.php";
+        int licznik = 0, gornyPrzedzial, licznikNastepne, licznikPoprzednie, licz;
         bool stan_ulubionego; 
         List<Obraz> ListaObrazow = new List<Obraz>();
         List<Ulubione> ListaUlubionych = new List<Ulubione>();
+
+        private async void Kontakt_Click(object sender, RoutedEventArgs e)
+        {
+            int liczba = licz;
+
+            string http = "http://www.facebook.com/", user, adres,
+                msg = "{ \"ID_Obrazu\" : \"" + ListaObrazow[liczba].ID_Obrazu + "\"}";
+
+            user = await Wyslanie(linkKontakt, msg);
+            user = user.Replace("\t", "");
+            List<Kontakt> Użytkownik = JsonConvert.DeserializeObject<List<Kontakt>>(user);
+
+            if (Użytkownik[0].ID_Uzytkownicy == "1")
+            {
+                textBlock1.Text = "Obrazek systemowy. Nie można przekierować.";
+            }
+            else if (Użytkownik[0].ID_Uzytkownicy == "\tError in selecting")
+            {
+                textBlock1.Text = "Problem połączenia.";
+            }
+            else
+            {
+                adres = http + Użytkownik[0].ID_Uzytkownicy;
+                var success = await Windows.System.Launcher.LaunchUriAsync(new Uri(adres));
+                if (success)
+                {
+                    textBlock1.Text = "Wyświetlanie.";
+                }
+                else
+                    textBlock1.Text = "Otwarcie strony się nie powiodło.";
+            }
+        }
 
         AppBar ap1 = new AppBar(); //potrzebne do uzyskania ID_Uzytkownika
 
@@ -58,7 +91,7 @@ namespace Artgram
             }
             else
             {
-                textBlock1.Text = "Napotkano problem ze zgłoszniem.";
+                textBlock1.Text = "Napotkano problem ze zgłoszeniem.";
             }
         }
 
@@ -118,6 +151,7 @@ namespace Artgram
             UstawObraz(ListaObrazow[licznikPoprzednie], "glowne"); //Ustawianie glownego obrazu
             button1_Copy.Visibility = Visibility.Visible;
             textBlock_Copy.Visibility = Visibility.Visible;
+            licz = licznikPoprzednie;
             
             if (licznikPoprzednie == gornyPrzedzial - 1 && licznik == gornyPrzedzial - 1)
             {
@@ -164,6 +198,7 @@ namespace Artgram
             UstawObraz(ListaObrazow[licznikNastepne], "glowne"); //Ustawianie glownego obrazu
             button1.Visibility = Visibility.Visible;
             textBlock.Visibility = Visibility.Visible;
+            licz = licznikNastepne;
 
             if (licznikNastepne + 1 == licznik && licznikNastepne==0)
             {                
@@ -234,6 +269,7 @@ namespace Artgram
                             }
                             UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
                             UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
+                            licz = licznik;
                             break;
                         }
 
@@ -285,6 +321,8 @@ namespace Artgram
                             if (licznikNastepne == gornyPrzedzial)
                             {
                                 licznikNastepne = 0;
+                                button1_Copy.Visibility = Visibility.Collapsed;
+                                textBlock_Copy.Visibility = Visibility.Collapsed;
                             }
                             UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
                             UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
@@ -306,6 +344,7 @@ namespace Artgram
                     button_Report.Visibility = Visibility.Collapsed;
                     button_Contact.Visibility = Visibility.Collapsed;
                     button_Wow.Visibility = Visibility.Collapsed;
+                    image.Visibility = Visibility.Collapsed;
                 }
             }
 
@@ -497,6 +536,16 @@ namespace Artgram
             {
                 this.ID_Obrazu = ID_Obrazu;
                 this.Nazwa_obrazu = Nazwa_obrazu;
+            }
+        }
+
+    public class Kontakt
+        {
+            public string ID_Uzytkownicy;
+
+            public Kontakt (string ID_Uzytkownicy)
+            {
+                this.ID_Uzytkownicy = ID_Uzytkownicy;
             }
         }
 

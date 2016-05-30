@@ -20,13 +20,14 @@
             <ImageBrush Stretch="Fill" ImageSource="Assets/wow.png"/>
         </Button.Background>
         </Button>
-        <Button x:ConnectionId='4' x:Name="button_Contact" Content="Kontakt" HorizontalAlignment="Left" Height="60" Margin="598,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"/>
+        <Button x:ConnectionId='4' x:Name="button_Contact" Content="Kontakt" HorizontalAlignment="Left" Height="60" Margin="598,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"                       />
         <Button x:ConnectionId='5' x:Name="button_Report" Content="Zgłoś!" HorizontalAlignment="Left" Height="60" Margin="254,603,0,0" VerticalAlignment="Top" Width="108" FontSize="20" Background="#FF330033" Foreground="White"/>
         <local:AppBar HorizontalAlignment="Left" VerticalAlignment="Top" Width="1280"/>
         <TextBlock x:ConnectionId='6' x:Name="textBlock_opis" HorizontalAlignment="Left" Margin="807,333,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="219" Width="383"/>
         <TextBlock x:ConnectionId='7' x:Name="textBlock_WOW" HorizontalAlignment="Left" Height="60" Margin="149,603,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="45"/>
         <Button x:ConnectionId='8' x:Name="button_Powrot" Content="Powrót do wyszukiwania" HorizontalAlignment="Left" Height="60" Margin="895,603,0,0" VerticalAlignment="Top" Width="265" FontSize="20" Background="#FF330033" Foreground="White"                            />
         <TextBlock x:ConnectionId='9' x:Name="textBlock_ID_Obrazu1" HorizontalAlignment="Left" Margin="746,624,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Visibility="Collapsed"/>
+        <TextBlock x:ConnectionId='10' x:Name="textBlock_nazwa_Copy" HorizontalAlignment="Left" Height="45" Margin="866,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="348" FontSize="29.333" FontWeight="Bold"/>
 
     </Grid>
 </Page>

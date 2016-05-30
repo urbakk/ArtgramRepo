@@ -253,7 +253,7 @@ namespace Artgram
             if (Nazwa_obrazu.Equals("Moje obrazy"))
             {
                 string[] lista = { ListaObrazow[obraz0].Nazwa_obrazu, ListaObrazow[obraz0].Opis_obrazu,
-                    ListaObrazow[obraz0].Liczba_WOW, ListaObrazow[obraz0].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz0].ID_Obrazu };
+                    ListaObrazow[obraz0].Liczba_WOW, ListaObrazow[obraz0].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz0].ID_Obrazu, ListaObrazow[obraz0].ID_Kategorii };
                 this.Frame.Navigate(typeof(v_Edycja), lista);
             }
             else
@@ -267,7 +267,7 @@ namespace Artgram
         {
             if (Nazwa_obrazu.Equals("Moje obrazy"))
             {
-                string[] lista = { ListaObrazow[obraz1].Nazwa_obrazu, ListaObrazow[obraz1].Opis_obrazu, ListaObrazow[obraz1].Liczba_WOW, ListaObrazow[obraz1].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz1].ID_Obrazu };
+                string[] lista = { ListaObrazow[obraz1].Nazwa_obrazu, ListaObrazow[obraz1].Opis_obrazu, ListaObrazow[obraz1].Liczba_WOW, ListaObrazow[obraz1].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz1].ID_Obrazu, ListaObrazow[obraz1].ID_Kategorii };
                 this.Frame.Navigate(typeof(v_Edycja), lista);
             }
             else
@@ -281,7 +281,7 @@ namespace Artgram
         {
             if (Nazwa_obrazu.Equals("Moje obrazy"))
             {
-                string[] lista = { ListaObrazow[obraz2].Nazwa_obrazu, ListaObrazow[obraz2].Opis_obrazu, ListaObrazow[obraz2].Liczba_WOW, ListaObrazow[obraz2].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz2].ID_Obrazu };
+                string[] lista = { ListaObrazow[obraz2].Nazwa_obrazu, ListaObrazow[obraz2].Opis_obrazu, ListaObrazow[obraz2].Liczba_WOW, ListaObrazow[obraz2].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz2].ID_Obrazu, ListaObrazow[obraz2].ID_Kategorii };
                 this.Frame.Navigate(typeof(v_Edycja), lista);
             }
             else
@@ -295,7 +295,7 @@ namespace Artgram
         {
             if (Nazwa_obrazu.Equals("Moje obrazy"))
             {
-                string[] lista = { ListaObrazow[obraz3].Nazwa_obrazu, ListaObrazow[obraz3].Opis_obrazu, ListaObrazow[obraz3].Liczba_WOW, ListaObrazow[obraz3].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz3].ID_Obrazu };
+                string[] lista = { ListaObrazow[obraz3].Nazwa_obrazu, ListaObrazow[obraz3].Opis_obrazu, ListaObrazow[obraz3].Liczba_WOW, ListaObrazow[obraz3].Sciezka_dostepu, Nazwa_obrazu, ListaObrazow[obraz3].ID_Obrazu, ListaObrazow[obraz3].ID_Kategorii };
                 this.Frame.Navigate(typeof(v_Edycja), lista);
             }
             else
