@@ -42,6 +42,8 @@ namespace Artgram
         List<Obraz> ListaObrazow = new List<Obraz>();
         List<Ulubione> ListaUlubionych = new List<Ulubione>();
 
+       
+
         private async void Kontakt_Click(object sender, RoutedEventArgs e)
         {
             int liczba = licz;
@@ -318,11 +320,15 @@ namespace Artgram
                         {
                             licznikNastepne = licznik + 1;
                             licznikPoprzednie = licznik;
-                            if (licznikNastepne == gornyPrzedzial)
+                            if(gornyPrzedzial == 1)
                             {
                                 licznikNastepne = 0;
                                 button1_Copy.Visibility = Visibility.Collapsed;
                                 textBlock_Copy.Visibility = Visibility.Collapsed;
+                            }
+                            else if (licznikNastepne == gornyPrzedzial)
+                            {
+                                licznikNastepne = 0;
                             }
                             UstawObraz(ListaObrazow[licznik], "glowne"); //Ustawianie głównego obrazu
                             UstawObraz(ListaObrazow[licznikNastepne], "nastepne"); //Ustawianie następnego obrazu
